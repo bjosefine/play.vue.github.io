@@ -17,6 +17,7 @@
 
 <template>
   <ol>
+    <h1>HEJ FRÅN STINA</h1>
     <li :key="city.id" v-for="city in cities">{{ city.name }}</li>
   </ol>
 </template>
