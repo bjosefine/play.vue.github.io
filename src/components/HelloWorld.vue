@@ -16,6 +16,7 @@
 </style>
 
 <template>
+  <h1>Tjoho!</h1>
   <img alt="" src="/assets/fox.jpeg" />
   <p>{{ msg }}</p>
 </template>
