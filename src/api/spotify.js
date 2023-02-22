@@ -12,7 +12,7 @@ const getToken = async () => {
   })
   /// retrive the token from api
   const data = await response.json()
-  console.log(data.access_token)
+  console.log(data.access_token, 'token')
   return data.access_token
 }
 // Get  Featured Playlists from api
@@ -85,11 +85,27 @@ const searchTracks = async (query) => {
   const data = await response.json()
   return data.tracks.items
 }
+/// get featured artist
 
+const getTopArtists = async () => {
+  const token = await getToken()
+  const response = await fetch(
+    'https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6',
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+  const data = await response.json()
+  console.log(data.artists[0])
+  return data.artists[0]
+}
 export default {
   getFeaturedPlaylists,
   getPlaylist,
   getPlaylistTracks,
   searchTracks,
-  getGenres
+  getGenres,
+  getTopArtists
 }
