@@ -22,6 +22,20 @@
       }
     },
     async created() {
+<<<<<<< HEAD
+        const playlistId = this.$route.params.id;
+        this.playlist = await spotify.getPlaylist(playlistId);
+  this.tracks = await spotify.getPlaylistTracks(playlistId);
+  console.log('tracks:', this.tracks);
+
+    },
+    catch (error) {
+      console.error(error);
+    },
+  };
+  </script>
+
+=======
       const playlistId = this.$route.params.id
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
@@ -31,3 +45,4 @@
     }
   }
 </script>
+>>>>>>> 2504d2f35a25239eca90d5c6d2d15ffbc13baf4e

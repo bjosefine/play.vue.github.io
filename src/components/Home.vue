@@ -25,7 +25,11 @@
       }
     },
     async created() {
-      this.featuredPlaylists = await spotify.getFeaturedPlaylists()
+
+
+      this.featuredPlaylists = await spotify.getFeaturedPlaylists();
+    
+
     },
     components: {
       NewReleases

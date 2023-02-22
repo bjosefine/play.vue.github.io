@@ -87,6 +87,23 @@ const searchTracks = async (query) => {
 }
 /// get featured artist
 
+<<<<<<< HEAD
+const getAlbum = async () => {
+  const token = await getToken();
+  const response = await fetch(
+    `https://api.spotify.com/v1/albums`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+
+  const data = await response.json();
+  return data.tracks.items;
+};
+
+=======
 const getNewReleases = async () => {
   const token = await getToken()
   const response = await fetch(
@@ -101,11 +118,17 @@ const getNewReleases = async () => {
   console.log(data.albums)
   return data.albums
 }
+>>>>>>> 2504d2f35a25239eca90d5c6d2d15ffbc13baf4e
 export default {
   getFeaturedPlaylists,
   getPlaylist,
   getPlaylistTracks,
   searchTracks,
   getGenres,
+<<<<<<< HEAD
+  getAlbum
+};
+=======
   getNewReleases
 }
+>>>>>>> 2504d2f35a25239eca90d5c6d2d15ffbc13baf4e
