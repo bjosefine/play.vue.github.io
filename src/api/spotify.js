@@ -87,10 +87,10 @@ const searchTracks = async (query) => {
 }
 /// get featured artist
 
-const getTopArtists = async () => {
+const getNewReleases = async () => {
   const token = await getToken()
   const response = await fetch(
-    'https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6',
+    'https://api.spotify.com/v1/browse/new-releases?country=SE&locale=sv-SE%2Csv%3Bq%3D0.8%2Cen-US%3Bq%3D0.5%2Cen%3Bq%3D0.3&offset=0&limit=10',
     {
       headers: {
         Authorization: 'Bearer ' + token
@@ -98,8 +98,8 @@ const getTopArtists = async () => {
     }
   )
   const data = await response.json()
-  console.log(data.artists[0])
-  return data.artists[0]
+  console.log(data.albums)
+  return data.albums
 }
 export default {
   getFeaturedPlaylists,
@@ -107,5 +107,5 @@ export default {
   getPlaylistTracks,
   searchTracks,
   getGenres,
-  getTopArtists
+  getNewReleases
 }
