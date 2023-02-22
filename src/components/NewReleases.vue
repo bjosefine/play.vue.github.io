@@ -1,5 +1,12 @@
 <template>
-  <p>artists</p>
+  <div>
+    <h1>New Releases</h1>
+    <div v-if="newReleases">
+      <div v-for="albums in newReleases" :key="albums">
+        {{ albums }}
+      </div>
+    </div>
+  </div>
 </template>
 <script>
   import spotify from '../api/spotify'
@@ -8,11 +15,11 @@
     name: 'TopArtists',
     data() {
       return {
-        NewReleases: null
+        newReleases: null
       }
     },
     async created() {
-      this.TopArtists = await spotify.getNewReleases()
+      this.newReleases = await spotify.getNewReleases()
     }
   }
 </script>
