@@ -1,20 +1,35 @@
+<template>
+  <div id="app">
+    <router-view />
+  </div>
+</template>
+
 <script>
-import SpotifyApi from './components/SpotifyApi.vue'
+import Spotify from "./api/spotify.js" 
 
 export default {
-  components: {
-    SpotifyApi
+  name: "App",
+  data() {
+    return {
+      accessToken: null
+    };
+  },
+  methods: {
+    async login() {
+      const token = await Spotify.getToken();
+      if (token) {
+        this.accessToken = token;
+        this.$router.push({ name: "home" });
+      }
+    }
   }
-}
+};
 </script>
 
-<template>
-  <nav>
-    <p>hej</p>
-  </nav>
-
-  <main>
-
-    <SpotifyApi />
-  </main>
-</template>
+<style>
+#app {
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
