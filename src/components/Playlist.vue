@@ -27,11 +27,12 @@
         const playlistId = this.$route.params.id;
         this.playlist = await spotify.getPlaylist(playlistId);
   this.tracks = await spotify.getPlaylistTracks(playlistId);
-  console.log(this.tracks.images.url)
+  console.log('tracks:', this.tracks);
+
     },
     catch (error) {
       console.error(error);
     },
   };
   </script>
-  
+

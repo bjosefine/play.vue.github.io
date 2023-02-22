@@ -27,7 +27,7 @@
     async created() {
 
       this.featuredPlaylists = await spotify.getFeaturedPlaylists();
-      console.log(featuredPlaylists)
+    
     },
   };
   </script>
