@@ -85,11 +85,26 @@ const searchTracks = async (query) => {
   const data = await response.json()
   return data.tracks.items
 }
+const featuredPlaylistImages = async () => {
+  const token = await getToken()
+  const response = await fetch(
+    `https://api.spotify.com/v1/browse/featured-playlists`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+  console.log('hej')
+  const data = await response.json()
+  return data.playlist.images
+}
 
 export default {
   getFeaturedPlaylists,
   getPlaylist,
   getPlaylistTracks,
   searchTracks,
-  getGenres
+  getGenres,
+  featuredPlaylistImages
 }

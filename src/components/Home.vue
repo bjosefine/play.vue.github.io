@@ -2,9 +2,13 @@
   <div class="home">
     <h1>Playlists</h1>
     <div v-if="featuredPlaylists">
-      <div v-for="playlist in featuredPlaylists" :key="playlist.id">
+      <div
+        v-for="playlist in featuredPlaylists"
+        :key="(playlist.id, playlist.images)"
+      >
         <router-link :to="{ name: 'playlist', params: { id: playlist.id } }">
           {{ playlist.name }}
+          <img :src="playlist.id.images[0].url" alt="" />
         </router-link>
       </div>
     </div>
