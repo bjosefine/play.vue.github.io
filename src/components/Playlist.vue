@@ -28,7 +28,6 @@
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       console.log('tracks:', this.tracks)
     },
-
     catch(error) {
       console.error(error)
     }

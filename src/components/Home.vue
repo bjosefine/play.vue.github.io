@@ -14,10 +14,12 @@
     </div>
     <div v-else>Loading...</div>
   </div>
+  <NewReleases />
 </template>
 
 <script>
   import spotify from '../api/spotify.js'
+  import NewReleases from './NewReleases.vue'
 
   export default {
     name: 'Home',
@@ -28,6 +30,9 @@
     },
     async created() {
       this.featuredPlaylists = await spotify.getFeaturedPlaylists()
+    },
+    components: {
+      NewReleases
     }
   }
 </script>
