@@ -4,7 +4,10 @@
     <div v-if="tracks">
       <div v-for="track in tracks" :key="track.track.id">
         {{ track.track.name }}
+        <!-- {{ track.track.artist }} -->
+        <!-- gets image for featured playlist songs -->
         <img :src="track.track.album.images[0].url" alt="" />
+        <!-- end of code -->
       </div>
     </div>
 
@@ -14,7 +17,6 @@
 
 <script>
   import spotify from '../api/spotify.js'
-
   export default {
     name: 'PlayList',
     data() {

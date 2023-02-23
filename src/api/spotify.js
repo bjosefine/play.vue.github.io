@@ -57,8 +57,10 @@ const getPlaylistTracks = async (playlistId) => {
   )
   const data = await response.json()
   console.log(playlistId)
+  console.log(data)
   return data.items
 }
+
 /// Get genres from api
 const getGenres = async () => {
   const token = await getToken()
@@ -98,7 +100,7 @@ const getAlbum = async () => {
   })
 
   const data = await response.json()
-  return data
+  return data.tracks.items
 }
 
 const getNewReleases = async () => {
@@ -112,8 +114,8 @@ const getNewReleases = async () => {
     }
   )
   const data = await response.json()
-  console.log(data.albums.items)
-  return data.albums.items
+  console.log(data)
+  return data
 }
 
 export default {
