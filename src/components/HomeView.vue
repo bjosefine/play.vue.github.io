@@ -17,7 +17,6 @@
             </div>
             <div class="playlist-details">
               <h2>{{ playlist.name }}</h2>
-            
             </div>
           </router-link>
         </div>
@@ -26,11 +25,13 @@
     <div class="loading" v-else>Loading...</div>
   </div>
   <NewReleases />
+  <PlayerView />
 </template>
 
 <script>
   import spotify from '../api/spotify.js'
   import NewReleases from './NewReleases.vue'
+  import PlayerView from './PlayerView.vue'
 
   export default {
     name: 'HomeView',
@@ -43,7 +44,8 @@
       this.featuredPlaylists = await spotify.getFeaturedPlaylists()
     },
     components: {
-      NewReleases
+      NewReleases,
+      PlayerView
     }
   }
 </script>

@@ -118,6 +118,18 @@ const getNewReleases = async () => {
   return data
 }
 
+const getTracks = async (songId) => {
+  const token = await getToken()
+  const response = await fetch(` 	https://api.spotify.com/v1/albums/${songId}`, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+  const data = await response.json()
+  console.log(data.albums, 'album')
+  return data.albums
+}
+
 export default {
   getFeaturedPlaylists,
   getPlaylist,
@@ -125,5 +137,6 @@ export default {
   searchTracks,
   getGenres,
   getAlbum,
-  getNewReleases
+  getNewReleases,
+  getTracks
 }
