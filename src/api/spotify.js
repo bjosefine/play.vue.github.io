@@ -85,6 +85,7 @@ const searchTracks = async (query) => {
   const data = await response.json()
   return data.tracks.items
 }
+//get pictures for featured playlists
 
 const featuredPlaylistImages = async () => {
   const token = await getToken()
