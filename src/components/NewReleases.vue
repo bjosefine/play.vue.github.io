@@ -5,13 +5,14 @@
       <!-- Start: Show the New Releases -->
       <div>
         <div v-for="album in newReleases" :key="album.id">
-          <p v-for="artist in album.artists" :key="artist.id">
+          <div v-for="artist in album.artists" :key="artist.id">
             <h1>{{ artist.name }}</h1>
-          </p>
-          <h3>{{ album.name }}</h3>
 
-<!-- <img :src="album.id.images" alt="bild" /> -->
-
+            <h3>{{ album.name }}</h3>
+            <img :src="album.images[0].url" alt="album images" />
+            <p>{{ album.id }}</p>
+          </div>
+          <!-- <img :src="album.id.images" alt="bild" /> -->
         </div>
       </div>
       <!-- Stop: Show the New Releases -->
