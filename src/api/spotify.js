@@ -113,7 +113,7 @@ const getAlbum = async () => {
   })
 
   const data = await response.json()
-  return data.tracks.items
+  return data
 }
 
 const getNewReleases = async () => {
@@ -127,8 +127,8 @@ const getNewReleases = async () => {
     }
   )
   const data = await response.json()
-  console.log(data)
-  return data
+  console.log(data.albums.items)
+  return data.albums.items
 }
 
 export default {
