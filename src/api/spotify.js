@@ -126,8 +126,8 @@ const getNewReleases = async () => {
     }
   )
   const data = await response.json()
-  console.log(data.albums)
-  return data.albums
+  console.log(data)
+  return data
 }
 
 export default {

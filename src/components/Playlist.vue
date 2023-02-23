@@ -15,7 +15,7 @@
   import spotify from '../api/spotify.js'
 
   export default {
-    name: 'Playlist',
+    name: 'PlayList',
     data() {
       return {
         playlist: null,

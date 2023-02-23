@@ -22,7 +22,7 @@
   import NewReleases from './NewReleases.vue'
 
   export default {
-    name: 'Home',
+    name: 'HomeView',
     data() {
       return {
         featuredPlaylists: null

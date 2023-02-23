@@ -2,8 +2,8 @@
   <div>
     <h1>New Releases</h1>
     <div v-if="newReleases">
-      <div v-for="albums in newReleases" :key="albums">
-        {{ albums }}
+      <div v-for="albums in newReleases" :key="albums.id">
+        {{ albums.items[0].artists[0].name }}
       </div>
     </div>
   </div>
