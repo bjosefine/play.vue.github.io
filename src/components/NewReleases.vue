@@ -2,10 +2,22 @@
   <div>
     <h1>New Releases</h1>
     <div v-if="newReleases">
-      <div v-for="albums in newReleases" :key="albums.id">
-        {{ albums.items[0].artists[0].name }}
+      <!-- Start: Show the New Releases -->
+      <div>
+        <div v-for="album in newReleases" :key="album.id">
+          <div v-for="artist in album.artists" :key="artist.id">
+            <h1>{{ artist.name }}</h1>
+
+            <h3>{{ album.name }}</h3>
+            <img :src="album.images[0].url" alt="album images" />
+            <p>{{ album.id }}</p>
+          </div>
+          <!-- <img :src="album.id.images" alt="bild" /> -->
+        </div>
       </div>
+      <!-- Stop: Show the New Releases -->
     </div>
+    <div v-else>Loading...</div>
   </div>
 </template>
 <script>
