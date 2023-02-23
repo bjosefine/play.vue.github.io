@@ -4,10 +4,18 @@
     <div v-if="tracks">
       <div v-for="track in tracks" :key="track.track.id">
         {{ track.track.name }}
-        <!-- {{ track.track.artist }} -->
+
         <!-- gets image for featured playlist songs -->
         <img :src="track.track.album.images[0].url" alt="" />
         <!-- end of code -->
+        <div>
+          <!--gets the name of the artist to the song-->
+          {{ track.track.artists[0].name }}
+          <!--end of code-->
+          {{ track.track.artists[0].name }}
+          {{ track.track.album.uri }}
+          {{ track.track.album.release_date }}
+        </div>
       </div>
     </div>
 
@@ -31,6 +39,7 @@
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       console.log('tracks:', this.tracks)
+      console.log('playlist:', this.playlist)
     },
     catch(error) {
       console.error(error)

@@ -46,15 +46,19 @@ const getPlaylist = async (playlistId) => {
 }
 /// Get a list of song from playlist
 const getPlaylistTracks = async (playlistId) => {
+  // Step 1: Get a valid access token
   const token = await getToken()
+
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(images)))`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date,uri),artists(name)))`,
     {
+      //https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date),artists(name)))
       headers: {
         Authorization: `Bearer ${token}`
       }
     }
   )
+
   const data = await response.json()
   console.log(playlistId)
   console.log(data)
