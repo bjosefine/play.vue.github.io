@@ -17,7 +17,7 @@
             </div>
             <div class="playlist-details">
               <h2>{{ playlist.name }}</h2>
-              <p>{{ playlist.description }}</p>
+            
             </div>
           </router-link>
         </div>
