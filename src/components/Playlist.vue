@@ -4,9 +4,10 @@
     <div v-if="tracks">
       <div v-for="track in tracks" :key="track.track.id">
         {{ track.track.name }}
-        <!-- <img :src="track.id.images.url" alt="" /> -->
+        <img :src="track.track.album.images[0].url" alt="" />
       </div>
     </div>
+
     <div v-else>Loading...</div>
   </div>
 </template>
@@ -22,6 +23,7 @@
         tracks: null
       }
     },
+
     async created() {
       const playlistId = this.$route.params.id
       this.playlist = await spotify.getPlaylist(playlistId)
@@ -30,6 +32,7 @@
     },
     catch(error) {
       console.error(error)
+      console.log('hej')
     }
   }
 </script>
