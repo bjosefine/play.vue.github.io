@@ -48,7 +48,7 @@ const getPlaylist = async (playlistId) => {
 const getPlaylistTracks = async (playlistId) => {
   const token = await getToken()
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(images)))`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -56,6 +56,7 @@ const getPlaylistTracks = async (playlistId) => {
     }
   )
   const data = await response.json()
+  console.log(playlistId)
   return data.items
 }
 /// Get genres from api
@@ -84,22 +85,6 @@ const searchTracks = async (query) => {
 
   const data = await response.json()
   return data.tracks.items
-}
-//get pictures for featured playlists
-
-const featuredPlaylistImages = async () => {
-  const token = await getToken()
-  const response = await fetch(
-    `https://api.spotify.com/v1/browse/featured-playlists`,
-    {
-      headers: {
-        Authorization: 'Bearer ' + token
-      }
-    }
-  )
-  console.log('hej')
-  const data = await response.json()
-  return data.playlist.images
 }
 
 /// get featured artist
@@ -137,7 +122,6 @@ export default {
   getPlaylistTracks,
   searchTracks,
   getGenres,
-  featuredPlaylistImages,
   getAlbum,
   getNewReleases
 }
