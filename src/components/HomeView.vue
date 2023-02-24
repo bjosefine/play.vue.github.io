@@ -3,32 +3,6 @@
   <HeaderNav />
   <PlayListitems />
   <NewReleases />
-
-  <div class="home">
-    <h1>Featured Playlists</h1>
-    <div class="playlist-container" v-if="featuredPlaylists">
-      <div class="playlist-list">
-        <div
-          v-for="playlist in featuredPlaylists"
-          :key="playlist.id"
-          class="playlist-item"
-        >
-          <router-link
-            :to="{ name: 'playlist', params: { id: playlist.id } }"
-            class="playlist-link"
-          >
-            <div class="playlist-image">
-              <img :src="playlist.images[0].url" :alt="playlist.name" />
-            </div>
-            <div class="playlist-details">
-              <h2>{{ playlist.name }}</h2>
-            </div>
-          </router-link>
-        </div>
-      </div>
-    </div>
-    <div class="loading" v-else>Loading...</div>
-  </div>
   <NewReleases />
   <PlayerView />
 
@@ -54,7 +28,6 @@
     },
     components: {
       NewReleases,
-
       HeaderNav,
       PlayListitems
 
