@@ -29,9 +29,9 @@ export default {
 
 <style>
 #app {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
   background: radial-gradient(50% 50% at 50% 50%, rgba(198, 63, 184, 0.8) 25.52%, rgba(189, 173, 173, 0) 100%);
   background-blend-mode: darken;
 }

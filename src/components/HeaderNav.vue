@@ -1,5 +1,5 @@
 <template>
-    <h1 class="playersection" ref="players">hello</h1>
+  
   </template>
   
   <script>

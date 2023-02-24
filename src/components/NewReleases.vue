@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div v-show="newReleases" class="new-releases-section">
-      <h1>New Releases</h1>
+  <div class="section">
+    <h1>New Releases</h1>
+    <div v-if="newReleases" class="new-releases-section">
       <!-- Start: Show the New Releases -->
       <div class="new-releases-list">
         <div v-for="album in newReleases" :key="album.id" class="new-releases-items">
@@ -14,7 +14,7 @@
       </div>
       <!-- Stop: Show the New Releases -->
     </div>
-    <div v-show="!newReleases">Loading...</div>
+    <div v-else>Loading...</div>
   </div>
 </template>
 
@@ -37,6 +37,16 @@ export default {
 <style>
 body {
   justify-content: center;
+}
+
+.section {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(17, 15, 15);
+    width: 100%;
+  
 }
 h1 {
   font-size: 36px;
@@ -62,8 +72,8 @@ h1 {
 }
 
 .new-releases-item {
-    min-width: 260px;
-    height: 250px;
+    max-width: 230px;
+    height: 200px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -74,7 +84,7 @@ h1 {
 }
 
 .new-releases-item img {
-   width: 100%;
+    width: 100%;
     height: 100%;
     border-radius: 10px;
     box-shadow: 5px 13px 13px -3px rgba(0, 0, 0, 0.25);
