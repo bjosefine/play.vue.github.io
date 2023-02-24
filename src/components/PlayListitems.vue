@@ -25,7 +25,6 @@
 
 <script>
   import spotify from '../api/spotify'
-  import gsap from 'gsap'
   export default {
     name: 'PlayListitems',
     data() {
@@ -53,12 +52,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(34, 27, 27);
   }
 
   h1 {
     font-size: 36px;
     margin: 40px 0;
+    color: black;
     text-align: center;
   }
 

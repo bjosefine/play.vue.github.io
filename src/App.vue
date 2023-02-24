@@ -29,6 +29,7 @@
 <style>
 #app {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
   font-size: large;
   text-align: center;
   background: radial-gradient(50% 50% at 50% 50%, rgba(198, 63, 184, 0.8) 25.52%, rgba(189, 173, 173, 0) 100%);

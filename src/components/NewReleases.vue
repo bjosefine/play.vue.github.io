@@ -44,11 +44,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(17, 15, 15);
     width: 100%;
   
 }
 h1 {
+  color: #000;
   font-size: 36px;
   margin: 40px 0;
   text-align: center;

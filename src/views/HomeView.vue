@@ -29,4 +29,8 @@
     }
   }
 </script>
-
+<style>
+body {
+  color: rgb(32, 26, 26);
+}
+</style>
