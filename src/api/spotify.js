@@ -46,18 +46,29 @@ const getPlaylist = async (playlistId) => {
 }
 /// Get a list of song from playlist
 const getPlaylistTracks = async (playlistId) => {
-  const token = await getToken();
+
+  // Step 1: Get a valid access token
+  const token = await getToken()
+
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date),artists(name)))`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date,uri),artists(name)))`,
+
     {
+     
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
+
   );
-  const data = await response.json();
-  return data.items;
+
+  const data = await response.json()
+  console.log(playlistId)
+  console.log(data)
+  return data.items
+
 }
+
 /// Get genres from api
 const getGenres = async () => {
   const token = await getToken()
@@ -85,22 +96,6 @@ const searchTracks = async (query) => {
   const data = await response.json()
   return data.tracks.items
 }
-//get pictures for featured playlists
-
-const featuredPlaylistImages = async () => {
-  const token = await getToken()
-  const response = await fetch(
-    `https://api.spotify.com/v1/browse/featured-playlists`,
-    {
-      headers: {
-        Authorization: 'Bearer ' + token
-      }
-    }
-  )
-  console.log('hej')
-  const data = await response.json()
-  return data.playlist.images
-}
 
 /// get featured artist
 
@@ -115,7 +110,7 @@ const getAlbum = async () => {
   const data = await response.json()
   return data.tracks.items
 }
-
+/// get new releases
 const getNewReleases = async () => {
   const token = await getToken()
   const response = await fetch(
@@ -127,8 +122,21 @@ const getNewReleases = async () => {
     }
   )
   const data = await response.json()
-  console.log(data)
-  return data
+  console.log(data.albums.items, 'new release')
+  return data.albums.items
+}
+
+/// get tracks
+const getTracks = async (songId) => {
+  const token = await getToken()
+  const response = await fetch(` 	https://api.spotify.com/v1/albums/${songId}`, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+  const data = await response.json()
+  console.log(data.albums, 'album')
+  return data.albums
 }
 
 export default {
@@ -137,7 +145,7 @@ export default {
   getPlaylistTracks,
   searchTracks,
   getGenres,
-  featuredPlaylistImages,
   getAlbum,
-  getNewReleases
+  getNewReleases,
+  getTracks
 }
