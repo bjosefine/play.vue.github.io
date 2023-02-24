@@ -2,9 +2,10 @@
   <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
     <div v-if="tracks">
-      <div class="playlist-image">
+      <!-- commented out the following code for album pic because of error, modify later -->
+      <!-- <div class="playlist-image">
         <img :src="playlist.images[0].url" :alt="playlist.name" />
-      </div>
+      </div> -->
       <div v-for="track in tracks" :key="track.track.id">
         <RouterLink :to="`/song/${track.track.id}`">
           <div>
