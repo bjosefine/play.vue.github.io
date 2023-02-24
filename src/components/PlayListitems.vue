@@ -68,15 +68,15 @@
   }
 
   .playlist-container {
-    width: 100%;
-    overflow-x: auto;
     display: flex;
+    flex-direction: column;
     margin-bottom: 50px;
+    flex-wrap: wrap;
   }
 
   .playlist-list {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap:wrap;
     justify-content: flex-start;
     gap: 40px;
     margin-bottom: 50px;
@@ -113,10 +113,6 @@
     border-radius: 13px;
   }
 
-  .playlist-details {
-    padding: 10px;
-    text-align: center;
-  }
 
   h2 {
     color: aliceblue;
