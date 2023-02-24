@@ -5,26 +5,25 @@
 </template>
 
 <script>
-import Spotify from "./api/spotify.js" 
+  import Spotify from './api/spotify.js'
 
-export default {
-  name: "App",
-  data() {
-    return {
-      accessToken: null
-    };
-  },
-  methods: {
-    async login() {
-      const token = await Spotify.getToken();
-      if (token) {
-        this.accessToken = token;
-        this.$router.push({ name: "home" });
+  export default {
+    name: 'App',
+    data() {
+      return {
+        accessToken: null
+      }
+    },
+    methods: {
+      async login() {
+        const token = await Spotify.getToken()
+        if (token) {
+          this.accessToken = token
+          this.$router.push({ name: 'home' })
+        }
       }
     }
-    
   }
-};
 </script>
 
 <style>
@@ -38,3 +37,5 @@ export default {
 
 
 </style>
+
+
