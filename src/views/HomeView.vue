@@ -10,7 +10,7 @@
   import spotify from '../api/spotify'
   import NewReleases from '../components/NewReleases.vue'
   import HeaderNav from '../components/HeaderNav.vue'
-  import PlayListitems from '../components/PlayListitems.vue'
+  import PlayListitems from '../components/PlaylistItems.vue'
   import PlayerView from './PlayerView.vue'
 
   export default {
