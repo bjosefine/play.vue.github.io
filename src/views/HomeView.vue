@@ -1,20 +1,17 @@
 <template>
-
   <HeaderNav />
   <PlayListitems />
   <NewReleases />
   <NewReleases />
   <PlayerView />
-
 </template>
 
 <script>
-  import spotify from '../api/spotify.js'
-  import NewReleases from './NewReleases.vue'
-  import HeaderNav from './HeaderNav.vue'
-  import PlayListitems from './PlayListitems.vue'
+  import spotify from '../api/spotify'
+  import NewReleases from '../components/NewReleases.vue'
+  import HeaderNav from '../components/HeaderNav.vue'
+  import PlayListitems from '../components/PlayListitems.vue'
   import PlayerView from './PlayerView.vue'
-
 
   export default {
     name: 'HomeView',
@@ -30,23 +27,25 @@
       NewReleases,
       HeaderNav,
       PlayListitems
-
     }
   }
 </script>
 
 <style>
-
-body {
-  background: radial-gradient(50% 50% at 50% 50%, rgba(198, 63, 184, 0.8) 25.52%, rgba(189, 173, 173, 0) 100%);
-background-blend-mode: darken;
-}
+  body {
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(198, 63, 184, 0.8) 25.52%,
+      rgba(189, 173, 173, 0) 100%
+    );
+    background-blend-mode: darken;
+  }
   .home {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     color: white;
   }
 
@@ -57,7 +56,6 @@ background-blend-mode: darken;
   }
 
   .playlist-container {
-  
     width: 80%;
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +66,7 @@ background-blend-mode: darken;
 
   .playlist-list {
     display: flex;
-    
+
     justify-content: center;
     gap: 40px;
     margin-bottom: 50px;
@@ -95,7 +93,6 @@ background-blend-mode: darken;
     max-width: 230px;
     height: 200px;
     margin: 0 auto;
-    
   }
 
   .playlist-image img {
@@ -103,7 +100,7 @@ background-blend-mode: darken;
     height: 100%;
     border-radius: 10px;
     box-shadow: 5px 13px 13px -3px rgba(0, 0, 0, 0.25);
-   border-radius: 13px;
+    border-radius: 13px;
   }
 
   .playlist-details {

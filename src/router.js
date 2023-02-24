@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from './components/HomeView.vue'
-import Playlist from './components/PlayList.vue'
-import AlbumView from './components/AlbumView.vue'
-import PlayerView from './components/PlayerView.vue'
+import Home from './views/HomeView.vue'
+import Playlist from './views/PlaylistView.vue'
+import AlbumView from './views/AlbumView.vue'
+import PlayerView from './views/PlayerView.vue'
 
 const routes = [
   { path: '/', component: Home },
