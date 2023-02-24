@@ -34,7 +34,7 @@ const getFeaturedPlaylists = async () => {
 const getPlaylist = async (playlistId) => {
   const token = await getToken()
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}`,
+    `https://api.spotify.com/v1/playlists/${playlistId}&offset=0&limit=12`,
     {
       headers: {
         Authorization: `Bearer ${token}`
