@@ -50,7 +50,7 @@ const getPlaylistTracks = async (playlistId) => {
   const token = await getToken()
 
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date,uri),artists(name)))`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date,uri),artists(name),duration_ms))`,
 
     {
       headers: {
