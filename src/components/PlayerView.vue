@@ -1,5 +1,5 @@
 <template>
-  <p>Album</p>
+  <p>songs</p>
 </template>
 <script>
   import spotify from '../api/spotify'

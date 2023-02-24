@@ -1,27 +1,27 @@
 <template>
-    <div class="playlist" v-if="playlist">
+  <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
     <div v-if="tracks">
       <div v-for="track in tracks" :key="track.track.id">
-        {{ track.track.name }}
+        <RouterLink :to="`/song/${track.track.id}`">
+          {{ track.track.name }}
 
-        <!-- gets image for featured playlist songs -->
-        <img :src="track.track.album.images[0].url" alt="" />
-        <!-- end of code -->
-        <div>
-          <!--gets the name of the artist to the song-->
-          {{ track.track.artists[0].name }}
-          <!--end of code-->
-          {{ track.track.artists[0].name }}
-          {{ track.track.album.uri }}
-          {{ track.track.album.release_date }}
-        </div>
-
+          <!-- gets image for featured playlist songs -->
+          <img :src="track.track.album.images[0].url" alt="" />
+          <!-- end of code -->
+          <div>
+            <!--gets the name of the artist to the song-->
+            {{ track.track.artists[0].name }}
+            <!--end of code-->
+            {{ track.track.artists[0].name }}
+            {{ track.track.album.uri }}
+            {{ track.track.album.release_date }}
+          </div>
+        </RouterLink>
       </div>
     </div>
     <div v-else>Loading...</div>
   </div>
-
 </template>
 
 <script>
@@ -29,10 +29,9 @@
 
   import HomeView from './HomeView.vue'
 
-
   export default {
     name: 'PlayList',
-    data() { 
+    data() {
       return {
         playlist: null,
         tracks: null
@@ -48,13 +47,10 @@
     },
     catch(error) {
       console.error(error)
-
     },
-   
-  components: {
+
+    components: {
       HomeView
-
-
     }
   }
 </script>

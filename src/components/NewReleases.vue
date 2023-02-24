@@ -5,7 +5,7 @@
       <!-- Start: Show the New Releases -->
       <div>
         <div v-for="album in newReleases" :key="album.id">
-          <RouterLink :to="`/song/${album.id}`">
+          <RouterLink :to="`/album/${album.id}`">
             <div v-for="artist in album.artists" :key="artist.id">
               <h1>{{ artist.name }}</h1>
 

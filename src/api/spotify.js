@@ -46,7 +46,6 @@ const getPlaylist = async (playlistId) => {
 }
 /// Get a list of song from playlist
 const getPlaylistTracks = async (playlistId) => {
-
   // Step 1: Get a valid access token
   const token = await getToken()
 
@@ -55,17 +54,15 @@ const getPlaylistTracks = async (playlistId) => {
 
     {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }
-
-  );
+  )
 
   const data = await response.json()
   console.log(playlistId)
   console.log(data)
   return data.items
-
 }
 
 /// Get genres from api
@@ -128,14 +125,14 @@ const getNewReleases = async () => {
 /// get tracks
 const getTracks = async (songId) => {
   const token = await getToken()
-  const response = await fetch(` 	https://api.spotify.com/v1/albums/${songId}`, {
+  const response = await fetch(`https://api.spotify.com/v1/tracks/${songId}`, {
     headers: {
       Authorization: 'Bearer ' + token
     }
   })
   const data = await response.json()
-  console.log(data.albums, 'album')
-  return data.albums
+  console.log(data, 'låtar')
+  return data
 }
 
 export default {
