@@ -6,7 +6,7 @@ import PlayerView from './components/PlayerView.vue'
 const routes = [
   { path: '/', component: Home },
   { path: '/playlist/:id', name: 'playlist', component: Playlist },
-  { path: '/song/:id', name: 'PlayerView' }
+  { path: '/song/:id', name: 'PlayerView', component: PlayerView }
 ]
 
 const router = createRouter({

@@ -106,7 +106,7 @@ const getAlbum = async () => {
   const data = await response.json()
   return data.tracks.items
 }
-
+/// get new releases
 const getNewReleases = async () => {
   const token = await getToken()
   const response = await fetch(
@@ -118,10 +118,11 @@ const getNewReleases = async () => {
     }
   )
   const data = await response.json()
-  console.log(data)
-  return data
+  console.log(data.albums.items, 'new release')
+  return data.albums.items
 }
 
+/// get tracks
 const getTracks = async (songId) => {
   const token = await getToken()
   const response = await fetch(` 	https://api.spotify.com/v1/albums/${songId}`, {
