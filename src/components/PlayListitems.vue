@@ -42,6 +42,11 @@
 </script>
 
 <style>
+
+body {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(198, 63, 184, 0.8) 25.52%, rgba(189, 173, 173, 0) 100%);
+background-blend-mode: darken;
+}
 .home {
     display: flex;
     flex-direction: column;
