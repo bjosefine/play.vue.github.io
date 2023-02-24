@@ -1,22 +1,24 @@
 <template>
-  <div class="playlist" v-if="playlist">
+    <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
     <div v-if="tracks">
       <div v-for="track in tracks" :key="track.track.id">
         {{ track.track.name }}
-        <!-- <img :src="track.id.images.url" alt="" /> -->
+        
       </div>
     </div>
     <div v-else>Loading...</div>
   </div>
+
 </template>
 
 <script>
   import spotify from '../api/spotify.js'
+  import HomeView from './HomeView.vue'
 
   export default {
     name: 'PlayList',
-    data() {
+    data() { 
       return {
         playlist: null,
         tracks: null
@@ -30,6 +32,11 @@
     },
     catch(error) {
       console.error(error)
+    },
+   
+  components: {
+      HomeView
+
     }
   }
 </script>

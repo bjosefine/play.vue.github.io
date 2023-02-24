@@ -46,17 +46,17 @@ const getPlaylist = async (playlistId) => {
 }
 /// Get a list of song from playlist
 const getPlaylistTracks = async (playlistId) => {
-  const token = await getToken()
+  const token = await getToken();
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date),artists(name)))`,
     {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     }
-  )
-  const data = await response.json()
-  return data.items
+  );
+  const data = await response.json();
+  return data.items;
 }
 /// Get genres from api
 const getGenres = async () => {

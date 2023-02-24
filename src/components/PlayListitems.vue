@@ -1,19 +1,32 @@
 <template>
-  <HeaderNav />
-  <PlayListitems />
-  <NewReleases />
-
-
-</template>
+    <div class="home">
+      <h1>Featured Playlists</h1>
+      <div class="playlist-container" v-if="featuredPlaylists">
+        <div class="playlist-list">
+            <div
+              v-for="playlist in featuredPlaylists"
+              :key="playlist.id"
+              class="playlist-item"
+            >
+              <router-link
+                :to="{ name: 'playlist', params: { id: playlist.id } }"
+                class="playlist-link"
+              >
+                <div class="playlist-image">
+                  <img :src="playlist.images[0].url" :alt="playlist.name" />
+                </div>
+              </router-link>
+            </div>
+        </div>
+      </div>
+      <div class="loading" v-else>Loading...</div>
+    </div>
+  </template>
 
 <script>
-  import spotify from '../api/spotify.js'
-  import NewReleases from './NewReleases.vue'
-  import HeaderNav from './HeaderNav.vue'
-  import PlayListitems from './PlayListitems.vue'
-
-
-  export default {
+ import spotify from '../api/spotify.js'
+ import gsap from 'gsap';
+ export default {
     name: 'HomeView',
     data() {
       return {
@@ -23,28 +36,24 @@
     async created() {
       this.featuredPlaylists = await spotify.getFeaturedPlaylists()
     },
-    components: {
-      NewReleases,
-      HeaderNav,
-      PlayListitems
-
-    }
+    
   }
+
 </script>
 
 <style>
-
-body {
-  background: radial-gradient(50% 50% at 50% 50%, rgba(198, 63, 184, 0.8) 25.52%, rgba(189, 173, 173, 0) 100%);
-background-blend-mode: darken;
-}
-  .home {
+.home {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
     color: white;
+    width: 100%;
+  }
+
+
+  .playlist-item {
+    margin-right: 10px; 
   }
 
   h1 {
@@ -54,22 +63,20 @@ background-blend-mode: darken;
   }
 
   .playlist-container {
-  
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 50px;
-  }
+  width: 100%;
+  overflow-x: auto;
+  display: flex; 
+  margin-bottom: 50px;
+}
 
-  .playlist-list {
-    display: flex;
-    
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 50px;
-  }
+.playlist-list {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: flex-start;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
 
   .playlist-item {
     min-width: 260px;
