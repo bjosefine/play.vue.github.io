@@ -131,6 +131,7 @@ const getTracks = async (songId) => {
     }
   })
   const data = await response.json()
+
   console.log(data, 'låtar')
   return data
 }

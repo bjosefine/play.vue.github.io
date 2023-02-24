@@ -27,7 +27,7 @@
   import spotify from '../api/spotify'
   import gsap from 'gsap'
   export default {
-    name: 'HomeView',
+    name: 'PlayListitems',
     data() {
       return {
         featuredPlaylists: null
@@ -40,7 +40,7 @@
 </script>
 
 <style>
-  body {
+   body {
     background: radial-gradient(
       50% 50% at 50% 50%,
       rgba(198, 63, 184, 0.8) 25.52%,
@@ -53,12 +53,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
-    width: 100%;
-  }
-
-  .playlist-item {
-    margin-right: 10px;
+    color: rgb(34, 27, 27);
   }
 
   h1 {
@@ -68,23 +63,25 @@
   }
 
   .playlist-container {
-    width: 100%;
-    overflow-x: auto;
+    width: 80%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
     margin-bottom: 50px;
   }
 
   .playlist-list {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 40px;
-    margin-bottom: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
   }
 
   .playlist-item {
-    min-width: 260px;
-    height: 250px;
+    max-width: 230px;
+    height: 200px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
