@@ -31,11 +31,9 @@
                   <!--duration_ ms / 1000 gives us the seconds of the song-->
                   {{
                     Math.floor(track.track.duration_ms / 1000 / 60)
-                  }}:
-                  {{
+                  }}:{{
                     (track.track.duration_ms / 1000) % 60 < 10 ? '0' : ''
-                  }}
-                  {{
+                  }}{{
                     Math.floor((track.track.duration_ms / 1000) % 60)
                   }}
                 </tr>
