@@ -19,16 +19,67 @@
       style="width: 50%"
     />
     <h1 class="songTitle">{{ tracks.name }}</h1>
-    <audio class="playerControl" controls>
-      <source class="playerMp3" :src="tracks.preview_url" type="audio/mp3" />
-    </audio>
+    <!-- import the preview audio -->
+    <audio
+      id="player"
+      class="playerControl"
+      :src="tracks.preview_url"
+      controls
+      autoplay
+    ></audio>
+    <!-- create a custom  -->
+    <div id="customAudioControl">
+      <!-- get control over play and pause -->
+      <button onclick="document.getElementById('player').play()">play</button>
+      <button onclick="document.getElementById('player').pause()">paus</button>
+      <!-- get control over volume  -->
+      <button onclick="document.getElementById('player').volume = 0">
+        ljud av
+      </button>
+      <button onclick="document.getElementById('player').volume = 1">
+        ljud på
+      </button>
+      <input
+        onchange="document.getElementById('player').volume = this.value"
+        type="range"
+        id="volumeRange"
+        min="0"
+        max="1"
+        step="0.01"
+        value="1"
+      />
+      <!-- get control over audio time  -->
+      <input
+        onchange="document.getElementById('player').currentTime = document.getElementById('player').duration * this.value"
+        type="range"
+        id="playerDuration"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0"
+      />
+    </div>
     <!-- </div>
     <div v-else>Loading...</div> -->
   </div>
 </template>
 
 <style>
+  #customAudioControl {
+    background-color: palevioletred;
+    color: black;
+  }
+  #playerDuration {
+    appearance: unset;
+    background: orange;
+    border-radius: 10px;
+    height: 5px;
+  }
+  #playerDuration::-moz-range-thumb {
+    appearance: none;
+  }
   #songBG {
+    top: 0;
     display: block;
     width: 100%;
     height: 200%;
