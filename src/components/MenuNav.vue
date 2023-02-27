@@ -10,7 +10,7 @@
 
 <script></script>
 
-<style>
+<style scoped>
   .MenuNav {
     display: flex;
     height: 100vh;
