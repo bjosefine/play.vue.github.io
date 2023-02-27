@@ -109,7 +109,18 @@ const search = async (query, token) => {
 }
 
 /// get featured artist
+const getArtists = async () => {
+  const token = await getToken()
+  const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
 
+  const data = await response.json()
+  return data.artists
+}
+// get albums
 const getAlbum = async () => {
   const token = await getToken()
   const response = await fetch(`https://api.spotify.com/v1/albums`, {
@@ -160,5 +171,6 @@ export default {
   getAlbum,
   getNewReleases,
   getTracks,
-  search
+  search,
+  getArtists
 }
