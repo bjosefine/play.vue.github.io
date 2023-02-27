@@ -9,47 +9,42 @@
       <div v-for="track in tracks" :key="track.track.id">
         <RouterLink :to="`/song/${track.track.id}`">
           <div>
-            <!-- gets image for featured playlist songs -->
-            <img :src="track.track.album.images[0].url" alt="" />
+            <div id="gridWrapper">
+              <!-- gets image for featured playlist songs -->
+              <img
+                id="songImage"
+                :src="track.track.album.images[2].url"
+                alt=""
+              />
 
-            <!-- end of code -->
-            <div>
-              <table>
-                <tr>
-                  <!--gets the name of the artist to the song-->
-                  {{
-                    track.track.artists[0].name
-                  }}
-                </tr>
-                <tr>
-                  <!--get track name-->
-                  {{
-                    track.track.name
-                  }}
-                </tr>
-                <tr>
-                  <!--duration_ ms / 1000 gives us the seconds of the song-->
-                  {{
-                    Math.floor(track.track.duration_ms / 1000 / 60)
-                  }}:{{
-                    (track.track.duration_ms / 1000) % 60 < 10 ? '0' : ''
-                  }}{{
-                    Math.floor((track.track.duration_ms / 1000) % 60)
-                  }}
-                </tr>
+              <!-- end of code -->
 
-                <!-- {{
+              <div id="artistName">
+                <!--gets the name of the artist to the song-->
+                {{ track.track.artists[0].name }}
+              </div>
+              <div id="trackName">
+                <!--get track name-->
+                {{ track.track.name }}
+              </div>
+              <div id="durationTime">
+                <!--duration_ ms / 1000 gives us the seconds of the song-->
+                {{ Math.floor(track.track.duration_ms / 1000 / 60) }}:{{
+                  (track.track.duration_ms / 1000) % 60 < 10 ? '0' : ''
+                }}{{ Math.floor((track.track.duration_ms / 1000) % 60) }}
+              </div>
+
+              <!-- {{
                   track.track.album.uri
                 }} -->
-                <!--its comment out this data because it has the same name as the song titel-->
-                <!-- {{
+              <!--its comment out this data because it has the same name as the song titel-->
+              <!-- {{
                   track.track.album.name
                 }} -->
-                <!-- released date is comment out because its for desktop version-->
-                <!-- {{
+              <!-- released date is comment out because its for desktop version-->
+              <!-- {{
                   track.track.album.release_date
                 }} -->
-              </table>
             </div>
           </div>
         </RouterLink>
@@ -89,3 +84,39 @@
     }
   }
 </script>
+
+<style>
+  div {
+    text-decoration: none;
+  }
+  /* Grid layout */
+  #gridWrapper {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(35px, auto);
+    grid-template-areas:
+      'si an an an an an an an'
+      'si tn tn tn tn tn tn dt';
+  }
+  #songImage {
+    margin-left: 2em;
+    grid-area: si;
+  }
+  #artistName {
+    text-align: left;
+    grid-area: an;
+    background-color: rgba(232, 232, 236, 0.2);
+  }
+  #trackName {
+    text-align: left;
+    grid-area: tn;
+    margin-bottom: 1em;
+    background-color: rgba(195, 171, 218, 0.2);
+  }
+  #durationTime {
+    grid-area: dt;
+    background-color: rgba(195, 171, 218, 0.2);
+    margin-bottom: 1em;
+  }
+  /* end of gridlayout */
+</style>
