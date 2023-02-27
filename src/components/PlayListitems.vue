@@ -39,10 +39,10 @@
 </script>
 
 <style>
-   body {
+  body {
     background: radial-gradient(
       50% 50% at 50% 50%,
-      rgba(198, 63, 184, 0.8) 25.52%,
+      rgba(46, 35, 45, 0.8) 25.52%,
       rgba(189, 173, 173, 0) 100%
     );
     background-blend-mode: darken;
@@ -72,10 +72,10 @@
 
   .playlist-list {
     display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
   }
 
   .playlist-item {
