@@ -1,7 +1,13 @@
 <!-- Artist Page -->
+<template>
+  <p v-if="artistProfile">{{ artistProfile.name }}</p>
+
+  <p v-else>Loading...</p>
+</template>
+
 <script>
   import TopTracks from '../components/TopTracks.vue'
-  import spotify from '../api/spotify'
+  import spotify from '../api/spotify.js'
 
   export default {
     components: {
@@ -20,9 +26,3 @@
     }
   }
 </script>
-
-<template>
-  <div v-for="artist in artistProfile" :key="artist.id">
-    <p>{{ artist }}</p>
-  </div>
-</template>
