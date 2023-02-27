@@ -9,13 +9,20 @@
         class="track-item"
         @click="playTrack(index)"
       >
-        <div class="track-image">
-          <img :src="track.track.album.images[0].url" alt="" />
-        </div>
         <div class="track-details">
-          <div class="track-title">
-            {{ track.track.artists[0].name }} - {{ track.track.name }}
+          <!-- image -->
+          <div class="track-image">
+            <img :src="track.track.album.images[2].url" alt="" />
           </div>
+          <!-- title -->
+          <div class="track-title">
+            {{ track.track.name }}
+          </div>
+          <!-- artist -->
+          <div class="track-artist">
+            {{ track.track.artists[0].name }}
+          </div>
+          <!-- duration -->
           <div class="track-length">
             {{ formatDuration(track.track.duration_ms) }}
           </div>
@@ -23,6 +30,7 @@
       </li>
     </ul>
     <div v-if="tracks == null">Loading...</div>
+    <!-- player-container used for many pages, important -->
     <div class="player-container" v-if="selectedTrackIndex !== null">
       <PlayerController
         :key="tracks[selectedTrackIndex].track.id"
@@ -31,6 +39,7 @@
         :autoplay="autoplay"
       ></PlayerController>
     </div>
+    <!-- end of player container -->
   </div>
 </template>
 
@@ -82,6 +91,7 @@
 </script>
 
 <style>
+  /* player-container Used on many pages important, don't adjust*/
   .player-container {
     background: rgba(138, 51, 138, 0.02);
     border-radius: 16px;
@@ -90,17 +100,26 @@
     -webkit-backdrop-filter: blur(7.9px);
     border: 1px solid rgba(138, 51, 138, 0.3);
   }
+  /* end of player container */
 
   .track-list {
     list-style: none;
     margin: 0;
     padding: 0;
   }
+  .track-details {
+    /* changed from flex to grid */
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(35px, auto);
+    grid-template-areas: 'ti tt tt tt tt ta ta tl ';
+  }
 
   .track-item {
-    display: flex;
+    padding: 0.3rem;
     align-items: center;
-    padding: 1rem;
     transition: background-color 0.3s;
   }
 
@@ -108,36 +127,32 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
 
+  /* selected song */
   .selected {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
   }
-
+  /* bild */
   .track-image {
-    margin-right: 1rem;
-  }
-
-  .track-image img {
-    height: 4rem;
-    width: 4rem;
+    margin-left: 1rem;
+    grid-area: ti;
     object-fit: cover;
   }
-
-  .track-details {
-    flex-grow: 1;
-  }
-
+  /* titel */
   .track-title {
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    grid-area: tt;
   }
-
+  /* artist */
   .track-artist {
-    font-size: 0.8rem;
+    grid-area: ta;
   }
-
+  /* duration time */
   .track-length {
     font-size: 0.8rem;
+    grid-area: tl;
+    justify-self: end;
   }
 </style>
