@@ -19,26 +19,44 @@
       style="width: 50%"
     />
     <h1 class="songTitle">{{ tracks.name }}</h1>
+    <h2>{{ tracks.artists[0].name }}</h2>
     <!-- import the preview audio -->
     <audio
       id="player"
       class="playerControl"
       :src="tracks.preview_url"
-      controls
       autoplay
+      controls
     ></audio>
     <!-- create a custom  -->
     <div id="customAudioControl">
       <!-- get control over play and pause -->
-      <button onclick="document.getElementById('player').play()">play</button>
-      <button onclick="document.getElementById('player').pause()">paus</button>
+      <button
+        onclick="document.getElementById('player').play()"
+        class="playerIcons"
+      >
+        <i class="bi bi-caret-right"></i>
+      </button>
+      <button
+        onclick="document.getElementById('player').pause()"
+        class="playerIcons"
+      >
+        <i class="bi bi-pause"></i>
+      </button>
       <!-- get control over volume  -->
-      <button onclick="document.getElementById('player').volume = 0">
-        ljud av
+      <button
+        onclick="document.getElementById('player').volume = 0"
+        class="playerIcons"
+      >
+        <i class="bi bi-volume-mute"></i>
       </button>
-      <button onclick="document.getElementById('player').volume = 1">
-        ljud på
+      <button
+        onclick="document.getElementById('player').volume = 1"
+        class="playerIcons"
+      >
+        <i class="bi bi-volume-up"></i>
       </button>
+      <!-- volume slider  -->
       <input
         onchange="document.getElementById('player').volume = this.value"
         type="range"
@@ -58,6 +76,9 @@
         step="0.01"
         value="0"
       />
+      <!-- get current time in track, not working yet -->
+      <input type="time" id="goingTime" value="00:00" />
+      <input type="time" id="songLength" value="00:30" />
     </div>
     <!-- </div>
     <div v-else>Loading...</div> -->
@@ -76,7 +97,29 @@
     height: 5px;
   }
   #playerDuration::-moz-range-thumb {
-    appearance: none;
+    background: white;
+    height: 10px;
+    width: 10px;
+    border: none;
+    opacity: 70%;
+  }
+  #playerDuration::-moz-range-thumb:hover {
+    background: white;
+    height: 13px;
+    width: 13px;
+    border: none;
+    opacity: 80%;
+  }
+  #volumeRange {
+    appearance: unset;
+    background: white;
+    border-radius: 10px;
+    height: 5px;
+  }
+  .playerIcons {
+    border: none;
+    background: none;
+    font-size: 1.5em;
   }
   #songBG {
     top: 0;
