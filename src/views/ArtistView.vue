@@ -8,9 +8,21 @@
       TopTracks
     },
 
+    data() {
+      return {
+        artistProfile: null
+      }
+    },
+
     async created() {
       const artistId = this.$route.params.id
       this.artistProfile = await spotify.getArtists(artistId)
     }
   }
 </script>
+
+<template>
+  <div v-for="artist in artistProfile" :key="artist.id">
+    <p>{{ artist }}</p>
+  </div>
+</template>
