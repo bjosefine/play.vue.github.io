@@ -50,7 +50,7 @@ const getPlaylistTracks = async (playlistId) => {
   const token = await getToken()
 
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date,uri),artists(name),duration_ms,preview_url))`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?fields=items(track(name,id,album(name,images,release_date,uri),artists(name,id),duration_ms,preview_url))`,
 
     {
       headers: {
@@ -109,7 +109,22 @@ const search = async (query, token) => {
 }
 
 /// get featured artist
+const getArtists = async (artistId) => {
+  const token = await getToken()
+  const response = await fetch(
+    `https://api.spotify.com/v1/artists/${artistId}`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
 
+  const data = await response.json()
+  console.log(data, 'hej')
+  return data
+}
+// get albums
 const getAlbum = async () => {
   const token = await getToken()
   const response = await fetch(`https://api.spotify.com/v1/albums`, {
@@ -151,6 +166,22 @@ const getTracks = async (songId) => {
   return data
 }
 
+/// get artists albums
+const getArtistsAlbums = async (artistId) => {
+  const token = await getToken()
+  const response = await fetch(
+    `https://api.spotify.com/v1/artists/${artistId}/albums`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+  const data = await response.json()
+  console.log(data.items, 'Albums')
+  return data.items
+}
+
 export default {
   getFeaturedPlaylists,
   getPlaylist,
@@ -160,5 +191,7 @@ export default {
   getAlbum,
   getNewReleases,
   getTracks,
-  search
+  search,
+  getArtists,
+  getArtistsAlbums
 }

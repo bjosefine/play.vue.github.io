@@ -18,9 +18,12 @@
           <div class="track-title">
             {{ track.track.name }}
           </div>
-          <!-- artist -->
+
           <div class="track-artist">
-            {{ track.track.artists[0].name }}
+            <!-- A router link to the artist page  -->
+            <router-link :to="`/artist/${track.track.artists[0].id}`">
+              {{ track.track.artists[0].name }}
+            </router-link>
           </div>
           <!-- duration -->
           <div class="track-length">
