@@ -202,7 +202,7 @@ const getArtistsAlbums = async (artistId) => {
   return data.items
 }
 
-//Get a specific albums tracks
+//Get a specific albums tracks (No images)
 const getAlbumTracks = async (albumId) => {
   const token = await getToken()
   const response = await fetch(
@@ -218,6 +218,25 @@ const getAlbumTracks = async (albumId) => {
   return data.items
 }
 
+
+// Get a specific album from album ID
+const getSpecificAlbum = async (albumId) => {
+  const token = await getToken()
+  const response = await fetch(
+    ` 	https://api.spotify.com/v1/albums/${albumId}`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+
+  const data = await response.json()
+  console.log(data, 'Get Specific Album')
+  return data
+}
+
+
 export default {
   getFeaturedPlaylists,
   getPlaylist,
@@ -231,5 +250,6 @@ export default {
   getArtists,
   getArtistsAlbums,
   getAlbumTracks,
-  getToptracks
+  getToptracks,
+  getSpecificAlbum
 }
