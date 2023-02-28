@@ -1,4 +1,13 @@
 <template>
+  <!-- headings  -->
+  <div class="trackHeadings">
+    <!-- <rowgap></rowgap> -->
+    <div>
+      <h1 class="trackTitle">Title</h1>
+    </div>
+    <h1 class="artistHeading">Artist</h1>
+    <h1 class="trackTime">Time</h1>
+  </div>
   <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
     <ol class="track-list">
@@ -34,7 +43,7 @@
     </ol>
     <div v-if="tracks == null">Loading...</div>
     <!-- player-container used for many pages, important -->
-    <div class="player-container" v-if="selectedTrackIndex !== null">
+    <div v-if="selectedTrackIndex !== null">
       <PlayerController
         :key="tracks[selectedTrackIndex].track.id"
         :track="tracks[selectedTrackIndex].track"
@@ -110,9 +119,34 @@
     color: black;
     margin: 0;
     padding: 0;
-    grid-area: li;
+  }
+  /* headings */
+  .trackHeadings {
+    background-color: aqua;
+    /* display: flex; */
+    /* justify-content: space-between; */
+
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: minmax(35px, auto);
+    grid-template-areas: 'tiHead tiHead tiHead tiHead tiHead aHead aHead timeHead';
+    /* width: 80%; */
+    margin-left: 15.5rem;
+    margin-right: auto;
   }
 
+  .trackTitle {
+    margin-left: 9.5rem;
+    grid-area: titHead;
+  }
+  .artistHeading {
+    grid-area: aHead;
+  }
+  .trackTime {
+    grid-area: timeHead;
+  }
   .track-details {
     /* changed from flex to grid */
     display: grid;
@@ -122,7 +156,7 @@
     grid-auto-rows: minmax(35px, auto);
     grid-template-areas: 'ti tt tt tt tt ta ta tl';
     width: 80%;
-    margin-left: auto;
+    margin-left: 15.5rem;
     margin-right: auto;
   }
 
@@ -143,7 +177,7 @@
 
   /* bild */
   .track-image {
-    margin-left: 1rem;
+    margin-left: 2.5rem;
     grid-area: ti;
     justify-self: center;
     /* object-fit: cover; */
