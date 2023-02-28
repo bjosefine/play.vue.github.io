@@ -95,17 +95,21 @@ const searchTracks = async (query) => {
   return data.tracks.items
 }
 
-const search = async (query, token) => {
+const search = async (type, query) => {
+  const token = await getToken()
+
   const response = await fetch(
-    `https://api.spotify.com/v1/search?q=${query}&type=track`,
+    `https://api.spotify.com/v1/search?q=${query}&type=${type}`,
     {
       headers: {
         Authorization: 'Bearer ' + token
       }
     }
   )
+
   const data = await response.json()
-  return data.tracks.items
+
+  return data
 }
 
 /// get featured artist

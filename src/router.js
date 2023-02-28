@@ -4,13 +4,15 @@ import Playlist from './views/PlaylistView.vue'
 import AlbumView from './views/AlbumView.vue'
 import PlayerView from './views/PlayerView.vue'
 import ArtistView from './views/ArtistView.vue'
+import Search from './views/Search.vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/playlist/:id', name: 'playlist', component: Playlist },
   { path: '/album/:id', name: 'album', component: AlbumView },
   { path: '/song/:id', name: 'PlayerView', component: PlayerView },
-  { path: '/artist/:id', name: 'ArtistView', component: ArtistView }
+  { path: '/artist/:id', name: 'ArtistView', component: ArtistView },
+  { path: '/search', name: 'search', component: Search }
 ]
 
 const router = createRouter({
