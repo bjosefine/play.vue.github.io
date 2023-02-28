@@ -25,8 +25,7 @@
     components: {
       NewReleases,
       HeaderNav,
-      PlayListitems,
-      PlayerView
+      PlayListitems
     }
   }
 </script>
