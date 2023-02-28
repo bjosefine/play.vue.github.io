@@ -113,6 +113,10 @@
     -webkit-backdrop-filter: blur(7.9px);
     border: 1px solid rgba(138, 51, 138, 0.3);
   }
+  a {
+    text-decoration: none;
+    color: black;
+  }
   /* end of player container */
 
   .track-list {
@@ -131,7 +135,7 @@
     grid-template-areas:
       '. tiHead tiHead tiHead aHead aHead . timeHead'
       '. hLine hLine hLine hLine hLine hLine hLine ';
-    /* width: 80%; */
+    width: 80%;
     /* margin-left: 15.5rem; */
     margin-right: auto;
     /* border: solid black 1px; */
@@ -145,24 +149,24 @@
   }
   /* track heading */
   .trackTitle {
-    margin-left: 9.5rem;
+    margin-left: 7rem;
     grid-area: titHead;
   }
   /* artist heading */
   .artistHeading {
     grid-area: aHead;
     justify-self: center;
-    padding-right: 2rem;
+    padding-left: 2rem;
   }
   /* track heading */
   .trackTime {
     grid-area: timeHead;
-    justify-self: center;
+    justify-self: end;
   }
 
   .headerLine {
     grid-area: hLine;
-    margin-right: 7rem;
+    margin-right: 18rem;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -196,7 +200,6 @@
 
   /* bild */
   .track-image {
-    margin-left: 2.5rem;
     grid-area: ti;
     justify-self: center;
     /* object-fit: cover; */
