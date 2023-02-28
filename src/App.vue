@@ -53,9 +53,9 @@
 
   .main-content {
     flex-grow: 1;
-    margin-left: 20rem; 
-    padding: 1rem; 
-    box-sizing: border-box; 
+    margin-left: 20rem;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
   .MenuNav {
@@ -69,6 +69,5 @@
     top: 0;
     left: 0;
     background-color: rgb(241, 179, 241);
-    
   }
 </style>
