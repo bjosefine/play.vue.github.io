@@ -7,7 +7,11 @@
       @ended="playNext"
     ></audio>
     <div class="player-info">
-      <div @click="expandPlayer()" class="player-image">
+      <div
+        @click="expandPlayer()"
+        class="player-image"
+        :class="{ expandPlayer: expand }"
+      >
         <img :src="track.album.images[0].url" :alt="track.name" />
         <div class="artist-info">
           <div class="player-title">{{ track.name }}</div>
@@ -141,8 +145,8 @@
     justify-content: center;
   }
   .player-container.expandPlayer {
-    position: unset;
-    height: 500px;
+    display: relative;
+    height: 1vh;
     top: 0;
   }
   .player-info {
