@@ -1,5 +1,5 @@
 <template>
-  <div class="player-container">
+  <div class="player-container" :class="{ expandPlayer: expand }">
     <audio
       ref="player"
       :src="track.preview_url"
@@ -7,7 +7,7 @@
       @ended="playNext"
     ></audio>
     <div class="player-info">
-      <div class="player-image">
+      <div @click="expandPlayer()" class="player-image">
         <img :src="track.album.images[0].url" :alt="track.name" />
         <div class="artist-info">
           <div class="player-title">{{ track.name }}</div>
@@ -52,7 +52,8 @@
         currentTime: '0:00',
         totalTime: '0:00',
         duration: 0,
-        audio: new Audio()
+        audio: new Audio(),
+        expand: null
       }
     },
     beforeDestroy() {
@@ -108,6 +109,10 @@
         } else {
           this.$refs.player.currentTime = 0
         }
+      },
+      expandPlayer() {
+        this.expand = !this.expand
+        console.log('expand')
       }
     },
     mounted() {
@@ -134,6 +139,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .player-container.expandPlayer {
+    position: unset;
+    height: 500px;
+    top: 0;
   }
   .player-info {
     display: flex;
