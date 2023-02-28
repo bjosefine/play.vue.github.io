@@ -116,7 +116,7 @@
   /* end of player container */
 
   .track-list {
-    /* list-style: none; */
+    list-style: none;
     color: black;
     margin: 0;
     padding: 0;
@@ -132,7 +132,7 @@
       '. tiHead tiHead tiHead aHead aHead . timeHead'
       '. hLine hLine hLine hLine hLine hLine hLine ';
     /* width: 80%; */
-    margin-left: 15.5rem;
+    /* margin-left: 15.5rem; */
     margin-right: auto;
     /* border: solid black 1px; */
     /* padding: 0; */
@@ -162,7 +162,6 @@
 
   .headerLine {
     grid-area: hLine;
-    margin-left: 18rem;
     margin-right: 7rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -176,7 +175,7 @@
     grid-auto-rows: minmax(35px, auto);
     grid-template-areas: 'ti tt tt tt tt ta ta tl';
     width: 80%;
-    margin-left: 15.5rem;
+    /* margin-left: 15.5rem; */
     margin-right: auto;
   }
 
