@@ -186,6 +186,22 @@ const getArtistsAlbums = async (artistId) => {
   return data.items
 }
 
+//Get a specific albums tracks
+const getAlbumTracks = async (albumId) => {
+  const token = await getToken()
+  const response = await fetch(
+    `https://api.spotify.com/v1/albums/${albumId}/tracks`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+  const data = await response.json()
+  console.log(data.items, 'Album tracks')
+  return data.items
+}
+
 export default {
   getFeaturedPlaylists,
   getPlaylist,
@@ -197,5 +213,6 @@ export default {
   getTracks,
   search,
   getArtists,
-  getArtistsAlbums
+  getArtistsAlbums,
+  getAlbumTracks
 }
