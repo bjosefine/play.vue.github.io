@@ -11,32 +11,32 @@
   <hr class="headerLine" />
   <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
-    <ol class="track-list">
+    <ol class="trackList">
       <li
         v-for="(track, index) in tracks"
         :key="track.track.id"
         :class="{ selected: index === selectedTrackIndex }"
-        class="track-item"
+        class="trackItem"
         @click="playTrack(index)"
       >
-        <div class="track-details">
+        <div class="trackDetails">
           <!-- image -->
-          <div class="track-image">
+          <div class="trackImage">
             <img :src="track.track.album.images[2].url" alt="" />
           </div>
           <!-- title -->
-          <div class="track-title">
+          <div class="trackTitle">
             {{ track.track.name }}
           </div>
 
-          <div class="track-artist">
+          <div class="trackArtist">
             <!-- A router link to the artist page  -->
             <router-link :to="`/artist/${track.track.artists[0].id}`">
               {{ track.track.artists[0].name }}
             </router-link>
           </div>
           <!-- duration -->
-          <div class="track-length">
+          <div class="trackLength">
             {{ formatDuration(track.track.duration_ms) }}
           </div>
         </div>
@@ -119,7 +119,7 @@
   }
   /* end of player container */
 
-  .track-list {
+  .trackList {
     list-style: none;
     color: black;
     margin: 0;
@@ -135,11 +135,7 @@
     grid-template-areas:
       '. titleHeading titleHeading titleHeading artistHeading artistHeading . timeHead'
       '. headerLine headerLine headerLine headerLine headerLine headerLine headerLine ';
-    /* width: 80%; */
-    /* margin-left: 15.5rem; */
     margin-right: auto;
-    /* border: solid black 1px; */
-    /* padding: 0; */
   }
   h1 {
     padding: 0px;
@@ -170,7 +166,7 @@
     margin-top: 0;
     margin-bottom: 0;
   }
-  .track-details {
+  .trackDetails {
     /* changed from flex to grid */
     display: grid;
     justify-items: start;
@@ -181,13 +177,13 @@
     margin-right: auto;
   }
 
-  .track-item {
+  .trackItem {
     padding: 0.3rem;
     align-items: center;
     transition: background-color 0.3s;
   }
 
-  .track-item:hover {
+  .trackItem:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
 
@@ -197,14 +193,14 @@
   }
 
   /* bild */
-  .track-image {
+  .trackImage {
     grid-area: trackImage;
     justify-self: center;
     /* object-fit: cover; */
   }
 
   /* titel */
-  .track-title {
+  .trackTitle {
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
@@ -213,12 +209,12 @@
   }
 
   /* artist */
-  .track-artist {
+  .trackArtist {
     grid-area: trackArtist;
   }
 
   /* duration time */
-  .track-length {
+  .trackLength {
     font-size: 0.8rem;
     grid-area: trackLength;
     justify-self: end;
