@@ -3,7 +3,7 @@
   <div class="trackHeadings">
     <!-- <rowgap></rowgap> -->
     <div>
-      <h1 class="trackTitle">Title</h1>
+      <h1 class="titleHeading">Title</h1>
     </div>
     <h1 class="artistHeading">Artist</h1>
     <h1 class="trackTime">Time</h1>
@@ -133,9 +133,9 @@
     grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: minmax(35px, auto);
     grid-template-areas:
-      '. tiHead tiHead tiHead aHead aHead . timeHead'
-      '. hLine hLine hLine hLine hLine hLine hLine ';
-    width: 80%;
+      '. titleHeading titleHeading titleHeading artistHeading artistHeading . timeHead'
+      '. headerLine headerLine headerLine headerLine headerLine headerLine headerLine ';
+    /* width: 80%; */
     /* margin-left: 15.5rem; */
     margin-right: auto;
     /* border: solid black 1px; */
@@ -148,15 +148,15 @@
     color: rgb(69, 67, 67);
   }
   /* track heading */
-  .trackTitle {
-    margin-left: 7rem;
-    grid-area: titHead;
+  .titleHeading {
+    margin-left: 8rem;
+    grid-area: titleHeader;
   }
   /* artist heading */
   .artistHeading {
-    grid-area: aHead;
+    grid-area: artistHeading;
     justify-self: center;
-    padding-left: 2rem;
+    padding-left: 1rem;
   }
   /* track heading */
   .trackTime {
@@ -165,8 +165,8 @@
   }
 
   .headerLine {
-    grid-area: hLine;
-    margin-right: 18rem;
+    grid-area: headerLine;
+    margin-right: 5rem;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -177,9 +177,7 @@
     align-items: center;
     grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: minmax(35px, auto);
-    grid-template-areas: 'ti tt tt tt tt ta ta tl';
-    width: 80%;
-    /* margin-left: 15.5rem; */
+    grid-template-areas: 'trackImage trackTitle trackTitle trackTitle trackTitle trackArtist trackArtist trackLength';
     margin-right: auto;
   }
 
@@ -200,7 +198,7 @@
 
   /* bild */
   .track-image {
-    grid-area: ti;
+    grid-area: trackImage;
     justify-self: center;
     /* object-fit: cover; */
   }
@@ -211,18 +209,18 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    grid-area: tt;
+    grid-area: trackTitle;
   }
 
   /* artist */
   .track-artist {
-    grid-area: ta;
+    grid-area: trackArtist;
   }
 
   /* duration time */
   .track-length {
     font-size: 0.8rem;
-    grid-area: tl;
+    grid-area: trackLength;
     justify-self: end;
   }
 </style>
