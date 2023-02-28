@@ -10,7 +10,7 @@
   </div>
   <hr class="headerLine" />
   <div class="playlist" v-if="playlist">
-    <h1>{{ playlist.name }}</h1>
+    <!-- <h1>{{ playlist.name }}</h1> -->
     <ol class="trackList">
       <li
         v-for="(track, index) in tracks"
@@ -104,8 +104,8 @@
 </script>
 
 <style>
-  /* player container Used on many pages important, don't adjust*/
-  .playerContainer {
+  /* player-container Used on many pages important, don't adjust*/
+  .player-container {
     background: rgba(138, 51, 138, 0.02);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
