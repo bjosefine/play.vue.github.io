@@ -70,7 +70,7 @@
     margin-bottom: 50px;
   }
 
-  .playlist-list {
+  .playlistList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
