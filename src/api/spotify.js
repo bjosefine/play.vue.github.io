@@ -128,6 +128,22 @@ const getArtists = async (artistId) => {
   console.log(data, 'hej')
   return data
 }
+// get artist top tracks
+const getToptracks = async (artistId) => {
+  const token = await getToken()
+  const response = await fetch(
+    `https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=SE&limit=5`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+
+  const data = await response.json()
+  console.log(data.tracks, 'top')
+  return data.tracks
+}
 // get albums
 const getAlbum = async () => {
   const token = await getToken()
@@ -214,5 +230,6 @@ export default {
   search,
   getArtists,
   getArtistsAlbums,
-  getAlbumTracks
+  getAlbumTracks,
+  getToptracks
 }

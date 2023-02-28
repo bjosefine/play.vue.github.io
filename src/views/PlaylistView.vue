@@ -1,7 +1,7 @@
 <template>
   <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
-    <ul class="track-list">
+    <ol class="track-list">
       <li
         v-for="(track, index) in tracks"
         :key="track.track.id"
@@ -31,7 +31,7 @@
           </div>
         </div>
       </li>
-    </ul>
+    </ol>
     <div v-if="tracks == null">Loading...</div>
     <!-- player-container used for many pages, important -->
     <div class="player-container" v-if="selectedTrackIndex !== null">
@@ -106,18 +106,24 @@
   /* end of player container */
 
   .track-list {
-    list-style: none;
+    /* list-style: none; */
+    color: black;
     margin: 0;
     padding: 0;
+    grid-area: li;
   }
+
   .track-details {
     /* changed from flex to grid */
     display: grid;
     justify-items: start;
     align-items: center;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-auto-rows: minmax(35px, auto);
-    grid-template-areas: 'ti tt tt tt tt ta ta tl ';
+    grid-template-areas: 'ti tt tt tt tt ta ta tl';
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .track-item {
@@ -134,12 +140,15 @@
   .selected {
     background-color: rgba(0, 0, 0, 0.2);
   }
+
   /* bild */
   .track-image {
     margin-left: 1rem;
     grid-area: ti;
-    object-fit: cover;
+    justify-self: center;
+    /* object-fit: cover; */
   }
+
   /* titel */
   .track-title {
     font-weight: bold;
@@ -148,10 +157,12 @@
     text-overflow: ellipsis;
     grid-area: tt;
   }
+
   /* artist */
   .track-artist {
     grid-area: ta;
   }
+
   /* duration time */
   .track-length {
     font-size: 0.8rem;
