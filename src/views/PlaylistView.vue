@@ -104,8 +104,8 @@
 </script>
 
 <style>
-  /* player-container Used on many pages important, don't adjust*/
-  .player-container {
+  /* player container Used on many pages important, don't adjust*/
+  .playerContainer {
     background: rgba(138, 51, 138, 0.02);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

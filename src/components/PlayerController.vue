@@ -1,37 +1,40 @@
 <template>
-  <div class="player-container" :class="{ expandPlayer: expand }">
+  <div class="playerContainer" :class="{ expandPlayer: expand }">
+    <!-- get in the audio player -->
     <audio
       ref="player"
       :src="track.preview_url"
       @timeupdate="updateTime"
       @ended="playNext"
     ></audio>
-    <div class="player-info">
+    <!-- end audio player  -->
+    <div class="playerInfo">
       <div
         @click="expandPlayer()"
-        class="player-image"
+        class="playerImage"
         :class="{ expandPlayer: expand }"
       >
         <img
-          class="player-image-src"
+          class="playerImageSrc"
           :class="{ expandPlayer: expand }"
           :src="track.album.images[0].url"
           :alt="track.name"
         />
-        <div class="artist-info" :class="{ expandPlayer: expand }">
-          <div class="player-title">{{ track.name }}</div>
-          <div class="player-artist">{{ track.artists[0].name }}</div>
+        <div class="artistInfo" :class="{ expandPlayer: expand }">
+          <div class="playerTitle">{{ track.name }}</div>
+          <div class="playerArtist">{{ track.artists[0].name }}</div>
         </div>
       </div>
     </div>
-    <div class="player-controls">
-      <div class="slider-container" :class="{ expandPlayer: expand }">
-        <div class="player-buttons">
-          <div class="player-play-pause" @click="togglePlayback">
+    <div class="playerControls">
+      <div class="sliderContainer" :class="{ expandPlayer: expand }">
+        <div class="playerButtons">
+          <div class="playerPlayPause" @click="togglePlayback">
             <span v-if="!isPlaying"><i class="fas fa-play"></i></span>
             <span v-else><i class="fas fa-pause"></i></span>
           </div>
         </div>
+        <!-- input range for time slider  -->
         <input
           type="range"
           ref="slider"
@@ -40,7 +43,7 @@
           step="0.01"
           @input="seekToPosition"
         />
-        <div class="player-time">{{ currentTime }} / {{ totalTime }}</div>
+        <div class="playerTime">{{ currentTime }} / {{ totalTime }}</div>
       </div>
     </div>
   </div>
@@ -65,9 +68,11 @@
         expand: null
       }
     },
+    // make the currently playing song stop when starting another song
     beforeDestroy() {
       this.stopAudio()
     },
+    // change the play to paus vice versa
     methods: {
       togglePlayback() {
         if (this.isPlaying) {
@@ -89,26 +94,31 @@
         this.$refs.player.pause()
         this.isPlaying = false
       },
+      // function for changing where in the song you are when dragging thumb in range input
       updateTime(event) {
         this.currentTime = this.formatTime(event.target.currentTime)
         this.totalTime = this.formatTime(event.target.duration)
         this.duration = event.target.duration
         this.$refs.slider.value = event.target.currentTime
       },
+      // function for making the time go as the song goes
       formatTime(time) {
         let minutes = Math.floor(time / 60)
         let seconds = Math.floor(time % 60)
         seconds = seconds < 10 ? '0' + seconds : seconds
         return minutes + ':' + seconds
       },
+      // function for making the range thumb move with the time passed
       seekToPosition(event) {
         this.$refs.player.currentTime = event.target.value
       },
+      // play next song in list
       playNext() {
         if (this.$refs.player.currentTime === this.$refs.player.duration) {
           this.$emit('playNext')
         }
       },
+      // play previous song in list
       playPrev() {
         if (
           this.$refs.player.currentTime < 5 &&
@@ -119,6 +129,7 @@
           this.$refs.player.currentTime = 0
         }
       },
+      // function for expanding player to full screen
       expandPlayer() {
         this.expand = !this.expand
         console.log('expand')
@@ -139,7 +150,7 @@
 </script>
 
 <style>
-  .player-container {
+  .playerContainer {
     height: 200px;
     position: sticky;
     bottom: 0;
@@ -149,13 +160,13 @@
     align-items: center;
     justify-content: center;
   }
-  .player-container.expandPlayer {
+  .playerContainer.expandPlayer {
     height: 100vh;
     top: 0;
     display: block;
     transition: ease-in-out 2;
   }
-  .player-info {
+  .playerInfo {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -163,17 +174,17 @@
     margin-right: 10px;
   }
 
-  .player-controls {
+  .playerControls {
     display: flex;
     align-items: center;
     position: relative;
     z-index: 4;
   }
-  .player-artist {
+  .playerArtist {
     color: #685b5b;
   }
-  .player-play-pause,
-  .player-stop {
+  .playerPlayPause,
+  .playerStop {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -186,60 +197,59 @@
     color: #fff;
   }
 
-  .player-image {
+  .playerImage {
     display: flex;
     width: 30%;
     justify-content: space-around;
   }
-  .player-image.expandPlayer {
+  .playerImage.expandPlayer {
     display: block;
     margin: auto;
     width: auto;
   }
 
-  .player-image-src {
+  .playerImageSrc {
     width: 120px;
     height: 120px;
     margin-left: 25px;
   }
-  .player-image-src.expandPlayer {
+  .playerImageSrc.expandPlayer {
     width: 400px;
     height: 400px;
     padding: 10px;
     display: flex;
     justify-content: center;
   }
-  .artist-info {
+  .artistInfo {
     margin-left: 0.5pc;
   }
 
-  .player-play-pause:hover,
-  .player-stop:hover {
+  .playerPlayPause:hover,
+  .playerStop:hover {
     background-color: #111;
   }
-
-  .slider-container {
+  .sliderContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-right: 15px;
     width: 50%;
   }
-  .slider-container.expandPlayer {
+  .sliderContainer.expandPlayer {
     width: 100%;
   }
 
-  .slider-container input[type='range'] {
+  .sliderContainer input[type='range'] {
     width: 700px;
     margin: 0 10px;
     color: gray;
   }
 
-  .player-time {
+  .playerTime {
     display: flex;
     align-items: center;
   }
-  .player-buttons {
+  .playerButtons {
     display: flex;
   }
 </style>

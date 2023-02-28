@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container">
+  <div class="appContainer">
     <MenuNav />
-    <main class="main-content">
+    <main class="mainContent">
       <router-view />
     </main>
   </div>
@@ -46,12 +46,12 @@
     );
     background-blend-mode: darken;
   }
-  .app-container {
+  .appContainer {
     display: flex;
     flex-direction: row;
   }
 
-  .main-content {
+  .mainContent {
     flex-grow: 1;
     margin-left: 20rem;
     padding: 1rem;

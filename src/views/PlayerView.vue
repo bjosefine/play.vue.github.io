@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="song-image-container"></div>
-    <div class="song-info-container">
-      <div class="song-controls">
-        <div class="song-title">{{ tracks.name }}</div>
-        <div class="song-artist">{{ tracks.artists[0].name }}</div>
+    <div class="songImageContainer"></div>
+    <div class="songInfoContainer">
+      <div class="songControls">
+        <div class="songTitle">{{ tracks.name }}</div>
+        <div class="songArtist">{{ tracks.artists[0].name }}</div>
         <img
-          class="song-image"
+          class="songImage"
           :src="tracks.album.images[0].url"
           alt="Album Art"
         />
@@ -37,7 +37,7 @@
 </script>
 
 <style>
-  .player-container {
+  .playerContainer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -50,7 +50,7 @@
     padding: 10px 20px;
   }
 
-  .player-info {
+  .playerInfo {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -58,13 +58,13 @@
     padding-right: 20px;
   }
 
-  .player-controls {
+  .playerControls {
     display: flex;
     align-items: center;
   }
 
-  .player-play-pause,
-  .player-stop {
+  .playerPlayPause,
+  .playerStop {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -77,8 +77,8 @@
     color: #fff;
   }
 
-  .player-play-pause:hover,
-  .player-stop:hover {
+  .playerPlayPause:hover,
+  .playerStop:hover {
     background-color: #111;
   }
 </style>

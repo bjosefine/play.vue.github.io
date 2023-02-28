@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <h1>Featured Playlists</h1>
-    <div class="playlist-container" v-if="featuredPlaylists">
-      <div class="playlist-list">
+    <div class="playlistContainer" v-if="featuredPlaylists">
+      <div class="playlistList">
         <div
           v-for="playlist in featuredPlaylists"
           :key="playlist.id"
-          class="playlist-item"
+          class="playlistItem"
         >
           <router-link
             :to="{ name: 'playlist', params: { id: playlist.id } }"
-            class="playlist-link"
+            class="playlistLink"
           >
-            <div class="playlist-image">
+            <div class="playlistImage">
               <img :src="playlist.images[0].url" :alt="playlist.name" />
             </div>
           </router-link>
@@ -61,7 +61,7 @@
     text-align: center;
   }
 
-  .playlist-container {
+  .playlistContainer {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
@@ -78,7 +78,7 @@
     margin-bottom: 50px;
   }
 
-  .playlist-item {
+  .playlistItem {
     max-width: 230px;
     height: 200px;
     display: flex;
@@ -86,22 +86,22 @@
     justify-content: space-between;
   }
 
-  .playlist-item:hover {
+  .playlistItem:hover {
     transform: scale(1.05);
   }
 
-  .playlist-link {
+  .playlistLink {
     text-decoration: none;
   }
 
-  .playlist-image {
+  .playlistLmage {
     width: 100%;
     max-width: 230px;
     height: 200px;
     margin: 0 auto;
   }
 
-  .playlist-image img {
+  .playlistImage img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -109,7 +109,7 @@
     border-radius: 13px;
   }
 
-  .playlist-details {
+  .playlistDetails {
     padding: 10px;
     text-align: center;
   }
