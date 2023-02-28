@@ -8,6 +8,7 @@
     <h1 class="artistHeading">Artist</h1>
     <h1 class="trackTime">Time</h1>
   </div>
+  <hr class="headerLine" />
   <div class="playlist" v-if="playlist">
     <h1>{{ playlist.name }}</h1>
     <ol class="track-list">
@@ -120,39 +121,58 @@
     margin: 0;
     padding: 0;
   }
-  /* headings */
+  /* headings grid layout */
   .trackHeadings {
-    background-color: aqua;
-    /* display: flex; */
-    /* justify-content: space-between; */
-
     display: grid;
     justify-items: start;
     align-items: center;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: minmax(35px, auto);
-    grid-template-areas: 'tiHead tiHead tiHead tiHead tiHead aHead aHead timeHead';
+    grid-template-areas:
+      '. tiHead tiHead tiHead aHead aHead . timeHead'
+      '. hLine hLine hLine hLine hLine hLine hLine ';
     /* width: 80%; */
     margin-left: 15.5rem;
     margin-right: auto;
+    /* border: solid black 1px; */
+    /* padding: 0; */
   }
-
+  h1 {
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: medium;
+    color: rgb(69, 67, 67);
+  }
+  /* track heading */
   .trackTitle {
     margin-left: 9.5rem;
     grid-area: titHead;
   }
+  /* artist heading */
   .artistHeading {
     grid-area: aHead;
+    justify-self: center;
+    padding-right: 2rem;
   }
+  /* track heading */
   .trackTime {
     grid-area: timeHead;
+    justify-self: center;
+  }
+
+  .headerLine {
+    grid-area: hLine;
+    margin-left: 18rem;
+    margin-right: 7rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .track-details {
     /* changed from flex to grid */
     display: grid;
     justify-items: start;
     align-items: center;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: minmax(35px, auto);
     grid-template-areas: 'ti tt tt tt tt ta ta tl';
     width: 80%;
