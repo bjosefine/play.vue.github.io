@@ -2,7 +2,6 @@
   <HeaderNav />
   <PlayListitems />
   <NewReleases />
-  <PlayerView />
 </template>
 
 <script>
@@ -10,7 +9,6 @@
   import NewReleases from '../components/NewReleases.vue'
   import HeaderNav from '../components/HeaderNav.vue'
   import PlayListitems from '../components/Playlistitems.vue'
-  import PlayerView from './PlayerView.vue'
 
   export default {
     name: 'HomeView',
@@ -30,7 +28,7 @@
   }
 </script>
 <style>
-body {
-  color: rgb(32, 26, 26);
-}
+  body {
+    color: rgb(32, 26, 26);
+  }
 </style>

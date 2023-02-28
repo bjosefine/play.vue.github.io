@@ -12,15 +12,20 @@
         class="player-image"
         :class="{ expandPlayer: expand }"
       >
-        <img :src="track.album.images[0].url" :alt="track.name" />
-        <div class="artist-info">
+        <img
+          class="player-image-src"
+          :class="{ expandPlayer: expand }"
+          :src="track.album.images[0].url"
+          :alt="track.name"
+        />
+        <div class="artist-info" :class="{ expandPlayer: expand }">
           <div class="player-title">{{ track.name }}</div>
           <div class="player-artist">{{ track.artists[0].name }}</div>
         </div>
       </div>
     </div>
     <div class="player-controls">
-      <div class="slider-container">
+      <div class="slider-container" :class="{ expandPlayer: expand }">
         <div class="player-buttons">
           <div class="player-play-pause" @click="togglePlayback">
             <span v-if="!isPlaying"><i class="fas fa-play"></i></span>
@@ -145,9 +150,10 @@
     justify-content: center;
   }
   .player-container.expandPlayer {
-    display: relative;
-    height: 1vh;
+    height: 100vh;
     top: 0;
+    display: block;
+    transition: ease-in-out 2;
   }
   .player-info {
     display: flex;
@@ -182,12 +188,29 @@
 
   .player-image {
     display: flex;
-    width: 20%;
+    width: 30%;
     justify-content: space-around;
   }
+  .player-image.expandPlayer {
+    display: block;
+    margin: auto;
+    width: auto;
+  }
 
-  .player-image img {
-    width: 100px;
+  .player-image-src {
+    width: 120px;
+    height: 120px;
+    margin-left: 25px;
+  }
+  .player-image-src.expandPlayer {
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .artist-info {
+    margin-left: 0.5pc;
   }
 
   .player-play-pause:hover,
@@ -200,7 +223,10 @@
     align-items: center;
     flex-direction: column;
     margin-right: 15px;
-    width: 80%;
+    width: 50%;
+  }
+  .slider-container.expandPlayer {
+    width: 100%;
   }
 
   .slider-container input[type='range'] {
