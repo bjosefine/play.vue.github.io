@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div class="app-container">
     <MenuNav />
-    <router-view />
+    <main class="main-content">
+      <router-view />
+    </main>
   </div>
 </template>
 
@@ -43,5 +45,30 @@
       rgba(189, 173, 173, 0) 100%
     );
     background-blend-mode: darken;
+  }
+  .app-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .main-content {
+    flex-grow: 1;
+    margin-left: 20rem; 
+    padding: 1rem; 
+    box-sizing: border-box; 
+  }
+
+  .MenuNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    width: 15rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(241, 179, 241);
+    
   }
 </style>
