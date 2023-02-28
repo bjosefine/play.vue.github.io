@@ -35,17 +35,7 @@
 </script>
 
 <style scoped>
-  .MenuNav {
-    display: flex;
-    justify-content: space-between;
-    height: 100vh;
-    width: 15rem;
-    position: fixed;
-    bottom: 0;
-    background-color: rgb(241, 179, 241);
-    float: left;
-  }
-
+ 
   .PlaylistNav {
     display: flex;
     flex-direction: column;
