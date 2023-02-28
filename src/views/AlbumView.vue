@@ -1,4 +1,14 @@
+<!-- Album View for the new releases-->
 <template>
-  <p>Album</p>
+  <AlbumTracks />
 </template>
-<script></script>
+
+<script>
+  import AlbumTracks from '../components/AlbumTracks.vue'
+
+  export default {
+    components: {
+      AlbumTracks
+    }
+  }
+</script>

@@ -43,7 +43,7 @@
     </ol>
     <div v-if="tracks == null">Loading...</div>
     <!-- player-container used for many pages, important -->
-    <div class="player-container" v-if="selectedTrackIndex !== null">
+    <div v-if="selectedTrackIndex !== null">
       <PlayerController
         :key="tracks[selectedTrackIndex].track.id"
         :track="tracks[selectedTrackIndex].track"
