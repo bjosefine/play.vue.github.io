@@ -2,7 +2,9 @@
   <div class="MenuNav">
     <ul>
       <li><i class="bi bi-house"></i> Home</li>
-      <li><i class="bi bi-search"></i> Search</li>
+      <router-link tag="li" to="/search">
+        <i class="bi bi-search"></i> Search
+      </router-link>
       <li><i class="bi bi-person"></i> Profile</li>
       <div class="PlaylistNav">
         <li><i class="bi bi-music-note-list"></i> Playlist</li>
@@ -64,5 +66,8 @@
   }
   i {
     margin: 5px;
+  }
+  a {
+    color: rgb(21, 22, 23);
   }
 </style>
