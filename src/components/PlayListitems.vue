@@ -94,7 +94,7 @@
     text-decoration: none;
   }
 
-  .playlistLmage {
+  .playlistImage {
     width: 100%;
     max-width: 230px;
     height: 200px;

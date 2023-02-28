@@ -35,13 +35,12 @@
 </script>
 
 <style scoped>
- 
-  .PlaylistNav {
+  .menuNav {
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
   }
-  .PlaylistNav a {
+  .menuNav a {
     text-decoration: none;
   }
 
