@@ -50,6 +50,8 @@
         :track="tracks[selectedTrackIndex].track"
         :audio="audio"
         :autoplay="autoplay"
+        @playNext="playNext()"
+        @playPrev="playPrev()"
       ></PlayerController>
     </div>
     <!-- end of player container -->
@@ -86,6 +88,7 @@
     },
 
     methods: {
+      // play track from list
       playTrack(index) {
         if (index === this.selectedTrackIndex) {
           return
@@ -93,6 +96,17 @@
 
         this.selectedTrackIndex = index
         this.isPlaying = true
+        console.log(this.selectedTrackIndex, 'current')
+      },
+      // play next track in list
+      playNext() {
+        this.selectedTrackIndex = this.selectedTrackIndex + 1
+        console.log(this.selectedTrackIndex + 1, 'test next')
+      },
+      // play previous track in list
+      playPrev() {
+        this.selectedTrackIndex = this.selectedTrackIndex - 1
+        console.log(this.selectedTrackIndex - 1, 'test prev')
       },
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
@@ -107,7 +121,7 @@
   /* player-container Used on many pages important, don't adjust*/
   .playerContainer {
     background: rgba(138, 51, 138, 0.02);
-    border-radius: 16px;
+    border-radius: 16px 16px 0 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);

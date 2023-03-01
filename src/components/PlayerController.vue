@@ -1,6 +1,6 @@
 <template>
   <div class="playerContainer" :class="{ expandPlayer: expand }">
-    <!-- get in the audio player -->
+    <!-- the audio player -->
     <audio
       ref="player"
       :src="track.preview_url"
@@ -8,6 +8,7 @@
       @ended="playNext"
     ></audio>
     <!-- end audio player  -->
+    <!-- information of the song: picture, name of song and artist, calling the expand function when clicking the image -->
     <div class="playerInfo">
       <div
         @click="expandPlayer()"
@@ -26,13 +27,16 @@
         </div>
       </div>
     </div>
+    <!-- making custom buttons to the audio element, calling the toggle function which makes the button change from play to pause -->
     <div class="playerControls">
       <div class="sliderContainer" :class="{ expandPlayer: expand }">
         <div class="playerButtons">
+          <span @click="playPrev">prev</span>
           <div class="playerPlayPause" @click="togglePlayback">
             <span v-if="!isPlaying"><i class="fas fa-play"></i></span>
             <span v-else><i class="fas fa-pause"></i></span>
           </div>
+          <span @click="playNext">next</span>
         </div>
         <!-- input range for time slider  -->
         <input
@@ -43,6 +47,7 @@
           step="0.01"
           @input="seekToPosition"
         />
+        <!-- showing the timeduration of the song and the total time of the song (00:00) -->
         <div class="playerTime">{{ currentTime }} / {{ totalTime }}</div>
       </div>
     </div>
@@ -65,7 +70,7 @@
         totalTime: '0:00',
         duration: 0,
         audio: new Audio(),
-        expand: null
+        expand: false
       }
     },
     // make the currently playing song stop when starting another song
@@ -114,22 +119,26 @@
       },
       // play next song in list
       playNext() {
-        if (this.$refs.player.currentTime === this.$refs.player.duration) {
-          this.$emit('playNext')
-        }
+        this.$emit('playNext')
+        console.log('next')
+        // if (this.$refs.player.currentTime === this.$refs.player.duration) {
+        //   this.$emit('playNext')
+        // }
       },
       // play previous song in list
       playPrev() {
-        if (
-          this.$refs.player.currentTime < 5 &&
-          this.$refs.player.currentTime !== 0
-        ) {
-          this.$emit('playPrev')
-        } else {
-          this.$refs.player.currentTime = 0
-        }
+        this.$emit('playPrev')
+        console.log('prev')
+        // if (
+        //   this.$refs.player.currentTime < 5 &&
+        //   this.$refs.player.currentTime !== 0
+        // ) {
+        //   this.$emit('playPrev')
+        // } else {
+        //   this.$refs.player.currentTime = 0
+        // }
       },
-      // function for expanding player to full screen
+      // function for expanding player to full screen (setting expand to true when clicking the image)
       expandPlayer() {
         this.expand = !this.expand
         console.log('expand')
@@ -151,7 +160,7 @@
 
 <style>
   .playerContainer {
-    height: 200px;
+    height: 150px;
     position: sticky;
     bottom: 0;
     left: 0;
@@ -159,12 +168,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: height ease-out 2s;
   }
   .playerContainer.expandPlayer {
     height: 100vh;
     top: 0;
     display: block;
-    transition: ease-in-out 2;
+    transition: 0s;
   }
   .playerInfo {
     display: flex;
