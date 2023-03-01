@@ -3,6 +3,7 @@
   <PlayListitems />
   <NewReleases />
   <PlayerView />
+  <GenreCategories />
 </template>
 
 <script>
@@ -11,6 +12,7 @@
   import HeaderNav from '../components/HeaderNav.vue'
   import PlayListitems from '../components/Playlistitems.vue'
   import PlayerView from './PlayerView.vue'
+  import GenreCategories from '../components/GenreCategories.vue'
 
   export default {
     name: 'HomeView',
@@ -25,7 +27,8 @@
     components: {
       NewReleases,
       HeaderNav,
-      PlayListitems
+      PlayListitems,
+      GenreCategories
     }
   }
 </script>

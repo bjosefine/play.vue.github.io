@@ -70,13 +70,17 @@ const getPlaylistTracks = async (playlistId) => {
 /// Get genres from api
 const getGenres = async () => {
   const token = await getToken()
-  const response = await fetch('https://api.spotify.com/v1/browse/categories', {
-    headers: {
-      Authorization: 'Bearer ' + token
+  const response = await fetch(
+    `https://api.spotify.com/v1/browse/categories/`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
     }
-  })
+  )
 
   const data = await response.json()
+  console.log('genre', data.categories.items)
   return data.categories.items
 }
 /// search tracks from api
