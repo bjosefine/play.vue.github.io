@@ -1,7 +1,11 @@
 <template>
   <div>
-    <div>
-      <!-- <h1>{{ genrePlaylist.name }}</h1> -->
+    <div v-for="playlist in genrePlaylist.playlists.items" :key="playlist.id">
+      <router-link :to="{ name: 'playlist', params: { id: playlist.id } }">
+        <div class="images">
+          <img :src="playlist.images[0].url" alt="Playlist cover" />
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -13,14 +17,18 @@
     data() {
       return {
         genrePlaylist: null,
-        categoryId: null
+        genreName: null
       }
     },
     async created() {
-      this.categoryId = this.$route.params.id
+      this.categoryId = this.$route.params.categoryId
       this.genrePlaylist = await spotify.getCategoryPlaylist(this.categoryId)
-      console.log(this.genrePlaylist, 'apple')
-      console.log(this.categoryId, 'pear')
     }
   }
 </script>
+
+<style>
+  .images img {
+    margin-bottom: 100px;
+  }
+</style>
