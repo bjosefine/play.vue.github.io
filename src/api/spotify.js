@@ -34,7 +34,7 @@ const getFeaturedPlaylists = async () => {
 const getPlaylist = async (playlistId) => {
   const token = await getToken()
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}&offset=0&limit=12`,
+    `https://api.spotify.com/v1/playlists/${playlistId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -218,7 +218,6 @@ const getAlbumTracks = async (albumId) => {
   return data.items
 }
 
-
 // Get a specific album from album ID
 const getSpecificAlbum = async (albumId) => {
   const token = await getToken()
@@ -235,7 +234,6 @@ const getSpecificAlbum = async (albumId) => {
   console.log(data, 'Get Specific Album')
   return data
 }
-
 
 export default {
   getFeaturedPlaylists,
