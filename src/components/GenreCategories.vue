@@ -6,8 +6,14 @@
       :key="toplists.id"
       class="genreCategoryItems"
     >
-      {{ genreCategories.name }}
-      <!-- <img :src="categories.icons[0].url" alt="Album cover" /> -->
+      <router-link
+        :to="{ name: 'CategoryPlaylist', params: { categoryId: toplists.id } }"
+      >
+        <div>
+          <img :src="toplists.icons[0].url" alt="Genre cover" />
+          {{ toplists.name }}
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
