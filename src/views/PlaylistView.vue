@@ -1,4 +1,14 @@
 <template>
+  <!-- playlist image and name -->
+  <div class="flexContainerPlaylist">
+    <div class="playlistImage">
+      <img :src="playlist.images[0].url" :alt="playlist.name" />
+    </div>
+    <div class="PlaylistHeadingContent">
+      <h1 class="playlistHeading">Playlist</h1>
+      <h2 class="playlistName">{{ playlist.name }}</h2>
+    </div>
+  </div>
   <!-- headings  -->
   <div class="trackHeadings">
     <!-- <rowgap></rowgap> -->
@@ -10,7 +20,6 @@
   </div>
   <hr class="headerLine" />
   <div class="playlist" v-if="playlist">
-    <!-- <h1>{{ playlist.name }}</h1> -->
     <ol class="trackList">
       <li
         v-for="(track, index) in tracks"
@@ -127,11 +136,40 @@
     -webkit-backdrop-filter: blur(7.9px);
     border: 1px solid rgba(138, 51, 138, 0.3);
   }
+  /* end of player container */
+
+  /* flex box experiment */
+  /* .flexContainerPlaylist {
+    display: flex;
+    flex-direction: row;
+    justify-content: unset;
+    align-items: end;
+    background-color: red;
+    width: 39%;
+
+    margin-top: 2rem;
+  }
+  .playlistImage {
+    background-color: greenyellow;
+  }
+  .PlaylistHeadingContent {
+    background-color: blueviolet;
+  }
+  .playlistHeading {
+    font-size: large;
+    background-color: aqua;
+  } */
+  .playlistName {
+    font-size: 40px;
+    color: rgb(58, 57, 57);
+    /* background-color: blue; */
+  }
+  /* end of flex */
+
   a {
     text-decoration: none;
     color: black;
   }
-  /* end of player container */
 
   .trackList {
     list-style: none;
