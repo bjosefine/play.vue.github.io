@@ -8,6 +8,7 @@
           v-for="album in newReleases"
           :key="album.id"
           class="newReleasesItems"
+          id="pictureHover"
         >
           <router-link :to="`/album/${album.id}`" class="newReleasesLink">
             <div class="newReleasesItem">
@@ -72,6 +73,10 @@
     justify-content: center;
     gap: 30px;
     margin-bottom: 50px;
+  }
+
+  #pictureHover:hover {
+    transform: scale(1.05);
   }
 
   .newReleasesItem {
