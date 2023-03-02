@@ -260,6 +260,7 @@
     text-overflow: ellipsis;
     grid-area: trackTitle;
   }
+  /* animation values */
   .animateTrackName {
     float: left;
     animation-duration: 10s;
@@ -267,6 +268,7 @@
     animation-iteration-count: infinite;
     animation-name: move;
   }
+  /* animation to move from right to left */
   @keyframes move {
     from {
       transform: translateX(0%);
