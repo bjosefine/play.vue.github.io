@@ -31,12 +31,16 @@
     <div class="playerControls">
       <div class="sliderContainer" :class="{ expandPlayer: expand }">
         <div class="playerButtons">
-          <span @click="playPrev">prev</span>
+          <span class="playerPrev"
+            ><i @click="playPrev" class="fa fa-step-backward"></i
+          ></span>
           <div class="playerPlayPause" @click="togglePlayback">
             <span v-if="!isPlaying"><i class="fas fa-play"></i></span>
             <span v-else><i class="fas fa-pause"></i></span>
           </div>
-          <span @click="playNext">next</span>
+          <span class="playerNext"
+            ><i @click="playNext" class="fa fa-step-forward"></i
+          ></span>
         </div>
         <!-- input range for time slider  -->
         <input
@@ -159,6 +163,7 @@
 </script>
 
 <style>
+  /* on desktop  */
   .playerContainer {
     height: 150px;
     position: sticky;
@@ -206,7 +211,19 @@
     cursor: pointer;
     color: #fff;
   }
-
+  .playerPlayPause:hover,
+  .playerStop:hover {
+    background-color: #111;
+  }
+  .playerPrev,
+  .playerNext {
+    padding-top: 12px;
+    color: #e0dada;
+  }
+  .playerPrev:hover,
+  .playerNext:hover {
+    color: #111;
+  }
   .playerImage {
     display: flex;
     width: 30%;
@@ -261,5 +278,23 @@
   }
   .playerButtons {
     display: flex;
+  }
+  /* "smaller" deskstop  */
+  @media screen and (max-width: 1110px) {
+    body {
+      background-color: pink;
+    }
+  }
+  /* on tablet  */
+  @media screen and (max-width: 810px) {
+    body {
+      background-color: turquoise;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    body {
+      background-color: orange;
+    }
   }
 </style>

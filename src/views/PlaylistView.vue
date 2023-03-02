@@ -35,7 +35,7 @@
           </div>
           <!-- title -->
           <div class="trackTitle">
-            {{ track.track.name }}
+            <div class="animateTrackName">{{ track.track.name }}</div>
           </div>
 
           <div class="trackArtist">
@@ -254,10 +254,26 @@
   /* titel */
   .trackTitle {
     font-weight: bold;
+    width: 400px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     grid-area: trackTitle;
+  }
+  .animateTrackName {
+    float: left;
+    animation-duration: 10s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-name: move;
+  }
+  @keyframes move {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translate(-100%);
+    }
   }
 
   /* artist */
