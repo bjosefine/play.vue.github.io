@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Genres</h1>
-    <!-- playlistContainer on multiple pages -->
+    <!-- classnames on multiple pages GenreCollection, PlayListitems-->
     <div class="playlistContainer" v-if="genreCategories">
       <div class="genreCategoriesList">
         <div
