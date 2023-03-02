@@ -44,7 +44,9 @@
             <li
               v-for="(track, index) in artistTracks.slice(0, 5)"
               :key="index"
+              :class="{ selected: index === selectedTrackIndex }"
               class="trackItem"
+              @click="playTrack(index)"
             >
               <div class="trackDetails">
                 <!-- Track Image -->
@@ -53,7 +55,9 @@
                 </div>
                 <!-- Track Title -->
                 <div class="trackTitle">
-                  {{ track.name }}
+                  <div class="animateTrackName">
+                    {{ track.name }}
+                  </div>
                 </div>
                 <!-- Track Artist -->
                 <div class="trackArtist">
@@ -93,23 +97,69 @@
         </div>
       </div>
       <!-- End of Albums div -->
+      <div v-if="selectedTrackIndex !== null">
+        <PlayerController
+          :key="tracks[selectedTrackIndex].track.id"
+          :track="tracks[selectedTrackIndex].track"
+          :audio="audio"
+          :autoplay="autoplay"
+          @playNext="playNext()"
+          @playPrev="playPrev()"
+        ></PlayerController>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import spotify from '../api/spotify.js'
+  import PlayerController from '../components/PlayerController.vue'
 
   export default {
+    components: {
+      PlayerController
+    },
     data() {
       return {
         artistProfile: null,
         artistAlbums: null,
-        artistTracks: null
+        artistTracks: null,
+        playlist: null,
+        tracks: null,
+        selectedTrackIndex: null,
+        autoplay: true,
+        isPlaying: false,
+        audio: new Audio()
       }
     },
 
     methods: {
+      formatDuration(durationMs) {
+        const minutes = Math.floor(durationMs / 1000 / 60)
+        const seconds = Math.floor((durationMs / 1000) % 60)
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+      },
+      // play track from list
+      playTrack(index) {
+        if (index === this.selectedTrackIndex) {
+          return
+        }
+
+        this.selectedTrackIndex = index
+        this.isPlaying = true
+        console.log(this.selectedTrackIndex, 'current')
+        console.log(this.tracks, 'tracksdata')
+      },
+      // play next track in list
+      playNext() {
+        this.selectedTrackIndex = this.selectedTrackIndex + 1
+        console.log(this.selectedTrackIndex + 1, 'test next')
+      },
+      // play previous track in list
+      playPrev() {
+        this.selectedTrackIndex = this.selectedTrackIndex - 1
+        console.log(this.selectedTrackIndex - 1, 'test prev')
+      },
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)
@@ -122,11 +172,21 @@
       this.artistProfile = await spotify.getArtists(artistId)
       this.artistAlbums = await spotify.getArtistsAlbums(artistId)
       this.artistTracks = await spotify.getToptracks(artistId)
+      this.tracks = this.artistTracks
+      console.log(this.artistTracks, 'url')
     }
   }
 </script>
 
 <style scoped>
+  .playerContainer {
+    background: rgba(138, 51, 138, 0.02);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.9px);
+    -webkit-backdrop-filter: blur(7.9px);
+    border: 1px solid rgba(138, 51, 138, 0.3);
+  }
   /* Artist Header */
   .artistPage {
     display: flex;

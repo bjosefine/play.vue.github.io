@@ -54,7 +54,7 @@
         <!-- showing the timeduration of the song and the total time of the song (00:00) -->
         <div class="playerTime">{{ currentTime }} / {{ totalTime }}</div>
       </div>
-      <div class="audioControls">
+      <div class="audioControls" :class="{ expandPlayer: expand }">
         <div class="audioOnOff" @click="toggleSound">
           <span v-if="audioVol"><i class="fa fa-volume-up"></i></span>
           <span v-else><i class="fa fa-volume-off"></i></span>
@@ -318,7 +318,7 @@
   }
 
   .sliderContainer input[type='range'] {
-    width: 700px;
+    width: 550px;
     margin: 0 10px;
     color: gray;
   }
@@ -330,10 +330,14 @@
   .playerButtons {
     display: flex;
   }
+  .audioControls.expandPlayer {
+    display: none;
+  }
   .audioControls {
     display: flex;
     margin-top: 20px;
     margin-left: 17%;
+    margin-right: 0;
   }
   .audioOnOff {
     width: 20px;
