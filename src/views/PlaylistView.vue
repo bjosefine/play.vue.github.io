@@ -197,17 +197,20 @@
   }
   /* track heading */
   .titleHeading {
+    font-size: 17px;
     margin-left: 8rem;
     grid-area: titleHeader;
   }
   /* artist heading */
   .artistHeading {
+    font-size: 17px;
     grid-area: artistHeading;
     justify-self: center;
     padding-left: 1rem;
   }
   /* track heading */
   .trackTime {
+    font-size: 17px;
     grid-area: timeHead;
     justify-self: end;
   }
