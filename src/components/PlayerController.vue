@@ -195,9 +195,6 @@
     position: relative;
     z-index: 4;
   }
-  .playerArtist {
-    color: #685b5b;
-  }
   .playerPlayPause,
   .playerStop {
     width: 50px;
@@ -226,8 +223,8 @@
   }
   .playerImage {
     display: flex;
-    width: 30%;
-    justify-content: space-around;
+    width: 70%;
+    justify-content: start;
   }
   .playerImage.expandPlayer {
     display: block;
@@ -238,7 +235,6 @@
   .playerImageSrc {
     width: 120px;
     height: 120px;
-    margin-left: 25px;
   }
   .playerImageSrc.expandPlayer {
     width: 400px;
@@ -248,7 +244,18 @@
     justify-content: center;
   }
   .artistInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
     margin-left: 0.5pc;
+  }
+  .playerTitle {
+    text-align: start;
+  }
+  .playerArtist {
+    color: #685b5b;
   }
 
   .playerPlayPause:hover,
