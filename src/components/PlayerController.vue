@@ -54,6 +54,20 @@
         <!-- showing the timeduration of the song and the total time of the song (00:00) -->
         <div class="playerTime">{{ currentTime }} / {{ totalTime }}</div>
       </div>
+      <div class="audioControls">
+        <div class="audioOnOff" @click="toggleSound">
+          <span v-if="audioVol"><i class="fa fa-volume-up"></i></span>
+          <span v-else><i class="fa fa-volume-off"></i></span>
+        </div>
+        <input
+          type="range"
+          ref="audioSlider"
+          min="0"
+          max="1"
+          step="0.01"
+          @input="seekAudioPosition"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -74,7 +88,8 @@
         totalTime: '0:00',
         duration: 0,
         audio: new Audio(),
-        expand: false
+        expand: false,
+        audioVol: true
       }
     },
     // make the currently playing song stop when starting another song
@@ -141,6 +156,35 @@
         // } else {
         //   this.$refs.player.currentTime = 0
         // }
+      },
+      // function to change icon sound off/on
+      toggleSound() {
+        if (this.audioVol) {
+          this.soundOff()
+        } else {
+          this.soundOn()
+        }
+      },
+      // making sound on have volume value set to 1
+      soundOn() {
+        this.$refs.player.volume = 1
+        this.audioVol = true
+        this.$refs.audioSlider.value = 1
+      },
+      // making sound off have volume 0
+      soundOff() {
+        this.$refs.player.volume = 0
+        this.audioVol = false
+        this.$refs.audioSlider.value = 0
+      },
+      // change volume when using the slider and make it change to sound off if value hits 0
+      seekAudioPosition(event) {
+        this.$refs.player.volume = event.target.value
+        if (this.$refs.player.volume > 0) {
+          this.audioVol = true
+        } else {
+          this.audioVol = false
+        }
       },
       // function for expanding player to full screen (setting expand to true when clicking the image)
       expandPlayer() {
@@ -286,22 +330,36 @@
   .playerButtons {
     display: flex;
   }
+  .audioControls {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 17%;
+  }
+  .audioOnOff {
+    width: 20px;
+    margin-right: 0.5pc;
+    color: #e0dada;
+  }
+  .audioOnOff:hover {
+    color: #111;
+  }
+  /* responsive
   /* "smaller" deskstop  */
-  @media screen and (max-width: 1110px) {
+  /* @media screen and (max-width: 1110px) {
     body {
       background-color: pink;
     }
-  }
+  } */
   /* on tablet  */
-  @media screen and (max-width: 810px) {
+  /* @media screen and (max-width: 810px) {
     body {
       background-color: turquoise;
     }
-  }
+  } */
 
-  @media screen and (max-width: 500px) {
+  /* @media screen and (max-width: 500px) {
     body {
       background-color: orange;
     }
-  }
+  } */
 </style>
