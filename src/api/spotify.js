@@ -70,8 +70,22 @@ const getPlaylistTracks = async (playlistId) => {
 /// Get genres from api
 const getGenres = async () => {
   const token = await getToken()
+  const response = await fetch(`https://api.spotify.com/v1/browse/categories`, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+
+  const data = await response.json()
+  console.log('genre', data.categories.items)
+  return data.categories.items
+}
+
+// Get category data to access categories playlists info
+const getCategory = async (categoryId) => {
+  const token = await getToken()
   const response = await fetch(
-    `https://api.spotify.com/v1/browse/categories/`,
+    `https://api.spotify.com/v1/browse/categories/${categoryId}`,
     {
       headers: {
         Authorization: 'Bearer ' + token
@@ -80,9 +94,26 @@ const getGenres = async () => {
   )
 
   const data = await response.json()
-  console.log('genre', data.categories.items)
-  return data.categories.items
+  console.log('Category', data)
+  return data
 }
+// Get categories for genres
+const getCategoryPlaylist = async (categoryId) => {
+  const token = await getToken()
+  const response = await fetch(
+    `https://api.spotify.com/v1/browse/categories/${categoryId}/playlists`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+
+  const data = await response.json()
+  console.log('Playlist', data)
+  return data
+}
+
 /// search tracks from api
 const searchTracks = async (query) => {
   const token = await getToken()
@@ -253,5 +284,7 @@ export default {
   getArtistsAlbums,
   getAlbumTracks,
   getToptracks,
-  getSpecificAlbum
+  getSpecificAlbum,
+  getCategoryPlaylist,
+  getCategory
 }
