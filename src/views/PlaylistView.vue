@@ -9,16 +9,19 @@
       <h2 class="playlistName">{{ playlist.name }}</h2>
     </div>
   </div>
+  <!-- end of playlist image and name -->
   <!-- headings  -->
   <div class="trackHeadings">
-    <!-- <rowgap></rowgap> -->
     <div>
       <h1 class="titleHeading">Title</h1>
     </div>
     <h1 class="artistHeading">Artist</h1>
     <h1 class="trackTime">Time</h1>
   </div>
+  <!-- end of headings -->
+  <!-- a line -->
   <hr class="headerLine" />
+  <!-- end of line -->
   <div class="playlist" v-if="playlist">
     <ol class="trackList">
       <li
@@ -138,31 +141,9 @@
   }
   /* end of player container */
 
-  /* flex box experiment */
-  /* .flexContainerPlaylist {
-    display: flex;
-    flex-direction: row;
-    justify-content: unset;
-    align-items: end;
-    background-color: red;
-    width: 39%;
-
-    margin-top: 2rem;
-  }
-  .playlistImage {
-    background-color: greenyellow;
-  }
-  .PlaylistHeadingContent {
-    background-color: blueviolet;
-  }
-  .playlistHeading {
-    font-size: large;
-    background-color: aqua;
-  } */
   .playlistName {
     font-size: 40px;
     color: rgb(58, 57, 57);
-    /* background-color: blue; */
   }
   /* end of flex */
 
