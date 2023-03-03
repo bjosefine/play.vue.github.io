@@ -4,7 +4,7 @@
     <div class="artistHeader">
       <!-- Artist Image -->
       <div class="artistImage">
-        <img :src="artistProfile.images[0].url" alt="Artist Image" />
+        <img :src="artistProfile.images[1].url" alt="Artist Image" />
       </div>
       <!-- Artist profile details -->
       <div class="artistDetails">
@@ -13,10 +13,6 @@
         <!-- Artist followers -->
         <p class="artistFollowers">
           {{ artistProfile.followers.total }} followers
-        </p>
-        <!-- Artist genre -->
-        <p class="artistGenres">
-          Genres: {{ artistProfile.genres.join(', ') }}
         </p>
       </div>
     </div>
@@ -28,14 +24,14 @@
         <h2 class="sectionTitle">Popular songs</h2>
 
         <!-- Header for small headers, title, artist, time -->
-        <div class="trackHeadings">
+        <!-- <div class="trackHeadings">
           <div>
             <h1 class="titleHeading">Title</h1>
           </div>
           <h1 class="artistHeading">Artist</h1>
           <h1 class="trackTime">Time</h1>
         </div>
-        <hr class="headerLine" />
+        <hr class="headerLine" /> -->
 
         <!-- Songlist -->
         <div class="playlist">
@@ -197,13 +193,15 @@
 
   .artistHeader {
     display: flex;
+    width: 90%;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 2rem;
   }
 
   .artistImage {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
     margin-right: auto;
@@ -217,11 +215,15 @@
 
   .artistDetails {
     display: flex;
+    height: 300px;
+    justify-content: space-between;
     flex-direction: column;
+    font-size: 4rem;
   }
-
+  .artistName h1 {
+    font-size: 4rem;
+  }
   .artistName {
-    font-size: 2rem;
     margin-bottom: 0.5rem;
     color: rgb(58, 57, 57);
   }
@@ -241,11 +243,12 @@
   } */
 
   .sectionTitle {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     width: 100%;
     display: flex;
-    color: rgb(58, 57, 57);
+    color: rgb(21, 20, 20);
   }
 
   /* .songList {
@@ -303,6 +306,7 @@
     justify-content: center;
   }
   .albumList {
+    justify-content: center;
     list-style: none;
     width: 100%;
     flex-direction: row;
@@ -313,9 +317,15 @@
 
   .albumItem {
     display: flex;
+    background: rgba(255, 255, 255, 0.23);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     align-items: column;
     margin: 0;
-    padding: 0;
+    padding: 20px;
   }
 
   .albumImage {
@@ -334,6 +344,7 @@
     width: 19rem;
     margin: 0;
     padding: 0;
+    font-size: 3rem;
   }
 
   .albumName {
