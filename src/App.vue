@@ -35,7 +35,7 @@
 
 <style>
   body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(
       50% 50% at 50% 50%,
       rgba(198, 63, 184, 0.8) 25.52%,

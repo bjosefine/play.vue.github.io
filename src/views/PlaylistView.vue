@@ -71,6 +71,7 @@
 </template>
 
 <script>
+  import { onMounted } from 'vue'
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
 
@@ -125,7 +126,13 @@
         const seconds = Math.floor((durationMs / 1000) % 60)
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
       }
+      // makeAnimate() {
+      //   console.log(this.animateTrackName, 'trackname')
+      // }
     }
+    // mounted() {
+    //   this.makeAnimate()
+    // }
   }
 </script>
 
@@ -260,7 +267,7 @@
       transform: translateX(0%);
     }
     to {
-      transform: translate(-100%);
+      transform: translate(-50%);
     }
   }
 
