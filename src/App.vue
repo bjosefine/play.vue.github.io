@@ -34,17 +34,19 @@
 </script>
 
 <style>
-  #app {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000;
-    font-size: large;
-    text-align: center;
+  body {
     background: radial-gradient(
       50% 50% at 50% 50%,
       rgba(198, 63, 184, 0.8) 25.52%,
       rgba(189, 173, 173, 0) 100%
     );
     background-blend-mode: darken;
+  }
+  #app {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    font-size: large;
+    text-align: center;
   }
   .appContainer {
     display: flex;
@@ -68,6 +70,16 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgb(241, 179, 241);
+    background: rgba(221, 31, 109, 0.2);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(221, 31, 109, 0.3);
+    background: rgba(221, 31, 109, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(221, 31, 109, 0.3);
   }
 </style>

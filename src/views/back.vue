@@ -1,15 +1,8 @@
->
-<template>
+<!-- <template>
   <div class="Search">
-    <div class="search-bar">
-      <input v-model="query" type="text" placeholder="Search for music" />
-      <button @click="search" :disabled="loading">
-        <i v-if="!loading" class="fas fa-search"></i>
-        <i v-else class="fas fa-spinner fa-spin"></i>
-      </button>
-    </div>
+    <input v-model="query" type="text" placeholder="Search for music" />
 
-    <transition-group name="result" tag="div" class="results" v-if="results">
+    <div class="results" v-if="results">
       <div v-for="result in results" :key="result.id" class="result">
         <router-link
           :to="
@@ -29,22 +22,17 @@
           </div>
         </router-link>
       </div>
-    </transition-group>
+    </div>
 
-    <div class="loading" v-if="loading">Loading...</div>
-    <GenreCategories />
+    <div v-if="loading">Loading...</div>
   </div>
 </template>
-
 <script>
   import spotify from '../api/spotify.js'
-  import GenreCategories from '../components/GenreCategories.vue'
 
   export default {
     name: 'Search',
-    components: {
-      GenreCategories
-    },
+
     data() {
       return {
         query: '',
@@ -137,47 +125,15 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 20px;
-  }
-
-  .search-bar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 500px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
   }
 
   input[type='text'] {
     font-size: 18px;
     padding: 10px;
-    border: none;
-    flex: 1;
-    outline: none;
-  }
-
-  button {
-    font-size: 18px;
-    padding: 10px 15px;
-
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-
-  button:hover {
-    background-color: #0f9e43;
-  }
-
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 300px;
   }
 
   .results {
@@ -185,36 +141,21 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    width: 100%;
-  }
-
-  .result-enter-active,
-  .result-leave-active {
-    transition: all 0.3s ease-in-out;
-  }
-
-  .result-enter,
-  .result-leave-to {
-    opacity: 0;
-    transform: translateY(20px);
+    width: 400px;
   }
 
   .result {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    width: 100%;
-    max-width: 800px;
+    width: 800px;
     background-color: #f7f7f7;
     border-radius: 4px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
   }
 
   .result:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
   }
 
   .result-image {
@@ -247,19 +188,5 @@
 
   .loading {
     margin-top: 20px;
-    font-size: 18px;
   }
-
-  .fa-spinner {
-    animation: spin 0.8s linear infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-</style>
+</style> -->
