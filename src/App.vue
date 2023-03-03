@@ -55,18 +55,26 @@
 
   .mainContent {
     flex-grow: 1;
-    margin-left: 20rem;
+    margin-left: 3rem;
     padding: 1rem;
     box-sizing: border-box;
   }
-
   .MenuNav {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    width: 15rem;
+    align-items: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(221, 31, 110, 0.027);
+    background: rgba(206, 17, 206, 0.062);
+    box-shadow: 0 4px 30px rgba(213, 14, 170, 0.132);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid #535353;
+    padding: 10px;
+    width: 60px;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
@@ -81,5 +89,6 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(221, 31, 109, 0.3);
+    filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.114));
   }
 </style>
