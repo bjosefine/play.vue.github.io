@@ -217,6 +217,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     transition: height ease-out 2s;
   }
   .playerContainer.expandPlayer {

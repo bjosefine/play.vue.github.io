@@ -17,21 +17,10 @@
       </div>
     </div>
 
-    <!-- ARTIST PAGE CONTENT -->
     <div class="artistContent">
       <div class="popularSongs">
         <!-- Text for Popular songs -->
         <h2 class="sectionTitle">Popular songs</h2>
-
-        <!-- Header for small headers, title, artist, time -->
-        <!-- <div class="trackHeadings">
-          <div>
-            <h1 class="titleHeading">Title</h1>
-          </div>
-          <h1 class="artistHeading">Artist</h1>
-          <h1 class="trackTime">Time</h1>
-        </div>
-        <hr class="headerLine" /> -->
 
         <!-- Songlist -->
         <div class="playlist">
@@ -93,17 +82,18 @@
         </div>
       </div>
       <!-- End of Albums div -->
-      <div v-if="selectedTrackIndex !== null">
-        <PlayerController
-          :key="tracks[selectedTrackIndex].track.id"
-          :track="tracks[selectedTrackIndex].track"
-          :audio="audio"
-          :autoplay="autoplay"
-          @playNext="playNext()"
-          @playPrev="playPrev()"
-        ></PlayerController>
-      </div>
     </div>
+  </div>
+  <!-- Player controller -->
+  <div v-if="selectedTrackIndex !== null">
+    <PlayerController
+      :key="artistTracks[selectedTrackIndex].id"
+      :track="artistTracks[selectedTrackIndex]"
+      :audio="audio"
+      :autoplay="autoplay"
+      @playNext="playNext()"
+      @playPrev="playPrev()"
+    ></PlayerController>
   </div>
 </template>
 
@@ -177,11 +167,13 @@
 <style scoped>
   .playerContainer {
     background: rgba(138, 51, 138, 0.02);
-    border-radius: 16px 16px 0 0;
+    border-radius: 3px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
-    border: 1px solid rgba(138, 51, 138, 0.3);
+    border: 1px solid rgba(138, 51, 138, 0.624);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
   }
   /* Artist Header */
   .artistPage {
@@ -348,11 +340,14 @@
   }
 
   .albumName {
+    margin-top: 2rem;
     font-size: 1rem;
+    font-weight: 900;
   }
 
   .albumReleaseDate {
     font-size: 0.8rem;
+    color: #5e5c5c;
     padding: 0;
     margin: 0;
   }

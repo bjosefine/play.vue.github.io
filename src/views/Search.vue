@@ -1,37 +1,85 @@
->
 <template>
-  <div class="Search">
-    <div class="search-bar">
+  <div class="searchPage">
+    <div class="searchBar">
       <input v-model="query" type="text" placeholder="Search for music" />
-      <button @click="search" :disabled="loading">
-        <i v-if="!loading" class="fas fa-search"></i>
-        <i v-else class="fas fa-spinner fa-spin"></i>
-      </button>
+      <div v-if="loading" class="loadingAnimation">
+        <i class="fas fa-spinner"></i>
+      </div>
     </div>
 
-    <transition-group name="result" tag="div" class="results" v-if="results">
-      <div v-for="result in results" :key="result.id" class="result">
-        <router-link
-          :to="
-            result.type === 'artist'
-              ? '/artist/' + result.id
-              : '/' + result.type + '/' + result.id
-          "
-        >
-          <div class="result-image">
-            <img :src="result.images[0].url" alt="" />
-          </div>
-          <div class="result-details">
-            <div class="result-name">{{ result.name }}</div>
-            <div class="result-artists" v-if="result.artists">
-              by {{ result.artists.map((artist) => artist.name).join(', ') }}
+    <div class="searchResults" v-if="results.length > 0">
+      <div v-if="artists.length > 0" class="gridSection">
+        <h3 class="resultTypeHeading">Artists</h3>
+        <div class="gridContainer">
+          <router-link
+            :to="'/artist/' + artist.id"
+            v-for="(artist, index) in artists.slice(0, 4)"
+            :key="index"
+          >
+            <div class="resultItem">
+              <div class="resultImage">
+                <img
+                  :src="artist.images.length > 0 ? artist.images[0].url : ''"
+                  alt=""
+                />
+              </div>
+              <div class="resultDetails">
+                <div class="resultName">{{ artist.name }}</div>
+              </div>
             </div>
-          </div>
-        </router-link>
+          </router-link>
+        </div>
       </div>
-    </transition-group>
-
-    <div class="loading" v-if="loading">Loading...</div>
+      <div v-if="playlists.length > 0" class="gridSection">
+        <h3 class="resultTypeHeading">Playlists</h3>
+        <div class="gridContainer">
+          <router-link
+            :to="'/playlist/' + playlist.id"
+            v-for="(playlist, index) in playlists.slice(0, 4)"
+            :key="index"
+          >
+            <div class="resultItem">
+              <div class="resultImage">
+                <img
+                  :src="
+                    playlist.images.length > 0 ? playlist.images[0].url : ''
+                  "
+                  alt=""
+                />
+              </div>
+              <div class="resultDetails">
+                <div class="resultName">{{ playlist.name }}</div>
+              </div>
+            </div>
+          </router-link>
+        </div>
+      </div>
+      <div v-if="albums.length > 0" class="gridSection">
+        <h3 class="resultTypeHeading">Albums</h3>
+        <div class="gridContainer">
+          <router-link
+            :to="'/album/' + album.id"
+            v-for="(album, index) in albums.slice(0, 4)"
+            :key="index"
+          >
+            <div class="resultItem">
+              <div class="resultImage">
+                <img
+                  :src="album.images.length > 0 ? album.images[0].url : ''"
+                  alt=""
+                />
+              </div>
+              <div class="resultDetails">
+                <div class="resultName">{{ album.name }}</div>
+                <div class="resultArtists">
+                  by {{ album.artists.map((artist) => artist.name).join(', ') }}
+                </div>
+              </div>
+            </div>
+          </router-link>
+        </div>
+      </div>
+    </div>
     <GenreCategories />
   </div>
 </template>
@@ -52,7 +100,6 @@
         loading: false
       }
     },
-
     watch: {
       query: function (newQuery, oldQuery) {
         if (newQuery !== oldQuery) {
@@ -60,21 +107,35 @@
         }
       }
     },
-
+    computed: {
+      artists() {
+        return this.results.filter((result) => result.type === 'artist')
+      },
+      playlists() {
+        return this.results.filter((result) => result.type === 'playlist')
+      },
+      albums() {
+        return this.results.filter((result) => result.type === 'album')
+      }
+    },
     methods: {
       async search() {
         if (!this.query) {
           return
         }
-
         this.loading = true
-
-        const tracksResponse = await spotify.search('track', this.query)
-        const artistsResponse = await spotify.search('artist', this.query)
-        const albumsResponse = await spotify.search('album', this.query)
-        const playlistsResponse = await spotify.search('playlist', this.query)
-
-        const tracks = tracksResponse?.items?.map((track) => {
+        const [
+          tracksResponse,
+          artistsResponse,
+          albumsResponse,
+          playlistsResponse
+        ] = await Promise.all([
+          spotify.search('track', this.query),
+          spotify.search('artist', this.query),
+          spotify.search('album', this.query),
+          spotify.search('playlist', this.query)
+        ])
+        const tracks = tracksResponse?.tracks?.items?.map((track) => {
           return {
             id: track.id,
             name: track.name,
@@ -87,7 +148,6 @@
             }
           }
         })
-
         const artists = artistsResponse?.artists?.items?.map((artist) => {
           return {
             id: artist.id,
@@ -96,7 +156,6 @@
             images: artist.images
           }
         })
-
         const albums = albumsResponse?.albums?.items?.map((album) => {
           return {
             id: album.id,
@@ -106,7 +165,6 @@
             images: album.images
           }
         })
-
         const playlists = playlistsResponse?.playlists?.items?.map(
           (playlist) => {
             return {
@@ -117,14 +175,12 @@
             }
           }
         )
-
         this.results = [
-          ...(tracks || []),
           ...(artists || []),
+          ...(playlists || []),
           ...(albums || []),
-          ...(playlists || [])
+          ...(tracks || [])
         ]
-
         this.loading = false
       }
     }
@@ -132,134 +188,198 @@
 </script>
 
 <style>
-  .Search {
+  .searchPage {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 20px;
+    padding: 80px 0;
+    font-size: 16px;
+    margin: 30px;
   }
 
-  .search-bar {
+  .searchBar {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 500px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  input[type='text'] {
-    font-size: 18px;
+    margin-bottom: 50px;
+    width: 90%;
     padding: 10px;
-    border: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.329);
+  }
+
+  .searchBar input[type='text'] {
     flex: 1;
-    outline: none;
-  }
-
-  button {
-    font-size: 18px;
-    padding: 10px 15px;
-
+    padding: 30px;
     border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    outline: none;
+    font-size: 18px;
+    align-items: center;
+    background-color: #3b3f3c00;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.6rem;
   }
 
-  button:hover {
-    background-color: #0f9e43;
+  .loadingAnimation {
+    margin-left: 20px;
+    font-size: 24px;
+    color: #35814f;
+    animation: spin 1s linear infinite;
   }
 
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
-  .results {
+  .searchQuery {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    display: none;
+  }
+
+  .resultTypeHeading {
+    display: flex;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #373535;
+    font-weight: 800;
+  }
+
+  .gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .resultItem {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    width: 100%;
-  }
-
-  .result-enter-active,
-  .result-leave-active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    height: 450px;
+    width: 360px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
     transition: all 0.3s ease-in-out;
   }
 
-  .result-enter,
-  .result-leave-to {
-    opacity: 0;
-    transform: translateY(20px);
+  .resultImage {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    overflow: hidden;
   }
 
-  .result {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    width: 100%;
-    max-width: 800px;
-    background-color: #f7f7f7;
-    border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .result:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .result-image {
-    width: 64px;
-    height: 64px;
-    margin-right: 10px;
-  }
-
-  .result-image img {
+  .resultImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4px;
   }
 
-  .result-details {
-    flex: 1;
+  .resultItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  .result-name {
+  .resultDetails {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resultName {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
   }
 
-  .result-artists {
+  .resultArtists {
     font-size: 14px;
-    color: #666;
+    color: #999;
   }
 
-  .loading {
-    margin-top: 20px;
-    font-size: 18px;
+  .gridSection {
+    margin-bottom: 40px;
   }
-
-  .fa-spinner {
-    animation: spin 0.8s linear infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
+  @media (max-width: 768px) {
+    .gridContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    to {
-      transform: rotate(360deg);
+
+    .resultItem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      height: 300px;
+      margin: 10px;
+      text-align: center;
+    }
+
+    .resultImage {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .resultImage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .resultDetails {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .resultName {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .resultArtists {
+      font-size: 12px;
+    }
+
+    .searchBar {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .searchBar input[type='text'] {
+      font-size: 14px;
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 10px;
     }
   }
 </style>

@@ -132,12 +132,14 @@
 <style>
   /* player-container Used on many pages important, don't adjust*/
   .playerContainer {
-    background: rgba(138, 51, 138, 0.02);
-    border-radius: 16px 16px 0 0;
+    background: rgba(236, 172, 236, 0.02);
+    border-radius: 3px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
-    border: 1px solid rgba(138, 51, 138, 0.3);
+    border: 1px solid rgba(138, 51, 138, 0.624);
+    color: rgb(41, 38, 38);
+    font-weight: 800;
   }
   /* end of player container */
 
