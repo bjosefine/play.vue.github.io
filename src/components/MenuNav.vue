@@ -1,20 +1,12 @@
 <template>
   <div class="MenuNav">
     <ul>
-      <li><i class="bi bi-house"></i> Home</li>
+      <li><i class="bi bi-house"></i></li>
       <router-link tag="li" to="/search">
-        <i class="bi bi-search"></i> Search
+        <i class="bi bi-search"></i>
       </router-link>
-      <li><i class="bi bi-person"></i> Profile</li>
-      <div class="PlaylistNav">
-        <li><i class="bi bi-music-note-list"></i> Playlist</li>
-        <li v-for="playlist in featuredPlaylists" :key="playlist.id">
-          <router-link
-            :to="{ name: 'playlist', params: { id: playlist.id } }"
-            >{{ playlist.name }}</router-link
-          >
-        </li>
-      </div>
+      <li><i class="bi bi-person"></i></li>
+      <li><i class="bi bi-music-note-list"></i></li>
     </ul>
   </div>
 </template>
@@ -35,28 +27,39 @@
 </script>
 
 <style scoped>
-  .menuNav {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5rem;
-  }
-  .menuNav a {
+  .MenuNav a {
     text-decoration: none;
   }
 
   ul {
+    list-style-type: none;
     padding: 0;
-    margin: 5px;
-    position: relative;
+    margin: auto;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
   li {
     display: flex;
-    justify-content: left;
+    align-items: center;
+    margin-bottom: 20px;
+    color: rgba(124, 13, 117, 0.53);
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  li:hover {
+    color: rgb(45, 41, 41);
   }
   i {
-    margin: 5px;
+    font-size: 20px;
+    margin-right: 5px;
   }
   a {
-    color: rgb(21, 22, 23);
+    color: rgba(124, 13, 117, 0.53);
+  }
+
+  a:hover {
+    color: rgb(45, 41, 41);
   }
 </style>
