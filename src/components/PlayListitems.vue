@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Featured Playlists</h1>
+    <h1>Featur Playlists</h1>
     <div class="playlistContainer" v-if="featuredPlaylists">
       <div class="playlistList">
         <div
