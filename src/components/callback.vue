@@ -12,24 +12,19 @@
 
     async mounted() {
       try {
-        // Get access token from the URL hash
         const hashParams = new URLSearchParams(window.location.hash.substr(1))
         const accessToken = hashParams.get('access_token')
         if (!accessToken) {
           throw new Error('Access token not found')
         }
 
-        // Store access token in local storage
         localStorage.setItem('access_token', accessToken)
 
-        // Get user information with the access token
         const userInfo = await getUserInfo(accessToken)
 
-        // Store user information in local storage
         localStorage.setItem('user_id', userInfo.id)
         localStorage.setItem('display_name', userInfo.display_name)
 
-        // Redirect to home page
         this.$router.push('/')
       } catch (error) {
         console.error(error)
