@@ -4,7 +4,7 @@ import Playlist from './views/PlaylistView.vue'
 import AlbumView from './views/AlbumView.vue'
 import PlayerView from './views/PlayerView.vue'
 import ArtistView from './views/ArtistView.vue'
-import Search from './views/Search.vue'
+import SearchView from './views/SearchView.vue'
 import GenreCollection from './components/GenreCollection.vue'
 
 const routes = [
@@ -13,7 +13,7 @@ const routes = [
   { path: '/album/:id', name: 'album', component: AlbumView },
   { path: '/song/:id', name: 'PlayerView', component: PlayerView },
   { path: '/artist/:id', name: 'ArtistView', component: ArtistView },
-  { path: '/search', name: 'search', component: Search },
+  { path: '/search', name: 'SearchView', component: SearchView },
   {
     path: '/categories/:categoryId/playlist',
     name: 'CategoryPlaylist',
