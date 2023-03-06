@@ -64,14 +64,14 @@
 
   .playerPlayPause,
   .playerStop {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: #e0dada;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 10px;
+    margin-top: 10px;
     cursor: pointer;
     color: #fff;
   }

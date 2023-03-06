@@ -35,7 +35,7 @@
             ><i @click="playPrev" class="fa fa-step-backward"></i
           ></span>
           <div class="playerPlayPause" @click="togglePlayback">
-            <span v-if="!isPlaying"><i class="fas fa-play"></i></span>
+            <span v-if="!isPlaying"><i class="bi bi-play"></i></span>
             <span v-else><i class="fas fa-pause"></i></span>
           </div>
           <span class="playerNext"
@@ -247,6 +247,8 @@
   }
   .playerPrev,
   .playerNext {
+    width: 30px;
+    height: 30px;
     padding-top: 12px;
     color: #e0dada;
   }

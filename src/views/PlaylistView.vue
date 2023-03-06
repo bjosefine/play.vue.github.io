@@ -145,10 +145,11 @@
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
     color: rgb(41, 38, 38);
-    font-weight: 800;
   }
   /* end of player container */
-
+  .playlist {
+    margin-bottom: 8%;
+  }
   .playlistName {
     font-size: 40px;
     color: rgb(58, 57, 57);
