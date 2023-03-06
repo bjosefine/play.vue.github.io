@@ -1,7 +1,7 @@
 <template>
   <div class="appContainer">
     <MenuNav />
-    <p>hej hej</p>
+    <p>hej hej hej</p>
     <main class="mainContent">
       <HeaderNav />
       <router-view />
