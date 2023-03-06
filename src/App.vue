@@ -1,7 +1,9 @@
 <template>
   <div class="appContainer">
     <MenuNav />
+
     <main class="mainContent">
+      <HeaderNav />
       <router-view />
     </main>
   </div>
@@ -10,10 +12,12 @@
 <script>
   import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
+  import HeaderNav from './components/HeaderNav.vue'
 
   export default {
     components: {
-      MenuNav
+      MenuNav,
+      HeaderNav
     },
     name: 'App',
     data() {
@@ -55,8 +59,7 @@
 
   .mainContent {
     flex-grow: 1;
-    margin-left: 3rem;
-    padding: 1rem;
+    margin-left: 4.8%;
     box-sizing: border-box;
   }
   .MenuNav {
@@ -65,8 +68,6 @@
     align-items: center;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(221, 31, 110, 0.027);
     background: rgba(206, 17, 206, 0.062);
     box-shadow: 0 4px 30px rgba(213, 14, 170, 0.132);
     backdrop-filter: blur(5px);
@@ -78,17 +79,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(221, 31, 109, 0.2);
-
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(221, 31, 109, 0.3);
-    background: rgba(221, 31, 109, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(221, 31, 109, 0.3);
     filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.114));
   }
 </style>

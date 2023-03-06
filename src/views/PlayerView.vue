@@ -43,7 +43,6 @@
     left: 0;
     right: 0;
     background-color: #f8f8f8;
-    border-top: 1px solid #d8d8d8;
     display: flex;
     align-items: center;
     justify-content: space-between;

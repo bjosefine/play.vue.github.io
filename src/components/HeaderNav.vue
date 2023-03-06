@@ -1,15 +1,73 @@
 <template>
-  
-  </template>
-  
-  <script>
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
-  
-  </script>
-  
-  <style>
-  
-  </style>
-  
+  <div class="mainnav" :class="{ 'navbar--visible': scrolled }">
+    <div class="goback" @click="goBack">
+      <i class="bi bi-arrow-left-circle-fill"></i>
+    </div>
+    <div class="headprofile"></div>
+    <div class="wheel"></div>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        scrolled: false
+      }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll)
+    },
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleScroll)
+    },
+    methods: {
+      handleScroll() {
+        this.scrolled = window.scrollY > 0
+      },
+      goBack() {
+        this.$router.go(-1)
+      }
+    }
+  }
+</script>
+
+<style>
+  .mainnav {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .navbar--visible {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.9px);
+    -webkit-backdrop-filter: blur(7.9px);
+    color: rgb(41, 38, 38);
+    transition: background-color 0.3s;
+    background: rgba(206, 17, 206, 0.062);
+  }
+
+  .goback {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(240, 41, 226, 0.199);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    color: #fff;
+    position: fixed;
+    cursor: pointer;
+    margin-left: 1%;
+  }
+
+  .goback:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+  }
+</style>

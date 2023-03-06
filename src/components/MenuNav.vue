@@ -1,9 +1,7 @@
 <template>
   <div class="MenuNav">
     <ul>
-      <router-link to="/">
-        <i class="bi bi-house"></i>
-      </router-link>
+      <li><i class="bi bi-house"></i></li>
       <router-link tag="li" to="/search">
         <i class="bi bi-search"></i>
       </router-link>

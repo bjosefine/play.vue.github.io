@@ -209,7 +209,7 @@
 <style>
   /* on desktop  */
   .playerContainer {
-    height: 150px;
+    height: 80px;
     position: sticky;
     bottom: 0;
     left: 0;
@@ -217,7 +217,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition: height ease-out 2s;
   }
   .playerContainer.expandPlayer {
@@ -232,6 +231,7 @@
     justify-content: space-around;
     padding-right: 20px;
     margin-right: 10px;
+    font-size: small;
   }
 
   .playerControls {
@@ -240,19 +240,7 @@
     position: relative;
     z-index: 4;
   }
-  .playerPlayPause,
-  .playerStop {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #e0dada;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
-    cursor: pointer;
-    color: #fff;
-  }
+
   .playerPlayPause:hover,
   .playerStop:hover {
     background-color: #111;
@@ -278,8 +266,8 @@
   }
 
   .playerImageSrc {
-    width: 120px;
-    height: 120px;
+    width: 70px;
+    height: 70px;
   }
   .playerImageSrc.expandPlayer {
     width: 400px;
@@ -348,6 +336,7 @@
   .audioOnOff:hover {
     color: #111;
   }
+
   /* responsive
   /* "smaller" deskstop  */
   /* @media screen and (max-width: 1110px) {
@@ -366,5 +355,5 @@
     body {
       background-color: orange;
     }
-  } */
+  } */ ;
 </style>

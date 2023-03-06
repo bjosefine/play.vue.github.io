@@ -144,7 +144,6 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
-    border: 1px solid rgba(138, 51, 138, 0.624);
     color: rgb(41, 38, 38);
     font-weight: 800;
   }
@@ -254,7 +253,7 @@
     grid-area: trackTitle;
   }
   /* animation values */
-  .animateTrackName {
+  /* .animateTrackName {
     float: left;
     animation-duration: 10s;
     animation-direction: alternate;
@@ -262,14 +261,14 @@
     animation-name: move;
   }
   /* animation to move from right to left */
-  @keyframes move {
+  /* @keyframes move {
     from {
       transform: translateX(0%);
     }
     to {
       transform: translate(-50%);
     }
-  }
+  } */
 
   /* artist */
   .trackArtist {
