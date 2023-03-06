@@ -3,7 +3,7 @@
     <div class="searchBar">
       <input v-model="query" type="text" placeholder="Search for music" />
       <div v-if="loading" class="loadingAnimation">
-        <i class="fas fa-spinner"></i>
+        <i class="fas fa-spinner" />
       </div>
     </div>
 
@@ -89,7 +89,7 @@
   import GenreCategories from '../components/GenreCategories.vue'
 
   export default {
-    name: 'Search',
+    name: 'SearchView',
     components: {
       GenreCategories
     },
