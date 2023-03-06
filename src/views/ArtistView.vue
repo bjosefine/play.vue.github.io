@@ -197,7 +197,7 @@
     justify-content: left;
     margin-bottom: 2rem;
     padding: 0;
-    margin-right: 50%;
+    margin-right: 49%;
   }
 
   .artistImage {
