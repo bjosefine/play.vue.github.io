@@ -55,9 +55,12 @@
     </ol>
     <div v-if="tracks == null">Loading...</div>
     <!-- player-container used for many pages, important -->
+
+    <!-- this code gave an error in console
+    :key="tracks[selectedTrackIndex].track.id" -->
+
     <div v-if="selectedTrackIndex !== null">
       <PlayerController
-        :key="tracks[selectedTrackIndex].track.id"
         :track="tracks[selectedTrackIndex].track"
         :audio="audio"
         :autoplay="autoplay"

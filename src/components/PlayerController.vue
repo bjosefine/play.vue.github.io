@@ -23,7 +23,19 @@
         />
         <div class="artistInfo" :class="{ expandPlayer: expand }">
           <div class="playerTitle">
-            <div class="animatePlayerTrackName">
+            <div
+              v-if="track.name.length > 35"
+              class="animatePlayerTrackNameDesktop"
+            >
+              {{ track.name }}
+            </div>
+            <div
+              v-else-if="this.track.name.length > 20"
+              class="animatePlayerTrackNameMobile"
+            >
+              {{ track.name }}
+            </div>
+            <div v-else>
               {{ track.name }}
             </div>
           </div>
@@ -301,7 +313,7 @@
     overflow: hidden;
     white-space: nowrap;
   }
-  .animatePlayerTrackName {
+  .animatePlayerTrackNameDesktop {
     width: max-content;
     animation-duration: 12s;
     animation-direction: alternate;
@@ -405,6 +417,14 @@
     }
     .playerTitle {
       width: 250px;
+    }
+    .animatePlayerTrackNameMobile {
+      width: max-content;
+      animation-duration: 12s;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: move;
     }
     @keyframes move {
       from {
