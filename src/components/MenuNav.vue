@@ -1,12 +1,12 @@
 <template>
   <div class="MenuNav">
     <ul>
-      <li><i class="bi bi-house"></i></li>
+      <router-link tag="li" to="/"><i class="bi bi-house" /></router-link>
       <router-link tag="li" to="/search">
-        <i class="bi bi-search"></i>
+        <i class="bi bi-search" />
       </router-link>
-      <li><i class="bi bi-person"></i></li>
-      <li><i class="bi bi-music-note-list"></i></li>
+      <li><i class="bi bi-person" /></li>
+      <li><i class="bi bi-music-note-list" /></li>
     </ul>
   </div>
 </template>
