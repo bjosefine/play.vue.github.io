@@ -1,5 +1,10 @@
 <template>
   <div class="playerContainer" :class="{ expandPlayer: expand }">
+    <div
+      class="swipeContainer"
+      v-touch:swipe.left="playNext"
+      v-touch:swipe.right="playPrev"
+    />
     <!-- the audio player -->
     <audio
       ref="player"
@@ -10,12 +15,9 @@
     <!-- end audio player  -->
     <!-- information of the song: picture, name of song and artist, calling the expand function when clicking the image -->
     <div class="playerInfo">
-      <div
-        @click="expandPlayer()"
-        class="playerImage"
-        :class="{ expandPlayer: expand }"
-      >
+      <div class="playerImage" :class="{ expandPlayer: expand }">
         <img
+          @click="expandPlayer()"
           class="playerImageSrc"
           :class="{ expandPlayer: expand }"
           :src="track.album.images[0].url"
@@ -291,6 +293,7 @@
   .playerImageSrc {
     width: 70px;
     height: 70px;
+    z-index: 2;
   }
   .playerImageSrc.expandPlayer {
     width: 400px;
@@ -399,6 +402,12 @@
     .playerPrev,
     .playerNext {
       display: none;
+    }
+    .swipeContainer {
+      width: 90%;
+      height: 75px;
+      position: absolute;
+      z-index: 1;
     }
     .playerContainer {
       justify-content: initial;
