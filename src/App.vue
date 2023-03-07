@@ -4,10 +4,8 @@
     <p>hej hej</p>
     <main class="mainContent">
       <HeaderNav />
-
       <router-view />
       <button v-if="!isLoggedIn" @click="login">Login with Spotify</button>
-      <div v-if="isLoggedIn">{{ displayName }}</div>
     </main>
   </div>
 </template>

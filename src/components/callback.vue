@@ -9,8 +9,10 @@
   import { getTokenAuthorization, getUserInfo } from '../api/spotify'
 
   export default {
-    name: 'Callback',
+    name: 'Callback', // Component name
+
     async mounted() {
+      // Runs when component is mounted
       const loginCode = new URLSearchParams(this.$route.query).get('code') // Retrieve the login code from URL query
       const accessToken = await getTokenAuthorization(loginCode) // Get access token using the login code
       localStorage.setItem('access_token', accessToken) // Store the access token in localStorage

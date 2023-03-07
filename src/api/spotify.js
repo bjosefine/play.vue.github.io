@@ -1,6 +1,5 @@
 const clientId = '424ae0b3a11c4659822d0aea1a2db86a'
 const clientSecret = 'e9ee9f63754a4786b0b0a067253f7908'
-
 // The redirect URI to be used when requesting access token from Spotify API
 const redirectUri = 'http://localhost:5173/callback'
 
