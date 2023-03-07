@@ -1,5 +1,58 @@
 const clientId = '424ae0b3a11c4659822d0aea1a2db86a'
 const clientSecret = 'e9ee9f63754a4786b0b0a067253f7908'
+
+// The redirect URI to be used when requesting access token from Spotify API
+const redirectUri = 'http://localhost:5173/callback'
+
+// The list of scopes that are being requested from the user
+const scopes = [
+  'user-read-private',
+  'user-read-email',
+  'playlist-read-private',
+  'playlist-read-collaborative'
+]
+
+// A function that generates the authorization URL based on the above information
+const getAuthorizationUrl = () => {
+  const query = new URLSearchParams({
+    response_type: 'code',
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    scope: scopes.join(' ')
+  })
+
+  return `https://accounts.spotify.com/authorize?${query.toString()}`
+}
+
+// A function that sends a request to Spotify API to exchange the login code for an access token
+export const getTokenAuthorization = async (logincode) => {
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Basic ' + btoa(clientId + ':' + clientSecret),
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      grant_type: 'authorization_code',
+      code: logincode,
+      redirect_uri: redirectUri
+    })
+  })
+
+  const data = await response.json()
+  return data.access_token
+}
+
+// A function that sends a request to Spotify API to retrieve the user's information
+export const getUserInfo = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+
+  const data = await response.json()
+  return data
+}
+
 /// send client id & secret to api
 const getToken = async () => {
   const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -30,7 +83,7 @@ const getFeaturedPlaylists = async () => {
   const data = await response.json()
   return data.playlists.items
 }
-/// Get specific playlist from api
+/// Get specific playlist frosm api
 const getPlaylist = async (playlistId) => {
   const token = await getToken()
   const response = await fetch(
@@ -286,5 +339,8 @@ export default {
   getToptracks,
   getSpecificAlbum,
   getCategoryPlaylist,
-  getCategory
+  getCategory,
+  getAuthorizationUrl,
+  getTokenAuthorization,
+  getUserInfo
 }

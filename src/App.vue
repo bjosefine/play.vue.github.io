@@ -4,7 +4,10 @@
     <p>hej hej</p>
     <main class="mainContent">
       <HeaderNav />
+
       <router-view />
+      <button v-if="!isLoggedIn" @click="login">Login with Spotify</button>
+      <div v-if="isLoggedIn">{{ displayName }}</div>
     </main>
   </div>
 </template>
@@ -22,16 +25,27 @@
     name: 'App',
     data() {
       return {
-        accessToken: null
+        accessToken: null,
+        displayName: null
+      }
+    },
+    computed: {
+      isLoggedIn() {
+        return this.accessToken !== null && this.displayName !== null
+      }
+    },
+    created() {
+      const accessToken = localStorage.getItem('access_token')
+      const displayName = localStorage.getItem('display_name')
+      if (accessToken && displayName) {
+        this.accessToken = accessToken
+        this.displayName = displayName
       }
     },
     methods: {
       async login() {
-        const token = await Spotify.getToken()
-        if (token) {
-          this.accessToken = token
-          this.$router.push({ name: 'home' })
-        }
+        const authorizationUrl = Spotify.getAuthorizationUrl()
+        window.location.href = authorizationUrl
       }
     }
   }
