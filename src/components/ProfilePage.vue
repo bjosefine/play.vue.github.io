@@ -5,7 +5,6 @@
     </div>
     <h1>{{ displayName }}</h1>
   </div>
-  <h1>playlist</h1>
 </template>
 
 <script>
