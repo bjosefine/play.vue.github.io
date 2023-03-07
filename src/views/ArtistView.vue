@@ -93,7 +93,7 @@
       :autoplay="autoplay"
       @playNext="playNext()"
       @playPrev="playPrev()"
-    ></PlayerController>
+    />
   </div>
 </template>
 
@@ -406,163 +406,161 @@
       height: 200px;
     }
 
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: auto;
+  }
 
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: auto;
-    }
+  .artistDetails {
+    display: flex;
+    height: 200px;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 4rem;
+    margin: 0;
+  }
+  .artistName h1 {
+    font-size: 4rem;
+  }
+  .artistName {
+    margin-bottom: 0.5rem;
+    color: rgb(58, 57, 57);
+  }
 
-    .artistDetails {
-      display: flex;
-      height: 200px;
-      justify-content: space-between;
-      flex-direction: column;
-      font-size: 4rem;
-      margin: 0;
-    }
-    .artistName h1 {
-      font-size: 4rem;
-    }
-    .artistName {
-      margin-bottom: 0.5rem;
-      color: rgb(58, 57, 57);
-    }
+  .artistFollowers {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .artistFollowers {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
+  .artistGenres {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
 
-    .artistGenres {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
+  .popularSongs {
+    margin-bottom: 2rem;
+  }
 
-    .popularSongs {
-      margin-bottom: 2rem;
-    }
+  .sectionTitle {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    display: flex;
+    color: rgb(21, 20, 20);
+  }
 
-    .sectionTitle {
-      display: flex;
-      justify-content: center;
-      font-size: 2rem;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-      width: 100%;
-      display: flex;
-      color: rgb(21, 20, 20);
-    }
-
-    /* .songList {
+  /* .songList {
         list-style: none;
         padding: 0;
         margin: 0;
       } */
 
-    .songItem {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+  .songItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 
-    .songImage {
-      width: 64px;
-      height: 64px;
-      margin-right: 1rem;
-      overflow: hidden;
-      border-radius: 4px;
-    }
+  .songImage {
+    width: 64px;
+    height: 64px;
+    margin-right: 1rem;
+    overflow: hidden;
+    border-radius: 4px;
+  }
 
-    .songImage img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  .songImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-    .songInfo {
-      display: flex;
-      flex-direction: column;
-    }
-    .songName {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
+  .songInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  .songName {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .songAlbum {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
+  .songAlbum {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .songReleaseDate {
-      font-size: 1rem;
-    }
+  .songReleaseDate {
+    font-size: 1rem;
+  }
 
-    /* ALBUMS */
-    .playlistname {
-      color: rgb(58, 57, 57);
-    }
+  /* ALBUMS */
+  .playlistname {
+    color: rgb(58, 57, 57);
+  }
 
-    .albumContainer {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-    .albumList {
-      justify-content: center;
-      list-style: none;
-      width: 100%;
-      flex-direction: row;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
+  .albumContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .albumList {
+    justify-content: center;
+    list-style: none;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
 
-    .albumItem {
-      display: flex;
-      background: rgba(255, 255, 255, 0.23);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      align-items: column;
-      margin: 0;
-      padding: 20px;
-    }
+  .albumItem {
+    display: flex;
+    background: rgba(255, 255, 255, 0.23);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    align-items: column;
+    margin: 0;
+    padding: 20px;
+  }
 
-    .albumImage {
-      width: 19rem;
-      height: 19rem;
-    }
+  .albumImage {
+    width: 19rem;
+    height: 19rem;
+  }
 
-    .albumImage img {
-      width: 100%;
-      height: 100%;
-    }
+  .albumImage img {
+    width: 100%;
+    height: 100%;
+  }
 
-    .albumInfo {
-      display: flex;
-      flex-direction: column;
-      width: 19rem;
-      margin: 0;
-      padding: 0;
-      font-size: 3rem;
-    }
+  .albumInfo {
+    display: flex;
+    flex-direction: column;
+    width: 19rem;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+  }
 
-    .albumName {
-      margin-top: 2rem;
-      font-size: 1rem;
-      font-weight: 900;
-    }
+  .albumName {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 900;
+  }
 
-    .albumReleaseDate {
-      font-size: 0.8rem;
-      color: #5e5c5c;
-      padding: 0;
-      margin: 0;
-    }
+  .albumReleaseDate {
+    font-size: 0.8rem;
+    color: #5e5c5c;
+    padding: 0;
+    margin: 0;
   }
 
   /* mobile version from 0 to tablets smallest measurment*/
