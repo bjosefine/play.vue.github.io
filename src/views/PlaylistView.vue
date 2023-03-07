@@ -5,7 +5,6 @@
     <img :src="playlist.images[0].url" :alt="playlist.name" />
   </div>
   <div class="PlaylistHeadingContent">
-    <h1 class="playlistHeading">Playlist</h1>
     <h2 class="playlistName">{{ playlist.name }}</h2>
   </div>
   <!-- </div> -->
@@ -158,6 +157,7 @@
   }
 
   .playlistName {
+    margin-top: 4rem;
     font-size: 40px;
     color: rgb(58, 57, 57);
   }
@@ -317,6 +317,7 @@
     }
 
     .playlistName {
+      margin-top: 4rem;
       font-size: 40px;
       color: rgb(58, 57, 57);
     }
@@ -454,12 +455,9 @@
     }
 
     .playlistName {
+      margin-top: 4rem;
       font-size: 20px;
       color: rgb(58, 57, 57);
-    }
-
-    .playlistHeading {
-      font-size: 20px;
     }
 
     a {
