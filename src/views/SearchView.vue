@@ -225,7 +225,7 @@
     background-color: #3b3f3c00;
     font-weight: bold;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .loadingAnimation {
@@ -283,7 +283,6 @@
     text-overflow: ellipsis;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
     transition: all 0.3s ease-in-out;
     max-width: 280px;
   }
@@ -318,12 +317,21 @@
   .resultName {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    max-width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: -30px;
   }
 
   .resultArtists {
     font-size: 14px;
-    color: #999;
+    color: #373535;
+    max-width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-bottom: 20px;
+    margin-top: -20px;
   }
 
   .gridSection {
@@ -351,8 +359,15 @@
     }
 
     .resultName {
-      font-size: 14px;
+      font-size: 13px;
       margin-top: -40px;
+      max-width: 130px;
+    }
+
+    .resultArtists {
+      max-width: 130px;
+      font-size: 11px;
+      padding-bottom: 5px;
     }
 
     .searchBar input[type='text'] {
@@ -363,7 +378,7 @@
     }
 
     .resultTypeHeading {
-      margin-left: 20px;
+      margin-left: 28px;
       font-size: 20px;
     }
   }
@@ -398,6 +413,13 @@
     .resultName {
       font-size: 14px;
       margin-top: -40px;
+      max-width: 180px;
+    }
+
+    .resultArtists {
+      max-width: 180px;
+      font-size: 11px;
+      padding-bottom: 10px;
     }
 
     .searchBar {
@@ -411,7 +433,7 @@
     }
 
     .resultTypeHeading {
-      margin-left: 20px;
+      margin-left: 40px;
       font-size: 20px;
     }
   }
