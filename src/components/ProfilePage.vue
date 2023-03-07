@@ -4,6 +4,7 @@
       <img :src="profileImgUrl" alt="Profile picture" />
     </div>
     <h1>{{ displayName }}</h1>
+    <h1>playlists</h1>
   </div>
 </template>
 
