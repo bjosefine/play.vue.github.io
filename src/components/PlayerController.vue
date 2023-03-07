@@ -22,7 +22,11 @@
           :alt="track.name"
         />
         <div class="artistInfo" :class="{ expandPlayer: expand }">
-          <div class="playerTitle">{{ track.name }}</div>
+          <div class="playerTitle">
+            <div class="animatePlayerTrackName">
+              {{ track.name }}
+            </div>
+          </div>
           <div class="playerArtist">
             <router-link :to="`/artist/${track.artists[0].id}`">
               {{ track.artists[0].name }}
@@ -293,6 +297,25 @@
   }
   .playerTitle {
     text-align: start;
+    width: 130px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .animatePlayerTrackName {
+    width: max-content;
+    animation-duration: 12s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: move;
+  }
+  @keyframes move {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(calc(-100% + 130px));
+    }
   }
   .playerArtist {
     color: #685b5b;
@@ -356,7 +379,7 @@
       width: 400px;
     }
   }
-
+  /* mobile */
   @media screen and (max-width: 500px) {
     .playerTime {
       display: none;
@@ -381,11 +404,15 @@
       font-size: medium;
     }
     .playerTitle {
-      width: 50px;
-      height: 22px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      background-color: aqua;
+      width: 250px;
+    }
+    @keyframes move {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(calc(-100% + 250px));
+      }
     }
     .sliderContainer {
       display: initial;
