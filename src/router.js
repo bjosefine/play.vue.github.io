@@ -7,6 +7,7 @@ import ArtistView from './views/ArtistView.vue'
 import SearchView from './views/SearchView.vue'
 import GenreCollection from './components/GenreCollection.vue'
 import Callback from './components/Callback.vue'
+import ProfileView from './views/ProfileView.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -20,11 +21,14 @@ const routes = [
     name: 'CategoryPlaylist',
     component: GenreCollection
   },
+
   {
     path: '/callback',
     name: 'Callback',
     component: Callback
-  }
+  },
+
+  { path: '/profile', name: 'ProfileView', component: ProfileView }
 ]
 
 const router = createRouter({

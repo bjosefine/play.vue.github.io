@@ -61,16 +61,16 @@
         :track="tracks[selectedTrackIndex].track"
         :audio="audio"
         :autoplay="autoplay"
-        @playNext="playNext()"
-        @playPrev="playPrev()"
-      ></PlayerController>
+        @play-next="playNext()"
+        @play-prev="playPrev()"
+      />
     </div>
     <!-- end of player container -->
   </div>
 </template>
 
 <script>
-  import { onMounted } from 'vue'
+  // import { onMounted } from 'vue'
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
 

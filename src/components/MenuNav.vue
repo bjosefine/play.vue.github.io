@@ -5,7 +5,9 @@
       <router-link tag="li" to="/search">
         <i class="bi bi-search" />
       </router-link>
-      <li><i class="bi bi-person" /></li>
+      <router-link tag="li" to="profile"
+        ><i class="bi bi-person"
+      /></router-link>
       <li><i class="bi bi-music-note-list" /></li>
     </ul>
   </div>
