@@ -99,6 +99,7 @@
     components: {
       GenreCategories
     },
+
     data() {
       return {
         query: '',
@@ -200,14 +201,14 @@
     align-items: center;
     padding: 80px 0;
     font-size: 16px;
-    margin: 30px;
+    margin: 20px;
   }
 
   .searchBar {
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    width: 90%;
+    width: 80%;
     padding: 10px;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0);
@@ -220,12 +221,11 @@
     padding: 30px;
     border: none;
     outline: none;
-    font-size: 18px;
     align-items: center;
     background-color: #3b3f3c00;
     font-weight: bold;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   .loadingAnimation {
@@ -253,7 +253,7 @@
 
   .resultTypeHeading {
     display: flex;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 20px;
     color: #373535;
@@ -265,6 +265,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    width: 100%;
   }
 
   .resultItem {
@@ -275,8 +276,8 @@
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 10px;
-    height: 450px;
-    width: 360px;
+    height: 100%;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -284,6 +285,7 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+    max-width: 280px;
   }
 
   .resultImage {
@@ -328,203 +330,95 @@
     margin-bottom: 40px;
   }
 
-  /* 
-  @media (min-width: 481px) and (max-width: 767px)
-  @media (min-width: 768px) and (max-width: 980px) */
-
   /* --------------Mobile-------------- */
   @media (max-width: 480px) {
-    .gridContainer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      flex-direction: row;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-    }
-
-    .resultTypeHeading {
-      font-size: 20px;
-      margin-left: 5px;
-    }
-
-    a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 0px;
-      padding: 0px;
-      white-space: none;
-      height: 10%;
-      margin: 0px;
-      text-align: center;
-      width: 160px;
-    }
-
     .resultItem {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 0px;
-      white-space: none;
-      height: 250px;
-      margin: 0px;
-      text-align: center;
-      width: 100%;
+      height: 200px;
+      width: 150px;
     }
 
     .resultImage {
       border-radius: 50%;
-      width: 160px;
-      height: 160px;
-      overflow: hidden;
-      margin: 10px;
-      margin-top: -50px;
+      width: 100px;
+      height: 100px;
     }
 
     .resultImage img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
-
-    /* Artist name */
-    .resultDetails {
-      margin-top: 0px;
-      margin-bottom: -50px;
-      text-align: center;
+      margin: 0;
+      padding: 0;
     }
 
     .resultName {
       font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 2px;
-    }
-
-    .resultArtists {
-      font-size: 18px;
-    }
-
-    .searchBar {
-      flex-direction: column;
-      align-items: center;
+      margin-top: -40px;
     }
 
     .searchBar input[type='text'] {
       font-size: 14px;
       padding: 8px;
       width: 100%;
-      max-width: 300px;
       margin-bottom: 5px;
+    }
+
+    .resultTypeHeading {
+      margin-left: 20px;
+      font-size: 20px;
     }
   }
 
   .loadingAnimation {
-    margin-left: 0px;
-    font-size: 20px;
+    margin-right: 10px;
+    font-size: 18px;
     color: #35814f;
     animation: spin 1s linear infinite;
   }
 
   /* --------------Tablet-------------- */
   @media (min-width: 481px) and (max-width: 767px) {
-    .gridContainer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-    }
-
-    .resultTypeHeading {
-      font-size: 20px;
-      margin-left: 5px;
-    }
-
-    a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 0px;
-      padding: 0px;
-      white-space: none;
-      height: 10%;
-      margin: 0px;
-      text-align: center;
-      width: 160px;
-    }
-
     .resultItem {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 0px;
-      white-space: none;
       height: 250px;
-      margin: 0px;
-      text-align: center;
-      width: 100%;
+      width: 200px;
     }
 
     .resultImage {
       border-radius: 50%;
-      width: 160px;
-      height: 160px;
-      overflow: hidden;
-      margin: 10px;
-      margin-top: -50px;
+      width: 150px;
+      height: 150px;
     }
 
     .resultImage img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
-
-    /* Artist name */
-    .resultDetails {
-      margin-top: 0px;
-      margin-bottom: -50px;
-      text-align: center;
+      margin: 0;
+      padding: 0;
     }
 
     .resultName {
       font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 2px;
-    }
-
-    .resultArtists {
-      font-size: 18px;
+      margin-top: -40px;
     }
 
     .searchBar {
-      flex-direction: column;
-      align-items: center;
+      max-width: 400px;
     }
-
     .searchBar input[type='text'] {
-      font-size: 14px;
+      font-size: 15px;
       padding: 8px;
       width: 100%;
-      max-width: 300px;
       margin-bottom: 5px;
+    }
+
+    .resultTypeHeading {
+      margin-left: 20px;
+      font-size: 20px;
     }
   }
 
   .loadingAnimation {
-    margin-left: 0px;
-    font-size: 20px;
+    margin-right: 10px;
+    font-size: 18px;
     color: #35814f;
     animation: spin 1s linear infinite;
   }
