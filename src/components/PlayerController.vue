@@ -78,6 +78,7 @@
 
 <script>
   export default {
+    emits: ['playNext', 'playPrev'],
     name: 'PlayerController',
     props: {
       track: {
@@ -380,7 +381,11 @@
       font-size: medium;
     }
     .playerTitle {
-      width: 320px;
+      width: 50px;
+      height: 22px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background-color: aqua;
     }
     .sliderContainer {
       display: initial;
