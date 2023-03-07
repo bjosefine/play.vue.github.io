@@ -66,7 +66,9 @@
               <div class="albumDetails">
                 <!-- Album image -->
                 <div class="albumImage">
-                  <img :src="album.images[0].url" alt="Album Image" />
+                  <router-link :to="`/album/${album.id}`" class="albumPicture">
+                    <img :src="album.images[0].url" alt="Album Image" />
+                  </router-link>
                 </div>
                 <!-- Album name and release date -->
                 <div class="albumInfo">
@@ -78,6 +80,7 @@
           </ul>
         </div>
       </div>
+
       <!-- End of Albums div -->
     </div>
   </div>
@@ -217,7 +220,7 @@
   .artistDetails {
     display: flex;
     height: 300px;
-    justify-content: space-between;
+
     flex-direction: column;
     font-size: 4rem;
   }
