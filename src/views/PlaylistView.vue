@@ -1,14 +1,14 @@
 <template>
   <!-- playlist image and name -->
-  <div class="flexContainerPlaylist">
-    <div class="playlistImage">
-      <img :src="playlist.images[0].url" :alt="playlist.name" />
-    </div>
-    <div class="PlaylistHeadingContent">
-      <h1 class="playlistHeading">Playlist</h1>
-      <h2 class="playlistName">{{ playlist.name }}</h2>
-    </div>
+  <!-- <div class="flexContainerPlaylist"> -->
+  <div class="playlistImage">
+    <img :src="playlist.images[0].url" :alt="playlist.name" />
   </div>
+  <div class="PlaylistHeadingContent">
+    <h1 class="playlistHeading">Playlist</h1>
+    <h2 class="playlistName">{{ playlist.name }}</h2>
+  </div>
+  <!-- </div> -->
   <!-- end of playlist image and name -->
   <!-- headings  -->
   <div class="trackHeadings">
@@ -154,7 +154,6 @@
     font-size: 40px;
     color: rgb(58, 57, 57);
   }
-  /* end of flex */
 
   a {
     text-decoration: none;
@@ -189,6 +188,7 @@
   .titleHeading {
     font-size: 17px;
     margin-left: 8rem;
+    margin-bottom: 0;
     grid-area: titleHeader;
   }
   /* artist heading */
@@ -197,12 +197,14 @@
     grid-area: artistHeading;
     justify-self: center;
     padding-left: 1rem;
+    margin-bottom: 0;
   }
   /* track heading */
   .trackTime {
     font-size: 17px;
     grid-area: timeHead;
     justify-self: end;
+    margin-bottom: 0;
   }
 
   .headerLine {
@@ -252,6 +254,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     grid-area: trackTitle;
+    text-align: left;
   }
   /* animation values */
   /* .animateTrackName {
@@ -281,5 +284,133 @@
     font-size: 0.8rem;
     grid-area: trackLength;
     justify-self: end;
+  }
+
+  /* from tablets smallest measurement to desktop smallest measurement */
+
+  /* mobile version, from 0 to smallest tablet */
+  @media (min-width: 375px) and (max-width: 480px) {
+    .playlist {
+      margin-bottom: 8%;
+    }
+
+    .playlistImage {
+      margin-top: 2rem;
+    }
+
+    .playlistName {
+      font-size: 20px;
+      color: rgb(58, 57, 57);
+    }
+
+    .playlistHeading {
+      font-size: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .trackList {
+      list-style: none;
+      color: black;
+      margin: 0;
+      padding: 0;
+    }
+    /* heading line grid layout */
+    .trackHeadings {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: ' headerLine headerLine headerLine ';
+    }
+
+    h1 {
+      padding: 0px;
+      margin-bottom: 0px;
+      font-size: medium;
+      color: rgb(69, 67, 67);
+    }
+
+    /* track heading */
+    .titleHeading {
+      display: none;
+    }
+    /* artist heading */
+    .artistHeading {
+      display: none;
+    }
+    /* track heading */
+    .trackTime {
+      display: none;
+    }
+
+    .headerLine {
+      grid-area: headerLine;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .trackDetails {
+      /* changed from flex to grid */
+      display: grid;
+      justify-items: start;
+      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(35px, auto);
+      grid-template-areas:
+        'trackImage trackTitle trackTitle'
+        'trackImage trackArtist trackLength';
+      margin-right: auto;
+    }
+
+    .trackItem {
+      padding: 0.3rem;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .trackItem:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* selected song */
+    .selected {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* bild */
+    .trackImage {
+      grid-area: trackImage;
+      justify-self: center;
+      /* object-fit: cover; */
+    }
+
+    /* titel */
+    .trackTitle {
+      font-size: 16px;
+      font-weight: bold;
+      width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      grid-area: trackTitle;
+      text-align: left;
+    }
+
+    /* artist */
+    .trackArtist {
+      font-size: 16px;
+      grid-area: trackArtist;
+    }
+
+    /* duration time */
+    .trackLength {
+      font-size: 0.8rem;
+      grid-area: trackLength;
+      justify-self: end;
+      margin-right: 1em;
+    }
   }
 </style>
