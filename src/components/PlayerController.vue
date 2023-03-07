@@ -23,7 +23,11 @@
         />
         <div class="artistInfo" :class="{ expandPlayer: expand }">
           <div class="playerTitle">{{ track.name }}</div>
-          <div class="playerArtist">{{ track.artists[0].name }}</div>
+          <div class="playerArtist">
+            <router-link :to="`/artist/${track.artists[0].id}`">
+              {{ track.artists[0].name }}
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -197,7 +201,7 @@
       this.playPreview()
     },
     watch: {
-      track(newTrack, oldTrack) {
+      track(newTrack) {
         this.isPlaying = false
         this.audio.src = newTrack.preview_url
         this.playPreview()
