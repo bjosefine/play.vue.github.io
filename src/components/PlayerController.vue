@@ -6,7 +6,7 @@
       :src="track.preview_url"
       @timeupdate="updateTime"
       @ended="playNext"
-    ></audio>
+    />
     <!-- end audio player  -->
     <!-- information of the song: picture, name of song and artist, calling the expand function when clicking the image -->
     <div class="playerInfo">
@@ -32,15 +32,15 @@
       <div class="sliderContainer" :class="{ expandPlayer: expand }">
         <div class="playerButtons">
           <span class="playerPrev"
-            ><i @click="playPrev" class="fa fa-step-backward"></i
-          ></span>
+            ><i @click="playPrev" class="fa fa-step-backward"
+          /></span>
           <div class="playerPlayPause" @click="togglePlayback">
-            <span v-if="!isPlaying"><i class="bi bi-play"></i></span>
-            <span v-else><i class="fas fa-pause"></i></span>
+            <span v-if="!isPlaying"><i class="bi bi-play" /></span>
+            <span v-else><i class="fas fa-pause" /></span>
           </div>
           <span class="playerNext"
-            ><i @click="playNext" class="fa fa-step-forward"></i
-          ></span>
+            ><i @click="playNext" class="fa fa-step-forward"
+          /></span>
         </div>
         <!-- input range for time slider  -->
         <input
@@ -56,8 +56,8 @@
       </div>
       <div class="audioControls" :class="{ expandPlayer: expand }">
         <div class="audioOnOff" @click="toggleSound">
-          <span v-if="audioVol"><i class="fa fa-volume-up"></i></span>
-          <span v-else><i class="fa fa-volume-off"></i></span>
+          <span v-if="audioVol"><i class="fa fa-volume-up" /></span>
+          <span v-else><i class="fa fa-volume-off" /></span>
         </div>
         <input
           type="range"
@@ -93,7 +93,7 @@
       }
     },
     // make the currently playing song stop when starting another song
-    beforeDestroy() {
+    beforeUnmount() {
       this.stopAudio()
     },
     // change the play to paus vice versa
@@ -339,23 +339,61 @@
     color: #111;
   }
 
-  /* responsive
   /* "smaller" deskstop  */
-  /* @media screen and (max-width: 1110px) {
-    body {
-      background-color: pink;
-    }
-  } */
+  @media screen and (max-width: 1110px) {
+  }
   /* on tablet  */
-  /* @media screen and (max-width: 810px) {
-    body {
-      background-color: turquoise;
+  @media screen and (max-width: 810px) {
+    .audioControls {
+      display: none;
     }
-  } */
+    .sliderContainer input[type='range'] {
+      width: 400px;
+    }
+  }
 
-  /* @media screen and (max-width: 500px) {
-    body {
-      background-color: orange;
+  @media screen and (max-width: 500px) {
+    .playerTime {
+      display: none;
     }
-  } */ ;
+    .playerPrev,
+    .playerNext {
+      display: none;
+    }
+    .playerContainer {
+      justify-content: initial;
+    }
+    .playerButtons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+    .playerInfo {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      position: absolute;
+      font-size: medium;
+    }
+    .playerTitle {
+      width: 320px;
+    }
+    .sliderContainer {
+      display: initial;
+      margin: 0;
+      bottom: 0;
+      position: fixed;
+      width: 1%;
+    }
+    .sliderContainer input[type='range'] {
+      width: 90%;
+      position: fixed;
+      margin: 0;
+      bottom: 0;
+    }
+    .playerImageSrc {
+      width: 40px;
+      height: 40px;
+    }
+  }
 </style>
