@@ -400,14 +400,13 @@
     }
 
     .artistImage {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: auto;
+      display: flex;
+      align-items: center;
+      width: 200px;
+      height: 200px;
     }
 
-    .artistImage img {
+
       width: 100%;
       height: 100%;
       border-radius: 50%;
@@ -609,14 +608,15 @@
 
     .artistImage {
       display: flex;
-      justify-content: center;
-      border-radius: 100%;
+      align-items: center;
+      width: 200px;
+      height: 200px;
     }
 
     .artistImage img {
       width: 200px;
       height: 200px;
-      border-radius: 50%;
+
       margin: 0;
       padding: 0;
     }
