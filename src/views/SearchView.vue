@@ -1,4 +1,5 @@
 <template>
+  <!-- Searchbar and loading animation-->
   <div class="searchPage">
     <div class="searchBar">
       <input v-model="query" type="text" placeholder="Search for music" />
@@ -7,6 +8,7 @@
       </div>
     </div>
 
+    <!-- Show search result for artists -->
     <div class="searchResults" v-if="results.length > 0">
       <div v-if="artists.length > 0" class="gridSection">
         <h3 class="resultTypeHeading">Artists</h3>
@@ -30,6 +32,8 @@
           </router-link>
         </div>
       </div>
+
+      <!-- Show search result for playlists -->
       <div v-if="playlists.length > 0" class="gridSection">
         <h3 class="resultTypeHeading">Playlists</h3>
         <div class="gridContainer">
@@ -54,6 +58,8 @@
           </router-link>
         </div>
       </div>
+
+      <!-- Show search result for albums -->
       <div v-if="albums.length > 0" class="gridSection">
         <h3 class="resultTypeHeading">Albums</h3>
         <div class="gridContainer">
@@ -187,7 +193,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .searchPage {
     display: flex;
     flex-direction: column;
@@ -247,7 +253,7 @@
 
   .resultTypeHeading {
     display: flex;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 20px;
     color: #373535;
@@ -321,11 +327,41 @@
   .gridSection {
     margin-bottom: 40px;
   }
-  @media (max-width: 768px) {
+
+  /* 
+  @media (min-width: 481px) and (max-width: 767px)
+  @media (min-width: 768px) and (max-width: 980px) */
+
+  /* --------------Mobile-------------- */
+  @media (max-width: 480px) {
     .gridContainer {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      flex-direction: row;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resultTypeHeading {
+      font-size: 20px;
+      margin-left: 5px;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0px;
+      padding: 0px;
+      white-space: none;
+      height: 10%;
+      margin: 0px;
+      text-align: center;
+      width: 160px;
     }
 
     .resultItem {
@@ -334,18 +370,21 @@
       justify-content: center;
       align-items: center;
       background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      height: 300px;
-      margin: 10px;
+      border-radius: 0px;
+      white-space: none;
+      height: 250px;
+      margin: 0px;
       text-align: center;
+      width: 100%;
     }
 
     .resultImage {
       border-radius: 50%;
-      width: 200px;
-      height: 200px;
+      width: 160px;
+      height: 160px;
       overflow: hidden;
+      margin: 10px;
+      margin-top: -50px;
     }
 
     .resultImage img {
@@ -354,19 +393,21 @@
       object-fit: cover;
     }
 
+    /* Artist name */
     .resultDetails {
-      margin-top: 20px;
+      margin-top: 0px;
+      margin-bottom: -50px;
       text-align: center;
     }
 
     .resultName {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       margin-bottom: 2px;
     }
 
     .resultArtists {
-      font-size: 12px;
+      font-size: 18px;
     }
 
     .searchBar {
@@ -379,7 +420,112 @@
       padding: 8px;
       width: 100%;
       max-width: 300px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
+  }
+
+  .loadingAnimation {
+    margin-left: 0px;
+    font-size: 20px;
+    color: #35814f;
+    animation: spin 1s linear infinite;
+  }
+
+  /* --------------Tablet-------------- */
+  @media (min-width: 481px) and (max-width: 767px) {
+    .gridContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resultTypeHeading {
+      font-size: 20px;
+      margin-left: 5px;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0px;
+      padding: 0px;
+      white-space: none;
+      height: 10%;
+      margin: 0px;
+      text-align: center;
+      width: 160px;
+    }
+
+    .resultItem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0px;
+      white-space: none;
+      height: 250px;
+      margin: 0px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .resultImage {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      overflow: hidden;
+      margin: 10px;
+      margin-top: -50px;
+    }
+
+    .resultImage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Artist name */
+    .resultDetails {
+      margin-top: 0px;
+      margin-bottom: -50px;
+      text-align: center;
+    }
+
+    .resultName {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .resultArtists {
+      font-size: 18px;
+    }
+
+    .searchBar {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .searchBar input[type='text'] {
+      font-size: 14px;
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .loadingAnimation {
+    margin-left: 0px;
+    font-size: 20px;
+    color: #35814f;
+    animation: spin 1s linear infinite;
   }
 </style>
