@@ -235,14 +235,14 @@
   @media screen and (min-width: 481px) and (max-width: 767px) {
     .playerContainer {
       position: relative;
-      margin-bottom: 7.4vh;
+      margin-bottom: 7vh;
       bottom: 0;
     }
   }
   @media screen and (min-width: 375px) and (max-width: 480px) {
     .playerContainer {
       position: relative;
-      margin-bottom: 7.4vh;
+      margin-bottom: 7vh;
       bottom: 0;
     }
   }

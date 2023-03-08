@@ -64,7 +64,7 @@
   a:hover {
     color: rgb(45, 41, 41);
   }
-
+  /*Media query from tablet down to mobile mode so the side navbar ends up at the bottom*/
   @media (max-width: 767px) {
     .MenuNav {
       z-index: 1000;
