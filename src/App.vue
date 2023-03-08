@@ -32,7 +32,7 @@
         return this.accessToken !== null && this.displayName !== null
       }
     },
-    created() {
+    mounted() {
       const accessToken = localStorage.getItem('access_token')
       const displayName = localStorage.getItem('display_name')
       if (accessToken && displayName) {
