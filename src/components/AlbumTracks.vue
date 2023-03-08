@@ -33,6 +33,7 @@
             class="trackItem"
             v-for="artist in track.artists"
             :key="artist.id"
+            @click="playTrack(track.id)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -62,17 +63,35 @@
         </ol>
       </div>
     </div>
+    <div v-if="selectedTrackIndex !== null">
+      <PlayerController
+        :key="artistTracks[selectedTrackIndex].id"
+        :track="artistTracks[selectedTrackIndex]"
+        :audio="audio"
+        :autoplay="autoplay"
+        @play-next="playNext()"
+        @play-prev="playPrev()"
+      />
+    </div>
   </div>
 </template>
 
 <script>
   import spotify from '../api/spotify.js'
+  import PlayerController from './PlayerController.vue'
 
   export default {
+    components: {
+      PlayerController
+    },
     data() {
       return {
         albumTracks: null,
-        albumImages: null
+        albumImages: null,
+        selectedTrackIndex: null,
+        autoplay: true,
+        isPlaying: false,
+        audio: new Audio()
       }
     },
 
@@ -81,8 +100,13 @@
       this.albumTracks = await spotify.getAlbumTracks(albumId)
       this.albumImages = await spotify.getSpecificAlbum(albumId)
     },
-    // Calculate minutes and seconds
+    // Get the songs Mp3 file with a click
     methods: {
+      async playTrack(trackId) {
+        const track = await spotify.getTracks(trackId)
+        console.log(track, 'Låtens Mp3')
+      },
+      // Calculate minutes and seconds
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)
