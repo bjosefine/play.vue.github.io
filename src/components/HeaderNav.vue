@@ -40,6 +40,7 @@
     background-color: transparent;
     text-align: center;
     transition: background-color 0.3s;
+    z-index: 1000;
   }
 
   .navbar--visible {

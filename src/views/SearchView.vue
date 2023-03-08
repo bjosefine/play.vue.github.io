@@ -229,9 +229,10 @@
   }
 
   .loadingAnimation {
-    margin-left: 20px;
+    position: absolute;
+    right: 20px;
     font-size: 24px;
-    color: #35814f;
+    color: #373535;
     animation: spin 1s linear infinite;
   }
 
@@ -386,7 +387,6 @@
   .loadingAnimation {
     margin-right: 10px;
     font-size: 18px;
-    color: #35814f;
     animation: spin 1s linear infinite;
   }
 
@@ -441,7 +441,6 @@
   .loadingAnimation {
     margin-right: 10px;
     font-size: 18px;
-    color: #35814f;
     animation: spin 1s linear infinite;
   }
 </style>
