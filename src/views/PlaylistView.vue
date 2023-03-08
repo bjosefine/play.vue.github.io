@@ -262,7 +262,7 @@
   /* titel */
   .trackTitle {
     font-weight: bold;
-    width: 33px;
+    width: 330px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
