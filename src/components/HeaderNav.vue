@@ -1,6 +1,6 @@
 <template>
   <div class="mainnav" :class="{ 'navbar--visible': scrolled }">
-    <div class="goback" @click="goBack">
+    <div class="goback" v-if="!hideGoBack">
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
     <div class="headprofile" />
@@ -13,6 +13,12 @@
     data() {
       return {
         scrolled: false
+      }
+    },
+    props: {
+      hideGoBack: {
+        type: Boolean,
+        default: false
       }
     },
     mounted() {

@@ -2,7 +2,8 @@
   <div class="appContainer">
     <MenuNav />
     <main class="mainContent">
-      <HeaderNav />
+      <HeaderNav :hide-go-back="hideGoBack" />
+
       <router-view />
       <button v-if="!isLoggedIn" @click="login">Login with Spotify</button>
       <button v-if="isLoggedIn" @click="logout">Logout</button>
@@ -30,6 +31,9 @@
     computed: {
       isLoggedIn() {
         return this.accessToken !== null && this.displayName !== null
+      },
+      hideGoBack() {
+        return this.$route.name === 'HomeView'
       }
     },
     mounted() {

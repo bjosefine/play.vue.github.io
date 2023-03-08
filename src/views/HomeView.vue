@@ -1,5 +1,5 @@
 <template>
-  <HeaderNav />
+  <HeaderNav :hide-go-back="true" />
   <PlayListitems />
   <NewReleases />
   <PlayerView />
@@ -11,7 +11,7 @@
   import NewReleases from '../components/NewReleases.vue'
   import HeaderNav from '../components/HeaderNav.vue'
   import PlayListitems from '../components/PlayListitems.vue'
-  import PlayerView from './PlayerView.vue'
+
   import GenreCategories from '../components/GenreCategories.vue'
 
   export default {
