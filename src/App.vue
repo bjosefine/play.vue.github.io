@@ -75,6 +75,7 @@
     box-sizing: border-box;
   }
   .MenuNav {
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,12 +86,33 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-bottom: 1px solid #535353;
-    padding: 10px;
+    padding: 0;
     width: 60px;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.114));
+  }
+  /*Media queries measurment from MenuNav component to get the desktop mode to look the same for tablet and mobile mode*/
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    .MenuNav {
+      flex-direction: row;
+      width: 100vh;
+
+      bottom: 0;
+      position: fixed;
+      filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 1.114));
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 480px) {
+    .MenuNav {
+      width: 100vh;
+
+      bottom: 0;
+      position: fixed;
+      filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 1.114));
+    }
   }
 </style>

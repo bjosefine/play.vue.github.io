@@ -230,6 +230,21 @@
 </script>
 
 <style>
+  /*Media queries measurment from MenuNav to move playercontroller from bottom in tablet and mobile mode*/
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    .playerContainer {
+      position: relative;
+      margin-bottom: 6vh;
+      bottom: 0;
+    }
+  }
+  @media screen and (min-width: 375px) and (max-width: 480px) {
+    .playerContainer {
+      position: relative;
+      margin-bottom: 6vh;
+      bottom: 0;
+    }
+  }
   /* on desktop  */
   .playerContainer {
     height: 80px;
