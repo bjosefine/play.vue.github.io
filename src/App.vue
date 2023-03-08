@@ -71,7 +71,7 @@
 
   .mainContent {
     flex-grow: 1;
-    margin-left: 4.8%;
+    margin-left: 3.3%;
     box-sizing: border-box;
   }
   .MenuNav {

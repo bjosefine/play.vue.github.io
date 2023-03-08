@@ -262,30 +262,13 @@
   /* titel */
   .trackTitle {
     font-weight: bold;
-    width: 400px;
+    width: 330px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     grid-area: trackTitle;
     text-align: left;
   }
-  /* animation values */
-  /* .animateTrackName {
-    float: left;
-    animation-duration: 10s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    animation-name: move;
-  }
-  /* animation to move from right to left */
-  /* @keyframes move {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translate(-50%);
-    }
-  } */
 
   /* artist */
   .trackArtist {
@@ -312,111 +295,12 @@
     }
 
     /* end of player container */
-    .playlist {
-      margin-bottom: 8%;
-    }
-
-    .playlistName {
-      margin-top: 4rem;
-      font-size: 40px;
-      color: rgb(58, 57, 57);
-    }
-
-    a {
-      text-decoration: none;
-      color: black;
-    }
-
-    .trackList {
-      list-style: none;
-      color: black;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* headings grid layout */
-    .trackHeadings {
-      display: grid;
-      justify-items: start;
-      align-items: center;
-      grid-template-columns: repeat(9, 1fr);
-      grid-auto-rows: minmax(35px, auto);
-      grid-template-areas:
-        '. titleHeading titleHeading titleHeading artistHeading artistHeading . timeHead'
-        '. headerLine headerLine headerLine headerLine headerLine headerLine headerLine ';
-      margin-right: auto;
-    }
-
-    h1 {
-      padding: 0px;
-      margin-bottom: 0px;
-      font-size: medium;
-      color: rgb(69, 67, 67);
-    }
-
-    /* track heading */
-    .titleHeading {
-      font-size: 17px;
-      margin-left: 8rem;
-      margin-bottom: 0;
-      grid-area: titleHeader;
-    }
-
-    /* artist heading */
-    .artistHeading {
-      font-size: 17px;
-      grid-area: artistHeading;
-      justify-self: center;
-      padding-left: 1rem;
-      margin-bottom: 0;
-    }
-
-    /* track heading */
-    .trackTime {
-      font-size: 17px;
-      grid-area: timeHead;
-      justify-self: end;
-      margin-bottom: 0;
-    }
 
     .headerLine {
       grid-area: headerLine;
-      margin-right: 5rem;
+      margin-right: 4rem;
       margin-top: 0;
       margin-bottom: 0;
-    }
-
-    .trackDetails {
-      /* changed from flex to grid */
-      display: grid;
-      justify-items: start;
-      align-items: center;
-      grid-template-columns: repeat(9, 1fr);
-      grid-auto-rows: minmax(35px, auto);
-      grid-template-areas: 'trackImage trackTitle trackTitle trackTitle trackTitle trackArtist trackArtist trackLength';
-      margin-right: auto;
-    }
-
-    .trackItem {
-      padding: 0.3rem;
-      align-items: center;
-      transition: background-color 0.3s;
-    }
-
-    .trackItem:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    /* selected song */
-    .selected {
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-
-    /* bild */
-    .trackImage {
-      grid-area: trackImage;
-      justify-self: center;
-      /* object-fit: cover; */
     }
 
     /* titel */
@@ -430,18 +314,6 @@
       text-align: left;
       margin-left: 1rem;
     }
-
-    /* artist */
-    .trackArtist {
-      grid-area: trackArtist;
-    }
-
-    /* duration time */
-    .trackLength {
-      font-size: 0.8rem;
-      grid-area: trackLength;
-      justify-self: end;
-    }
   }
 
   /* mobile version, from 0 to smallest tablet */
@@ -450,26 +322,10 @@
       margin-bottom: 8%;
     }
 
-    .playlistImage {
-      margin-top: 2rem;
-    }
-
     .playlistName {
       margin-top: 4rem;
       font-size: 20px;
       color: rgb(58, 57, 57);
-    }
-
-    a {
-      text-decoration: none;
-      color: black;
-    }
-
-    .trackList {
-      list-style: none;
-      color: black;
-      margin: 0;
-      padding: 0;
     }
 
     /* heading line grid layout */
@@ -477,13 +333,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-areas: ' headerLine headerLine headerLine ';
-    }
-
-    h1 {
-      padding: 0px;
-      margin-bottom: 0px;
-      font-size: medium;
-      color: rgb(69, 67, 67);
     }
 
     /* track heading */
@@ -509,8 +358,8 @@
       margin-bottom: 0;
     }
 
+    /* gridlayout pictuer,title,artist, length */
     .trackDetails {
-      /* changed from flex to grid */
       display: grid;
       justify-items: start;
       align-items: center;
@@ -520,21 +369,6 @@
         'trackImage trackTitle trackTitle'
         'trackImage trackArtist trackLength';
       margin-right: auto;
-    }
-
-    .trackItem {
-      padding: 0.3rem;
-      align-items: center;
-      transition: background-color 0.3s;
-    }
-
-    .trackItem:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    /* selected song */
-    .selected {
-      background-color: rgba(0, 0, 0, 0.2);
     }
 
     /* bild */

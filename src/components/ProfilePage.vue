@@ -3,7 +3,7 @@
     <div class="pictureContainer">
       <img :src="profileImgUrl" alt="Profile picture" />
     </div>
-    <h1>{{ displayName }}</h1>
+    <h1 class="profileUserName">Name:{{ displayName }}</h1>
     <h1>playlists</h1>
   </div>
 </template>
@@ -27,23 +27,6 @@
     }
   }
 </script>
-
-<style>
-  .pictureContainer {
-    background-color: rgba(208, 145, 187, 0.2);
-    width: 145px;
-    height: 145px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: 5rem;
-    margin-left: 5rem;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-</style>
 
 <style>
   .pictureContainer {

@@ -26,13 +26,13 @@
         <div class="artistInfo" :class="{ expandPlayer: expand }">
           <div class="playerTitle">
             <div
-              v-if="track.name.length > 35"
+              v-if="this.track.name.length > 20 && this.track.name.length < 35"
               class="animatePlayerTrackNameDesktop"
             >
               {{ track.name }}
             </div>
             <div
-              v-else-if="this.track.name.length > 20"
+              v-else-if="this.track.name.length >= 35"
               class="animatePlayerTrackNameMobile"
             >
               {{ track.name }}
@@ -218,6 +218,7 @@
     mounted() {
       this.audio.src = this.track.preview_url
       this.playPreview()
+      console.log(this.track.name.length, 'tL')
     },
     watch: {
       track(newTrack) {
@@ -339,6 +340,14 @@
     animation-timing-function: linear;
     animation-name: move;
   }
+  .animatePlayerTrackNameMobile {
+    width: max-content;
+    animation-duration: 12s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: move;
+  }
   @keyframes move {
     from {
       transform: translateX(0%);
@@ -417,18 +426,26 @@
     .sliderContainer input[type='range'] {
       width: 400px;
     }
+    .playerImageSrc {
+      width: 55px;
+      height: 55px;
+    }
   }
   /* smaller tablets  */
-  .sliderContainer {
-    margin: 0;
-  }
   @media screen and (max-width: 600px) {
+    .playerTime {
+      display: none;
+    }
     .sliderContainer input[type='range'] {
       width: 350px;
     }
     .playerInfo {
       padding-right: 0;
       width: 43%;
+    }
+    .playerImageSrc {
+      width: 40px;
+      height: 40px;
     }
   }
   /* mobile */
@@ -464,6 +481,14 @@
     .playerTitle {
       width: 250px;
     }
+    .animatePlayerTrackNameDesktop {
+      animation-duration: none;
+      animation-direction: none;
+      animation-iteration-count: none;
+      animation-timing-function: none;
+      animation-name: none;
+    }
+
     .animatePlayerTrackNameMobile {
       width: max-content;
       animation-duration: 12s;
