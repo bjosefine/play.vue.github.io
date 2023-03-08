@@ -1,10 +1,10 @@
 <template>
   <div class="mainnav" :class="{ 'navbar--visible': scrolled }">
     <div class="goback" @click="goBack">
-      <i class="bi bi-arrow-left-circle-fill"></i>
+      <i class="bi bi-arrow-left-circle-fill" />
     </div>
-    <div class="headprofile"></div>
-    <div class="wheel"></div>
+    <div class="headprofile" />
+    <div class="wheel" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@
     mounted() {
       window.addEventListener('scroll', this.handleScroll)
     },
-    beforeDestroy() {
+    beforeUnmount() {
       window.removeEventListener('scroll', this.handleScroll)
     },
     methods: {
