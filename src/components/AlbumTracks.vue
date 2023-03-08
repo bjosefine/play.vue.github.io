@@ -10,7 +10,8 @@
     />
 
     <!-- Big Artist Name -->
-    <h1>{{ albumTracks[0].artists[0].name }}</h1>
+    <h1 class="artistName">{{ albumTracks[0].artists[0].name }}</h1>
+    <h3>{{ albumTracks[0].name }}</h3>
 
     <!-- Small Headers -->
     <div class="trackHeadings">
@@ -80,7 +81,7 @@
       this.albumTracks = await spotify.getAlbumTracks(albumId)
       this.albumImages = await spotify.getSpecificAlbum(albumId)
     },
-
+    // Calculate minutes and seconds
     methods: {
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
@@ -91,8 +92,35 @@
   }
 </script>
 
-<style>
+<style scoped>
   .albumImage {
+    margin-top: 2%;
     width: 25%;
+  }
+
+  .artistName {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .playlist {
+    margin: 0;
+  }
+  .trackList {
+    margin: 0;
+    padding: 0;
+  }
+
+  .trackImage {
+    width: 50%;
+  }
+
+  .trackItem:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 </style>
