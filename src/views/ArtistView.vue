@@ -165,16 +165,215 @@
 </script>
 
 <style scoped>
-    .trackInfo {
-      /* changed from flex to grid */
-      display: grid;
-      justify-items: start;
-      align-items: center;
-      grid-template-columns: repeat(9, 1fr);
-      grid-auto-rows: minmax(35px, auto);
-      grid-template-areas: 'trackImage trackImage trackTitle  trackArtist trackArtist trackLength';
-      margin-right: auto;
-    }
+  .trackInfo {
+    /* changed from flex to grid */
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(35px, auto);
+    grid-template-areas: 'trackImage trackImage trackTitle  trackArtist trackArtist trackLength';
+    margin-right: auto;
+  }
+  .playerContainer {
+    background: rgba(138, 51, 138, 0.02);
+    border-radius: 3px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.9px);
+    -webkit-backdrop-filter: blur(7.9px);
+    border: 1px solid rgba(138, 51, 138, 0.624);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+  }
+
+  /* Artist Header */
+  .artistPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .artistHeader {
+    display: flex;
+    width: 50%;
+    justify-content: left;
+    margin-bottom: 2rem;
+    padding: 0;
+    margin-right: 50%;
+  }
+
+  .artistImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: auto;
+  }
+
+  .artistImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .artistDetails {
+    display: flex;
+    height: 300px;
+
+    flex-direction: column;
+    font-size: 4rem;
+  }
+  .artistName h1 {
+    font-size: 4rem;
+  }
+  .artistName {
+    margin-bottom: 0.5rem;
+    color: rgb(58, 57, 57);
+  }
+
+  .artistFollowers {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: black;
+  }
+
+  .artistGenres {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .popularSongs {
+    margin-bottom: 2rem;
+
+    width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    display: flex;
+    color: rgb(21, 20, 20);
+  }
+
+  /* .songList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      } */
+
+  .songItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .songImage {
+    width: 64px;
+    height: 64px;
+    margin-right: 1rem;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .songImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .songInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  .songName {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .songAlbum {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .songReleaseDate {
+    font-size: 1rem;
+  }
+
+  /* ALBUMS */
+  .playlistname {
+    color: rgb(58, 57, 57);
+  }
+
+  .albumContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .albumList {
+    justify-content: center;
+    list-style: none;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .albumItem {
+    display: flex;
+    background: rgba(255, 255, 255, 0.23);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    align-items: column;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .albumImage {
+    width: 19rem;
+    height: 19rem;
+  }
+
+  .albumImage img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .albumInfo {
+    display: flex;
+    flex-direction: column;
+    width: 19rem;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+  }
+
+  .albumName {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .albumReleaseDate {
+    font-size: 0.8rem;
+    color: #5e5c5c;
+    padding: 0;
+    margin: 0;
+  }
+
+  .playlist {
+    display: flex;
+    justify-content: center;
+  }
+  /*from tablets smallest mesurment to desktop smallest measurment*/
+
+  @media screen and (min-width: 481px) and (max-width: 767px) {
     .playerContainer {
       background: rgba(138, 51, 138, 0.02);
       border-radius: 3px;
@@ -185,7 +384,6 @@
       color: rgb(0, 0, 0);
       font-weight: 800;
     }
-
     /* Artist Header */
     .artistPage {
       display: flex;
@@ -196,216 +394,18 @@
 
     .artistHeader {
       display: flex;
-      width: 50%;
-      justify-content: left;
-      margin-bottom: 2rem;
-      padding: 0;
-      margin-right: 50%;
-    }
-
-    .artistImage {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: auto;
-    }
-
-    .artistImage img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .artistDetails {
-      display: flex;
-      height: 300px;
-
-      flex-direction: column;
-      font-size: 4rem;
-    }
-    .artistName h1 {
-      font-size: 4rem;
-    }
-    .artistName {
-      margin-bottom: 0.5rem;
-      color: rgb(58, 57, 57);
-    }
-
-    .artistFollowers {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: black;
-    }
-
-    .artistGenres {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .popularSongs {
-      margin-bottom: 2rem;
-
-      width: 100%;
-    }
-
-    .sectionTitle {
-      font-size: 2.5rem;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-      width: 100%;
-      display: flex;
-      color: rgb(21, 20, 20);
-    }
-
-    /* .songList {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      } */
-
-    .songItem {
-      display: flex;
-      align-items: center;
+      justify-content: center;
+      width: 80%;
       margin-bottom: 1rem;
     }
 
-    .songImage {
-      width: 64px;
-      height: 64px;
-      margin-right: 1rem;
-      overflow: hidden;
-      border-radius: 4px;
-    }
-
-    .songImage img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .songInfo {
+    .artistImage {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      width: 200px;
+      height: 200px;
     }
-    .songName {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .songAlbum {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .songReleaseDate {
-      font-size: 1rem;
-    }
-
-    /* ALBUMS */
-    .playlistname {
-      color: rgb(58, 57, 57);
-    }
-
-    .albumContainer {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-    .albumList {
-      justify-content: center;
-      list-style: none;
-      width: 100%;
-      flex-direction: row;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .albumItem {
-      display: flex;
-      background: rgba(255, 255, 255, 0.23);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      align-items: column;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .albumImage {
-      width: 19rem;
-      height: 19rem;
-    }
-
-    .albumImage img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .albumInfo {
-      display: flex;
-      flex-direction: column;
-      width: 19rem;
-      margin: 0;
-      padding: 0;
-      font-size: 3rem;
-    }
-
-    .albumName {
-      margin-top: 2rem;
-      font-size: 1rem;
-      font-weight: 900;
-    }
-
-    .albumReleaseDate {
-      font-size: 0.8rem;
-      color: #5e5c5c;
-      padding: 0;
-      margin: 0;
-    }
-
-    .playlist {
-      display: flex;
-      justify-content: center;
-    }
-    /*from tablets smallest mesurment to desktop smallest measurment*/
-
-    @media screen and (min-width: 481px) and (max-width: 767px) {
-      .playerContainer {
-        background: rgba(138, 51, 138, 0.02);
-        border-radius: 3px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(7.9px);
-        -webkit-backdrop-filter: blur(7.9px);
-        border: 1px solid rgba(138, 51, 138, 0.624);
-        color: rgb(0, 0, 0);
-        font-weight: 800;
-      }
-      /* Artist Header */
-      .artistPage {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-      }
-
-      .artistHeader {
-        display: flex;
-        justify-content: center;
-        width: 80%;
-        margin-bottom: 1rem;
-      }
-
-      .artistImage {
-        display: flex;
-        align-items: center;
-        width: 200px;
-        height: 200px;
-      }
-  .artistImage img {
+    .artistImage img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
@@ -562,215 +562,215 @@
       padding: 0;
       margin: 0;
     }
+  }
+  /* mobile version from 0 to tablets smallest measurment*/
 
-    /* mobile version from 0 to tablets smallest measurment*/
-
-    @media screen and (min-width: 375px) and (max-width: 480px) {
-      .trackInfo {
-        /* changed from flex to grid */
-        display: grid;
-        justify-items: start;
-        align-items: center;
-        grid-template-columns: repeat(9, 1fr);
-        grid-auto-rows: minmax(35px, auto);
-        grid-template-areas: 'trackImage trackTitle trackArtist trackArtist trackLength';
-        margin-right: auto;
-      }
-      .artistContent {
-        margin-right: 5%;
-      }
-      .playerContainer {
-        background: rgba(138, 51, 138, 0.02);
-        border-radius: 3px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(7.9px);
-        -webkit-backdrop-filter: blur(7.9px);
-        border: 1px solid rgba(138, 51, 138, 0.624);
-        color: rgb(0, 0, 0);
-        font-weight: 800;
-      }
-      /* Artist Header */
-      .artistPage {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .artistHeader {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        margin: 0px;
-        height: 400px;
-      }
-
-      .artistImage {
-        display: flex;
-        align-items: center;
-        width: 200px;
-        height: 200px;
-      }
-
-      .artistImage img {
-        width: 200px;
-        height: 200px;
-
-        margin: 0;
-        padding: 0;
-      }
-
-      .artistDetails {
-        display: flex;
-        height: 200px;
-        justify-content: space-between;
-        flex-direction: column;
-        font-size: 4rem;
-      }
-      .artistName h1 {
-        font-size: 4rem;
-      }
-      .artistName {
-        color: rgb(58, 57, 57);
-      }
-
-      .artistFollowers {
-        font-size: 1rem;
-      }
-
-      .artistGenres {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .popularSongs {
-        margin-bottom: 2rem;
-        max-width: 400px;
-        margin-left: 40px;
-      }
-
-      .sectionTitle {
-        display: flex;
-        justify-content: center;
-        font-size: 2.5rem;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        width: 100%;
-        display: flex;
-        color: rgb(21, 20, 20);
-      }
-
-      .songList {
-        display: grid;
-
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .songItem {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
-      .songImage {
-        width: 64px;
-        height: 64px;
-        margin-right: 1rem;
-        overflow: hidden;
-        border-radius: 4px;
-      }
-
-      .songImage img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .songInfo {
-        display: flex;
-        flex-direction: column;
-      }
-      .songName {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .songAlbum {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .songReleaseDate {
-        font-size: 1rem;
-      }
-
-      /* ALBUMS */
-      .playlistname {
-        color: rgb(58, 57, 57);
-      }
-
-      .albumContainer {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }
-      .albumList {
-        justify-content: center;
-        list-style: none;
-        width: 100%;
-        flex-direction: row;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-      }
-
-      .albumItem {
-        display: flex;
-        background: rgba(255, 255, 255, 0.23);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        align-items: column;
-        margin: 0;
-        padding: 20px;
-      }
-
-      .albumImage {
-        width: 19rem;
-        height: 19rem;
-      }
-
-      .albumImage img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .albumInfo {
-        display: flex;
-        flex-direction: column;
-        width: 19rem;
-        margin: 0;
-        padding: 0;
-        font-size: 3rem;
-      }
-
-      .albumName {
-        margin-top: 2rem;
-        font-size: 1rem;
-        font-weight: 900;
-      }
-
-      .albumReleaseDate {
-        font-size: 0.8rem;
-        color: #5e5c5c;
-        padding: 0;
-        margin: 0;
-      }
-      .trackLength {
-        margin-right: 20%;
-      }
+  @media screen and (min-width: 375px) and (max-width: 480px) {
+    .trackInfo {
+      /* changed from flex to grid */
+      display: grid;
+      justify-items: start;
+      align-items: center;
+      grid-template-columns: repeat(9, 1fr);
+      grid-auto-rows: minmax(35px, auto);
+      grid-template-areas: 'trackImage trackTitle trackArtist trackArtist trackLength';
+      margin-right: auto;
     }
+    .artistContent {
+      margin-right: 5%;
+    }
+    .playerContainer {
+      background: rgba(138, 51, 138, 0.02);
+      border-radius: 3px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(7.9px);
+      -webkit-backdrop-filter: blur(7.9px);
+      border: 1px solid rgba(138, 51, 138, 0.624);
+      color: rgb(0, 0, 0);
+      font-weight: 800;
+    }
+    /* Artist Header */
+    .artistPage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .artistHeader {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin: 0px;
+      height: 400px;
+    }
+
+    .artistImage {
+      display: flex;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+    }
+
+    .artistImage img {
+      width: 200px;
+      height: 200px;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    .artistDetails {
+      display: flex;
+      height: 200px;
+      justify-content: space-between;
+      flex-direction: column;
+      font-size: 4rem;
+    }
+    .artistName h1 {
+      font-size: 4rem;
+    }
+    .artistName {
+      color: rgb(58, 57, 57);
+    }
+
+    .artistFollowers {
+      font-size: 1rem;
+    }
+
+    .artistGenres {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .popularSongs {
+      margin-bottom: 2rem;
+      max-width: 400px;
+      margin-left: 40px;
+    }
+
+    .sectionTitle {
+      display: flex;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      width: 100%;
+      display: flex;
+      color: rgb(21, 20, 20);
+    }
+
+    .songList {
+      display: grid;
+
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .songItem {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .songImage {
+      width: 64px;
+      height: 64px;
+      margin-right: 1rem;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .songImage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .songInfo {
+      display: flex;
+      flex-direction: column;
+    }
+    .songName {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .songAlbum {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .songReleaseDate {
+      font-size: 1rem;
+    }
+
+    /* ALBUMS */
+    .playlistname {
+      color: rgb(58, 57, 57);
+    }
+
+    .albumContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .albumList {
+      justify-content: center;
+      list-style: none;
+      width: 100%;
+      flex-direction: row;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .albumItem {
+      display: flex;
+      background: rgba(255, 255, 255, 0.23);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      align-items: column;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .albumImage {
+      width: 19rem;
+      height: 19rem;
+    }
+
+    .albumImage img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .albumInfo {
+      display: flex;
+      flex-direction: column;
+      width: 19rem;
+      margin: 0;
+      padding: 0;
+      font-size: 3rem;
+    }
+
+    .albumName {
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .albumReleaseDate {
+      font-size: 0.8rem;
+      color: #5e5c5c;
+      padding: 0;
+      margin: 0;
+    }
+    .trackLength {
+      margin-right: 20%;
+    }
+  }
 </style>
