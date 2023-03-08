@@ -369,8 +369,8 @@
   }
   .audioControls {
     display: flex;
-    margin-top: 20px;
-    margin-left: 17%;
+    margin-top: 10px;
+    margin-left: 13%;
     margin-right: 0;
   }
   .audioOnOff {
@@ -381,17 +381,39 @@
   .audioOnOff:hover {
     color: #111;
   }
-
-  /* "smaller" deskstop  */
-  @media screen and (max-width: 1110px) {
+  /* smaller desktops screens */
+  @media screen and (max-width: 1040px) {
+    .audioControls {
+      margin-left: 12%;
+    }
+    .audioControls input[type='range'] {
+      width: 150px;
+    }
+    .sliderContainer input[type='range'] {
+      width: 400px;
+    }
   }
-  /* on tablet  */
+
+  /* bigger tablets  */
   @media screen and (max-width: 810px) {
     .audioControls {
       display: none;
     }
     .sliderContainer input[type='range'] {
       width: 400px;
+    }
+  }
+  /* smaller tablets  */
+  .sliderContainer {
+    margin: 0;
+  }
+  @media screen and (max-width: 600px) {
+    .sliderContainer input[type='range'] {
+      width: 350px;
+    }
+    .playerInfo {
+      padding-right: 0;
+      width: 43%;
     }
   }
   /* mobile */
