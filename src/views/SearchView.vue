@@ -33,6 +33,37 @@
         </div>
       </div>
 
+      <!-- Show search result for tracks -->
+      <div v-if="tracks.length > 0" class="gridSection">
+        <h3 class="resultTypeHeading">Tracks</h3>
+        <div class="gridContainer">
+          <router-link
+            :to="'/track/' + track.id"
+            v-for="(track, index) in tracks.slice(0, 4)"
+            :key="index"
+          >
+            <div class="resultItem">
+              <div class="resultImage">
+                <img
+                  :src="
+                    track.album.images.length > 0
+                      ? track.album.images[0].url
+                      : ''
+                  "
+                  alt=""
+                />
+              </div>
+              <div class="resultDetails">
+                <div class="resultName">{{ track.name }}</div>
+                <div class="resultArtists">
+                  by {{ track.artists.map((artist) => artist.name).join(', ') }}
+                </div>
+              </div>
+            </div>
+          </router-link>
+        </div>
+      </div>
+
       <!-- Show search result for playlists -->
       <div v-if="playlists.length > 0" class="gridSection">
         <h3 class="resultTypeHeading">Playlists</h3>
@@ -123,6 +154,9 @@
       },
       albums() {
         return this.results.filter((result) => result.type === 'album')
+      },
+      tracks() {
+        return this.results.filter((result) => result.type === 'track')
       }
     },
     methods: {
