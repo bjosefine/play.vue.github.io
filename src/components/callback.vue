@@ -13,7 +13,7 @@
 
     async mounted() {
       // Runs when component is mounted
-      const loginCode = new URLSearchParams(this.$route.query).get('coe') // Retrieve the login code from URL query
+      const loginCode = new URLSearchParams(this.$route.query).get('code') // Retrieve the login code from URL query
       const accessToken = await getTokenAuthorization(loginCode) // Get access token using the login code
       localStorage.setItem('access_token', accessToken) // Store the access token in localStorage
       const userInfo = await getUserInfo(accessToken) // Get user information using the access token
