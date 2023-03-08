@@ -6,7 +6,7 @@ import PlayerView from './views/PlayerView.vue'
 import ArtistView from './views/ArtistView.vue'
 import SearchView from './views/SearchView.vue'
 import GenreCollection from './components/GenreCollection.vue'
-import Callback from './components/Callback.vue'
+import CallBack from './components/CallBack.vue'
 import ProfileView from './views/ProfileView.vue'
 
 const routes = [
@@ -24,8 +24,8 @@ const routes = [
 
   {
     path: '/callback',
-    name: 'Callback',
-    component: Callback
+    name: 'CallBack',
+    component: CallBack
   },
 
   { path: '/profile', name: 'ProfileView', component: ProfileView }

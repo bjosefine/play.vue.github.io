@@ -9,7 +9,7 @@
   import { getTokenAuthorization, getUserInfo } from '../api/spotify'
 
   export default {
-    name: 'Callback', // Component name
+    name: 'CallBack', // Component name
 
     async mounted() {
       // Runs when component is mounted
