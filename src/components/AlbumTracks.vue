@@ -93,8 +93,7 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio(),
-        track: null
+        audio: new Audio()
       }
     },
 

@@ -3,7 +3,6 @@ import {
   getTokenAuthorization,
   getUserInfo,
   revokeAccessToken,
-  getMyPlayer
 } from './api/spotify'
 
 export default createStore({
