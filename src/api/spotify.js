@@ -47,7 +47,7 @@ export const getTokenAuthorization = async (logincode) => {
 // A function that sends a request to Spotify API to retrieve the user's information
 export const getUserInfo = async (accessToken) => {
   const response = await fetch('https://api.spotify.com/v1/me', {
-    headers: { Authorization: 'Bearer ' + accessToken }
+    headers: { Authorization: 'Bearer' + accessToken }
   })
 
   const data = await response.json()
