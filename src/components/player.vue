@@ -17,9 +17,9 @@
     name: 'SongComponent',
     data() {
       return {
-        songName: null,
-        artistName: null,
-        albumName: null,
+        songName: '',
+        artistName: '',
+        albumName: '',
         player: null,
         accessToken: null
       }
@@ -64,7 +64,6 @@
 </script>
 <style>
   body {
-    background-color: rgb(36, 32, 32);
-    color: white;
+    background-color: '';
   }
 </style>

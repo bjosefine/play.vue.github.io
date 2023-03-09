@@ -399,5 +399,5 @@ export default {
   getUserInfo,
   revokeAccessToken,
   getMyPlayer,
-  getUserPlaylists
+  getUserPlaylist
 }
