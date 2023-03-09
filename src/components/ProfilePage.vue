@@ -33,7 +33,7 @@
         return this.getUser
       },
       profileImgUrl() {
-        return this.user.images[0].url
+        return this.user.images[0]?.url
       }
     },
     async created() {
