@@ -2,24 +2,25 @@
   <div>
     <div class="playerContainer">
       <p>play</p>
-      <h1>{{ device }}</h1>
     </div>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import { getDeviceId } from '../api/spotify.js'
   export default {
-    computed: {
-      ...mapGetters(['getDevice']),
-      device() {
-        return this.getDevice
+    data() {
+      return {
+        device: null
       }
     },
-    created() {
-      this.$store.dispatch('getDeviceId')
-      console.log(this.getDevice, 'device')
-      console.log(this.getDevice, 'ddds')
-      console.log(this.$store.state.accessToken, 'acs')
+
+    async created() {
+      const accessToken = localStorage.getItem('access_token')
+      const deviceId = await getDeviceId(accessToken)
+      this.device = deviceId
+      console.log(deviceId, 'sdsds')
+      console.log(this.device, 'dss')
+      console.log(accessToken, 'jk')
     }
   }
 </script>
