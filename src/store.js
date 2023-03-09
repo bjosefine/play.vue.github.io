@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 import {
   getTokenAuthorization,
   getUserInfo,
-  revokeAccessToken
+  revokeAccessToken,
+  getDeviceId
 } from './api/spotify'
 
 export default createStore({
@@ -10,7 +11,8 @@ export default createStore({
     isAuthenticated: false,
     user: null,
     accessToken: null,
-    isLoggingOut: false
+    isLoggingOut: false,
+    deviceId: null
   },
   mutations: {
     // Set the authentication status
@@ -34,6 +36,9 @@ export default createStore({
       state.isAuthenticated = false
       state.user = null
       state.accessToken = null
+    },
+    setDevice(state, getDevice) {
+      state.deviceId = getDevice
     }
   },
   actions: {
@@ -41,9 +46,11 @@ export default createStore({
     async loginUser({ commit }, loginCode) {
       const accessToken = await getTokenAuthorization(loginCode)
       const userInfo = await getUserInfo(accessToken)
+      const userDevice = await getDeviceId(accessToken)
       commit('setUser', userInfo)
       commit('setAuthenticated', true)
       commit('setAccessToken', accessToken)
+      commit('setDevice', userDevice)
 
       // Save the access token to localStorage
       localStorage.setItem('access_token', accessToken)
@@ -64,6 +71,13 @@ export default createStore({
       }
       const userInfo = await getUserInfo(accessToken)
       commit('setUser', userInfo)
+    },
+    async getDeviceId({ commit, state }, accessToken) {
+      if (!accessToken) {
+        accessToken = state.accessToken
+      }
+      const userDevice = await getDeviceId(accessToken)
+      commit('setDevice', userDevice)
     }
   },
   getters: {
@@ -75,6 +89,7 @@ export default createStore({
     accessToken: (state) =>
       state.accessToken || localStorage.getItem('access_token'),
     // Get the logging out status
-    isLoggingOut: (state) => state.isLoggingOut
+    isLoggingOut: (state) => state.isLoggingOut,
+    getDevice: (state) => state.deviceId
   }
 })

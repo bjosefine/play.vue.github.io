@@ -8,7 +8,8 @@ const scopes = [
   'user-read-private',
   'user-read-email',
   'playlist-read-private',
-  'playlist-read-collaborative'
+  'playlist-read-collaborative',
+  'user-read-playback-state'
 ]
 
 // A function that generates the authorization URL based on the above information
@@ -39,6 +40,7 @@ export const getTokenAuthorization = async (logincode) => {
   })
 
   const data = await response.json()
+  console.log(data.access_token, 'dataacess')
   return data.access_token
 }
 
@@ -49,6 +51,17 @@ export const getUserInfo = async (accessToken) => {
   })
 
   const data = await response.json()
+  return data
+}
+// function to retrieve the device id
+export const getDeviceId = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
+    headers: { Authorization: 'Bearer' + accessToken }
+  })
+
+  const data = await response.json()
+  console.log(data, 'deviceId')
+  console.log(accessToken, 'acs t')
   return data
 }
 
@@ -364,5 +377,6 @@ export default {
   getAuthorizationUrl,
   getTokenAuthorization,
   getUserInfo,
-  revokeAccessToken
+  revokeAccessToken,
+  getDeviceId
 }
