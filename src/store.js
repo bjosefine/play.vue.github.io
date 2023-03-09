@@ -10,7 +10,8 @@ export default createStore({
     isAuthenticated: false,
     user: null,
     accessToken: null,
-    isLoggingOut: false
+    isLoggingOut: false,
+    deviceId: null
   },
   mutations: {
     // Set the authentication status

@@ -1,6 +1,7 @@
 <template>
   <div class="appContainer">
     <MenuNav />
+    <SpotifyController />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
 
@@ -21,11 +22,13 @@
   import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
+  import SpotifyController from './components/SpotifyController.vue'
 
   export default {
     components: {
       MenuNav,
-      HeaderNav
+      HeaderNav,
+      SpotifyController
     },
     name: 'App',
     computed: {

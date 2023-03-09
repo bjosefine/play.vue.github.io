@@ -40,6 +40,7 @@ export const getTokenAuthorization = async (logincode) => {
   })
 
   const data = await response.json()
+  console.log(data.access_token, 'dataacess')
   return data.access_token
 }
 
@@ -50,16 +51,6 @@ export const getUserInfo = async (accessToken) => {
   })
 
   const data = await response.json()
-  return data
-}
-
-export const getUserPlaylists = async (accessToken) => {
-  const response = await fetch('https://api.spotify.com/v1/me/playlists', {
-    headers: { Authorization: 'Bearer ' + accessToken }
-  })
-
-  const data = await response.json()
-
   return data
 }
 
@@ -397,7 +388,5 @@ export default {
   getAuthorizationUrl,
   getTokenAuthorization,
   getUserInfo,
-  revokeAccessToken,
-  getMyPlayer,
-  getUserPlaylists
+  revokeAccessToken
 }
