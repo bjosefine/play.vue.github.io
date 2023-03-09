@@ -8,8 +8,7 @@ const scopes = [
   'user-read-private',
   'user-read-email',
   'playlist-read-private',
-  'playlist-read-collaborative',
-  'user-read-playback-state'
+  'playlist-read-collaborative'
 ]
 
 // A function that generates the authorization URL based on the above information
@@ -50,16 +49,6 @@ export const getUserInfo = async (accessToken) => {
   })
 
   const data = await response.json()
-  return data
-}
-
-export const getUserPlaylists = async (accessToken) => {
-  const response = await fetch('https://api.spotify.com/v1/me/playlists', {
-    headers: { Authorization: 'Bearer ' + accessToken }
-  })
-
-  const data = await response.json()
-
   return data
 }
 
@@ -125,16 +114,6 @@ const getFeaturedPlaylists = async () => {
 
   const data = await response.json()
   return data.playlists.items
-}
-
-export const getMyPlayer = async (accessToken) => {
-  const response = await fetch('https://api.spotify.com/v1/me/player', {
-    headers: { Authorization: 'Bearer ' + accessToken }
-  })
-
-  const data = await response.json()
-
-  return data
 }
 
 /// Get specific playlist frosm api
@@ -398,6 +377,9 @@ export default {
   getTokenAuthorization,
   getUserInfo,
   revokeAccessToken,
+<<<<<<< HEAD
   getMyPlayer,
+=======
+>>>>>>> 8e993cbbf45e03c8700d57e27c80518b996f33b7
   getUserPlaylist
 }

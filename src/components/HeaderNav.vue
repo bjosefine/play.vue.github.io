@@ -1,6 +1,6 @@
 <template>
   <div class="mainnav" :class="{ 'navbar--visible': scrolled }">
-    <div class="goback" v-if="!hideGoBack && scrolled">
+    <div class="goback" @click="goBack" v-if="!hideGoBack && scrolled">
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
     <div class="headprofile" />
