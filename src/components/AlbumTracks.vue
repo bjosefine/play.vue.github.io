@@ -30,11 +30,11 @@
       <div class="playlist">
         <ol class="trackList">
           <li
-            class="trackItem"
             v-for="(artist, index) in track.artists"
             :key="index"
             :class="{ selected: index === selectedTrackIndex }"
-            @click="playTrack(track.id)"
+            class="trackItem"
+            @click="playTrack(index)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -107,20 +107,16 @@
 
     // Get the songs Mp3 file with a click
     methods: {
-      async playTrack(trackId) {
-        const track = await spotify.getTracks(trackId)
-        console.log(track, 'Låtens Mp3')
-
-        if (trackId === this.selectedTrackIndex) {
+      playTrack(index) {
+        if (index === this.selectedTrackIndex) {
           return
         }
 
-        this.selectedTrackIndex = trackId
+        this.selectedTrackIndex = index
         this.isPlaying = true
-        console.log(this.selectedTrackIndex, 'current')
-        console.log(this.albumTracks, 'tracksdata')
-        console.log(this.albumTracks[0].preview_url, 'hejhej')
-        console.log(track, 'TYJEAMA')
+        console.log(this.selectedTrackIndex, 'SELECTED TRACK INDEX')
+        console.log(this.albumTracks, 'ALBUMTRACKS')
+        console.log(this.albumTracks[0].preview_url, 'PREVIEW URL')
       },
 
       playNext() {
@@ -143,10 +139,7 @@
       const albumId = this.$route.params.id
       this.albumTracks = await spotify.getAlbumTracks(albumId)
       this.albumImages = await spotify.getSpecificAlbum(albumId)
-      this.track = this.albumTracks
-      // this.tracks = this.track
-      // this.tracks = this.albumTracks
-      // this.tracks = this.track.preview_url
+      this.tracks = this.albumTracks
     }
   }
 </script>
