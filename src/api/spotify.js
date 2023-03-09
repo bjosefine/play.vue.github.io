@@ -8,7 +8,8 @@ const scopes = [
   'user-read-private',
   'user-read-email',
   'playlist-read-private',
-  'playlist-read-collaborative'
+  'playlist-read-collaborative',
+  'user-read-playback-state'
 ]
 
 // A function that generates the authorization URL based on the above information
@@ -52,6 +53,16 @@ export const getUserInfo = async (accessToken) => {
   return data
 }
 
+export const getUserPlaylists = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me/playlists', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+
+  const data = await response.json()
+
+  return data
+}
+
 // A function that sends a request to Spotify API to revoke the access token
 export const revokeAccessToken = async (accessToken) => {
   const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -71,6 +82,18 @@ export const revokeAccessToken = async (accessToken) => {
   } else {
     console.log('Failed to revoke access token')
   }
+}
+
+// gets current users playlists
+export const getUserPlaylist = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me/playlists', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+
+  const data = await response.json()
+  console.log(data, 'user playlist')
+  console.log(accessToken, 'acessTok')
+  return data
 }
 // A function that sends a request to Spotify API to retrieve the access token using the client credentials
 const getToken = async () => {
@@ -102,6 +125,16 @@ const getFeaturedPlaylists = async () => {
 
   const data = await response.json()
   return data.playlists.items
+}
+
+export const getMyPlayer = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me/player', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+
+  const data = await response.json()
+
+  return data
 }
 
 /// Get specific playlist frosm api
@@ -364,5 +397,7 @@ export default {
   getAuthorizationUrl,
   getTokenAuthorization,
   getUserInfo,
-  revokeAccessToken
+  revokeAccessToken,
+  getMyPlayer,
+  getUserPlaylists
 }

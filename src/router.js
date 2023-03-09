@@ -9,6 +9,7 @@ import GenreCollection from './components/GenreCollection.vue'
 import CallBack from './components/CallBack.vue'
 import ProfileView from './views/ProfileView.vue'
 import settingsView from './views/settingsView.vue'
+import PlayerV from './components/player.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -31,6 +32,7 @@ const routes = [
 
   { path: '/profile', name: 'ProfileView', component: ProfileView },
   { path: '/settings', name: 'SettingsView', component: settingsView }
+  { path: '/player', name: 'PlayerV', component: PlayerV }
 ]
 
 const router = createRouter({

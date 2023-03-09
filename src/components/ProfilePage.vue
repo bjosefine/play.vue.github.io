@@ -10,20 +10,40 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import { getUserPlaylist } from '../api/spotify'
 
   export default {
     name: 'UserProfile',
+    data() {
+      return {
+        userProfile: null,
+        playlist: null
+      }
+    },
+    mounted() {
+      const accessToken = localStorage.getItem('access_token')
+      if (!accessToken) {
+        return
+      }
+      this.userPlaylist(accessToken)
+    },
     computed: {
       ...mapGetters(['getUser']),
       user() {
         return this.getUser
       },
       profileImgUrl() {
-        return this.user.images[0]?.url ?? ''
+        return this.user.images[0].url
       }
     },
-    created() {
+    async created() {
       this.$store.dispatch('getUserInfo')
+    },
+    methods: {
+      async userPlaylist(accessToken) {
+        const playlist = await getUserPlaylist(accessToken)
+        this.playlist = playlist.items
+      }
     }
   }
 </script>
