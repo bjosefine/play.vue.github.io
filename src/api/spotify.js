@@ -72,6 +72,18 @@ export const revokeAccessToken = async (accessToken) => {
     console.log('Failed to revoke access token')
   }
 }
+
+// gets current users playlists
+export const getUserPlaylist = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me/playlists', {
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+
+  const data = await response.json()
+  console.log(data, 'user playlist')
+  console.log(accessToken, 'acessTok')
+  return data
+}
 // A function that sends a request to Spotify API to retrieve the access token using the client credentials
 const getToken = async () => {
   const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -364,5 +376,6 @@ export default {
   getAuthorizationUrl,
   getTokenAuthorization,
   getUserInfo,
-  revokeAccessToken
+  revokeAccessToken,
+  getUserPlaylist
 }
