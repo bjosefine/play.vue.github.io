@@ -377,5 +377,9 @@ export default {
   getTokenAuthorization,
   getUserInfo,
   revokeAccessToken,
+<<<<<<< HEAD
+  getMyPlayer,
+=======
+>>>>>>> 8e993cbbf45e03c8700d57e27c80518b996f33b7
   getUserPlaylist
 }

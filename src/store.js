@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 import {
   getTokenAuthorization,
   getUserInfo,
-  revokeAccessToken
+  revokeAccessToken,
+  getMyPlayer
 } from './api/spotify'
 
 export default createStore({
@@ -10,7 +11,8 @@ export default createStore({
     isAuthenticated: false,
     user: null,
     accessToken: null,
-    isLoggingOut: false
+    isLoggingOut: false,
+    player: null
   },
   mutations: {
     // Set the authentication status
@@ -29,11 +31,16 @@ export default createStore({
     setLoggingOut(state, isLoggingOut) {
       state.isLoggingOut = isLoggingOut
     },
+    // Set the player object
+    setPlayer(state, player) {
+      state.player = player
+    },
     // Clear the user data when logging out
     logout(state) {
       state.isAuthenticated = false
       state.user = null
       state.accessToken = null
+      state.player = null
     }
   },
   actions: {
@@ -64,6 +71,14 @@ export default createStore({
       }
       const userInfo = await getUserInfo(accessToken)
       commit('setUser', userInfo)
+    },
+    // Get the player object
+    async getPlayer({ commit, state }, accessToken) {
+      if (!accessToken) {
+        accessToken = state.accessToken
+      }
+      const player = await getMyPlayer(accessToken)
+      commit('setPlayer', player)
     }
   },
   getters: {
@@ -75,6 +90,8 @@ export default createStore({
     accessToken: (state) =>
       state.accessToken || localStorage.getItem('access_token'),
     // Get the logging out status
-    isLoggingOut: (state) => state.isLoggingOut
+    isLoggingOut: (state) => state.isLoggingOut,
+    // Get the player object
+    getPlayer: (state) => state.player
   }
 })
