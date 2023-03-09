@@ -31,9 +31,10 @@
         <ol class="trackList">
           <li
             class="trackItem"
-            v-for="artist in track.artists"
-            :key="artist.id"
-            @click="playTrack(track.id)"
+            v-for="(artist, index) in track.artists"
+            :key="index"
+            :class="{ selected: index === selectedTrackIndex }"
+            @click="playTrack(index)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -65,8 +66,8 @@
     </div>
     <div v-if="selectedTrackIndex !== null">
       <PlayerController
-        :key="track[selectedTrackIndex].track.id"
-        :track="track[selectedTrackIndex]"
+        :key="albumTracks[selectedTrackIndex].id"
+        :track="albumTracks[selectedTrackIndex]"
         :audio="audio"
         :autoplay="autoplay"
         @play-next="playNext()"
@@ -92,8 +93,7 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio(),
-        track: null
+        audio: new Audio()
       }
     },
 
@@ -145,7 +145,6 @@
       this.albumImages = await spotify.getSpecificAlbum(albumId)
       this.track = this.albumTracks
       // this.tracks = this.track
-      // this.tracks = this.albumTracks
       // this.tracks = this.track.preview_url
     }
   }
