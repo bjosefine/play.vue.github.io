@@ -5,7 +5,7 @@
   <PlayerView />
   <GenreCategories />
 </template>
-<h1>hej</h1>
+
 <script>
   import spotify from '../api/spotify'
   import NewReleases from '../components/NewReleases.vue'

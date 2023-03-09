@@ -1,7 +1,6 @@
 <template>
   <div class="appContainer">
     <MenuNav />
-    <SpotifyController />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
 
@@ -22,13 +21,11 @@
   import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
-  import SpotifyController from './components/SpotifyController.vue'
 
   export default {
     components: {
       MenuNav,
-      HeaderNav,
-      SpotifyController
+      HeaderNav
     },
     name: 'App',
     computed: {
@@ -67,6 +64,15 @@
 </script>
 
 <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(198, 63, 184, 0.8) 25.52%,
+      rgba(189, 173, 173, 0) 100%
+    );
+    background-blend-mode: darken;
+  }
   #app {
     color: #000;
     font-size: large;
