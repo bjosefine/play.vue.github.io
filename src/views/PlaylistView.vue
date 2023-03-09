@@ -138,11 +138,10 @@
 <style>
   /* player-container Used on many pages important, don't adjust*/
   .playerContainer {
-    background: rgba(236, 172, 236, 0.02);
-    border-radius: 3px;
+    background: rgba(206, 17, 206, 0.062);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.9px);
-    -webkit-backdrop-filter: blur(7.9px);
+    backdrop-filter: blur(18.2px);
+    -webkit-backdrop-filter: blur(18.2px);
     color: rgb(41, 38, 38);
   }
 
@@ -262,7 +261,7 @@
   /* titel */
   .trackTitle {
     font-weight: bold;
-    width: 33px;
+    width: 330px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -286,11 +285,6 @@
   @media (min-width: 750px) and (max-width: 800px) {
     /* player-container Used on many pages important, don't adjust*/
     .playerContainer {
-      background: rgba(236, 172, 236, 0.02);
-      border-radius: 3px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(7.9px);
-      -webkit-backdrop-filter: blur(7.9px);
       color: rgb(41, 38, 38);
     }
 

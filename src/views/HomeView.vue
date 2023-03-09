@@ -1,5 +1,5 @@
 <template>
-  <HeaderNav />
+  <HeaderNav :hide-go-back="true" />
   <PlayListitems />
   <NewReleases />
   <PlayerView />
@@ -10,8 +10,8 @@
   import spotify from '../api/spotify'
   import NewReleases from '../components/NewReleases.vue'
   import HeaderNav from '../components/HeaderNav.vue'
-  import PlayListitems from '../components/Playlistitems.vue'
-  import PlayerView from './PlayerView.vue'
+  import PlayListitems from '../components/PlayListitems.vue'
+
   import GenreCategories from '../components/GenreCategories.vue'
 
   export default {

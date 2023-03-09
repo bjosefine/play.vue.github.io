@@ -52,7 +52,27 @@ export const getUserInfo = async (accessToken) => {
   return data
 }
 
-/// send client id & secret to api
+// A function that sends a request to Spotify API to revoke the access token
+export const revokeAccessToken = async (accessToken) => {
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Basic ' + btoa(clientId + ':' + clientSecret),
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      token: accessToken,
+      token_type_hint: 'access_token'
+    })
+  })
+
+  if (response.status === 200) {
+    console.log('Access token revoked')
+  } else {
+    console.log('Failed to revoke access token')
+  }
+}
+// A function that sends a request to Spotify API to retrieve the access token using the client credentials
 const getToken = async () => {
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
@@ -62,14 +82,15 @@ const getToken = async () => {
     },
     body: 'grant_type=client_credentials'
   })
-  /// retrive the token from api
+
   const data = await response.json()
-  console.log(data.access_token, 'token')
   return data.access_token
 }
-// Get  Featured Playlists from api
+
+// A function that sends a request to Spotify API to retrieve the featured playlists
 const getFeaturedPlaylists = async () => {
   const token = await getToken()
+
   const response = await fetch(
     'https://api.spotify.com/v1/browse/featured-playlists',
     {
@@ -82,6 +103,7 @@ const getFeaturedPlaylists = async () => {
   const data = await response.json()
   return data.playlists.items
 }
+
 /// Get specific playlist frosm api
 const getPlaylist = async (playlistId) => {
   const token = await getToken()
@@ -341,5 +363,6 @@ export default {
   getCategory,
   getAuthorizationUrl,
   getTokenAuthorization,
-  getUserInfo
+  getUserInfo,
+  revokeAccessToken
 }
