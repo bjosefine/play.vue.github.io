@@ -15,7 +15,7 @@
     },
 
     async created() {
-      const accessToken = localStorage.getItem('access_token')
+      const accessToken = this.$store.state.accessToken
       const deviceId = await getDeviceId(accessToken)
       this.device = deviceId
       console.log(deviceId, 'sdsds')
