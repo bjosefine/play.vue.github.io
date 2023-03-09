@@ -4,7 +4,11 @@
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
     <div class="headprofile" />
-    <div class="wheel" />
+    <div class="wheel">
+      <router-link to="/settings">
+        <i class="bi bi-gear" />
+      </router-link>
+    </div>
   </div>
 </template>
 

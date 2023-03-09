@@ -8,6 +8,7 @@ import SearchView from './views/SearchView.vue'
 import GenreCollection from './components/GenreCollection.vue'
 import CallBack from './components/CallBack.vue'
 import ProfileView from './views/ProfileView.vue'
+import settingsView from './views/settingsView.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -28,7 +29,8 @@ const routes = [
     component: CallBack
   },
 
-  { path: '/profile', name: 'ProfileView', component: ProfileView }
+  { path: '/profile', name: 'ProfileView', component: ProfileView },
+  { path: '/settings', name: 'SettingsView', component: settingsView }
 ]
 
 const router = createRouter({

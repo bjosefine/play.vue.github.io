@@ -46,15 +46,6 @@
 </script>
 
 <style>
-  body {
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(46, 35, 45, 0.8) 25.52%,
-      rgba(189, 173, 173, 0) 100%
-    );
-    background-blend-mode: darken;
-  }
-
   .carousel {
     height: 300px;
     width: 85%;
