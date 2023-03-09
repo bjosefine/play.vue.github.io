@@ -31,7 +31,7 @@ const routes = [
   },
 
   { path: '/profile', name: 'ProfileView', component: ProfileView },
-  { path: '/settings', name: 'SettingsView', component: settingsView }
+  { path: '/settings', name: 'SettingsView', component: settingsView },
   { path: '/player', name: 'PlayerV', component: PlayerV }
 ]
 
