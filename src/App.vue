@@ -5,13 +5,20 @@
       <HeaderNav :hide-go-back="hideGoBack" />
 
       <router-view />
-      <button v-if="!isLoggedIn" @click="login">Login with Spotify</button>
-      <button v-if="isLoggedIn" @click="logout">Logout</button>
+
+      <div v-if="isAuthenticated" class="user-info">
+        <span class="user-name">{{ getUser.display_name }}</span>
+        <button v-if="!loading" @click="Logout">Logout</button>
+      </div>
+
+      <!-- Show login button when not authenticated -->
+      <button v-else @click="login">Login with Spotify</button>
     </main>
   </div>
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
@@ -22,39 +29,37 @@
       HeaderNav
     },
     name: 'App',
-    data() {
-      return {
-        accessToken: null,
-        displayName: null
-      }
-    },
     computed: {
-      isLoggedIn() {
-        return this.accessToken !== null && this.displayName !== null
-      },
+      ...mapGetters(['isAuthenticated', 'getUser', 'loading']), // Use Vuex mapGetters to access Vuex store state
       hideGoBack() {
+        // Computed property that returns true if the current route is HomeView
         return this.$route.name === 'HomeView'
       }
     },
-    mounted() {
-      this.checkLoginStatus()
-    },
     methods: {
+      ...mapActions(['logoutUser', 'loginUser']),
       async login() {
+        // Method that redirects the user to the Spotify authorization URL
         const authorizationUrl = Spotify.getAuthorizationUrl()
         window.location.href = authorizationUrl
       },
-      logout() {
-        localStorage.removeItem('access_token')
-        localStorage.removeItem('display_name')
-        this.checkLoginStatus()
-        this.$router.push('/')
-      },
-      checkLoginStatus() {
-        const accessToken = localStorage.getItem('access_token')
-        const displayName = localStorage.getItem('display_name')
-        this.accessToken = accessToken
-        this.displayName = displayName
+      async Logout() {
+        // Method that logs the user out
+        this.$store.commit('setLoading', true) // Commit the 'setLoading' mutation to true
+        await this.$store.dispatch('logoutUser') // Dispatch the 'logoutUser' action to log out the user
+        localStorage.removeItem('access_token') // Remove access token from local storage
+        localStorage.removeItem('user_id') // Remove user ID from local storage
+        localStorage.removeItem('display_name') // Remove display name from local storage
+        this.$router.push('/') // Redirect user to HomeView
+      }
+    },
+    created() {
+      const accessToken = localStorage.getItem('access_token') // Get the access token from local storage
+      if (accessToken) {
+        // If an access token is found
+        this.$store.commit('setAccessToken', accessToken) // Commit the access token to Vuex store state
+        this.$store.dispatch('getUserInfo', accessToken) // Dispatch the getUserInfo action to retrieve user information
+        this.$store.commit('setAuthenticated', true) // Commit the 'setAuthenticated' mutation to true to indicate that the user is logged in
       }
     }
   }
