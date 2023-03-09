@@ -34,7 +34,7 @@
             v-for="(artist, index) in track.artists"
             :key="index"
             :class="{ selected: index === selectedTrackIndex }"
-            @click="playTrack(index)"
+            @click="playTrack(track.id)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -93,7 +93,8 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio()
+        audio: new Audio(),
+        track: null
       }
     },
 
@@ -145,6 +146,7 @@
       this.albumImages = await spotify.getSpecificAlbum(albumId)
       this.track = this.albumTracks
       // this.tracks = this.track
+      // this.tracks = this.albumTracks
       // this.tracks = this.track.preview_url
     }
   }
