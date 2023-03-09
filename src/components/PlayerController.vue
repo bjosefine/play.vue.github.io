@@ -318,7 +318,7 @@
     display: flex;
     justify-content: center;
   }
-  .artistInfo {
+  s .artistInfo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

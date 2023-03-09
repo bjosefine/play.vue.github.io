@@ -1,13 +1,28 @@
 <template>
   <div class="MenuNav">
     <ul>
-      <router-link tag="li" to="/"><i class="bi bi-house" /></router-link>
-      <router-link tag="li" to="/search">
-        <i class="bi bi-search" />
+      <!-- Link to home page -->
+      <router-link to="/">
+        <template #default>
+          <i class="bi bi-house" />
+        </template>
       </router-link>
-      <router-link tag="li" to="profile"
-        ><i class="bi bi-person"
-      /></router-link>
+
+      <!-- Link to search page -->
+      <router-link to="/search">
+        <template #default>
+          <i class="bi bi-search" />
+        </template>
+      </router-link>
+
+      <!-- Link to profile page, only visible when authenticated -->
+      <router-link v-if="isAuthenticated" to="/profile">
+        <template #default>
+          <i class="bi bi-person" />
+        </template>
+      </router-link>
+
+      <!-- Icon for featured playlists, currently not linked -->
       <i class="bi bi-music-note-list" />
     </ul>
   </div>
@@ -15,8 +30,12 @@
 
 <script>
   import spotify from '../api/spotify.js'
+  import { mapGetters } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     data() {
       return {
         featuredPlaylists: null

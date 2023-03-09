@@ -3,27 +3,27 @@
     <div class="pictureContainer">
       <img :src="profileImgUrl" alt="Profile picture" />
     </div>
-    <h1 class="profileUserName">Name:{{ displayName }}</h1>
+    <h1 class="profileUserName">Name: {{ user.display_name }}</h1>
     <h1>playlists</h1>
   </div>
 </template>
 
 <script>
-  import { getUserInfo } from '../api/spotify.js'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'UserProfile',
-    data() {
-      return {
-        displayName: null,
-        profileImgUrl: null
+    computed: {
+      ...mapGetters(['getUser']),
+      user() {
+        return this.getUser
+      },
+      profileImgUrl() {
+        return this.user.images[0]?.url ?? ''
       }
     },
-    async created() {
-      const accessToken = localStorage.getItem('access_token')
-      const userInfo = await getUserInfo(accessToken)
-      this.displayName = userInfo.display_name
-      this.profileImgUrl = userInfo.images[0].url
+    created() {
+      this.$store.dispatch('getUserInfo')
     }
   }
 </script>
