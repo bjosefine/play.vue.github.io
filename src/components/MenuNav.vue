@@ -2,21 +2,25 @@
   <div class="MenuNav">
     <ul>
       <!-- Link to home page -->
-      <router-link to="/">
+      <router-link to="/" active-class="highlight">
         <template #default>
           <i class="bi bi-house" />
         </template>
       </router-link>
 
       <!-- Link to search page -->
-      <router-link to="/search">
+      <router-link to="/search" active-class="highlight">
         <template #default>
           <i class="bi bi-search" />
         </template>
       </router-link>
 
       <!-- Link to profile page, only visible when authenticated -->
-      <router-link v-if="isAuthenticated" to="/profile">
+      <router-link
+        v-if="isAuthenticated"
+        to="/profile"
+        active-class="highlight"
+      >
         <template #default>
           <i class="bi bi-person" />
         </template>
@@ -83,8 +87,17 @@
   a:hover {
     color: rgb(45, 41, 41);
   }
+  .highlight {
+    border-bottom: 2px solid rgb(161, 99, 163);
+  }
+
   /*Media query from tablet down to mobile mode so the side navbar ends up at the bottom*/
   @media (max-width: 767px) {
+    .highlight {
+      border-radius: 10px;
+      background: rgba(206, 17, 206, 0.44);
+      box-shadow: 0 0 10px 10px rgba(206, 17, 206, 0.4);
+    }
     .MenuNav {
       z-index: 1000;
       display: flex;

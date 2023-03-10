@@ -177,6 +177,22 @@ const getGenres = async () => {
   return data.categories.items
 }
 
+// ///get genres name
+// const getGenreName = async () => {
+//   const token = await getToken()
+//   const response = await fetch(
+//     `https://api.spotify.com/v1/recommendations/available-genre-seeds`,
+//     {
+//       headers: {
+//         Authorization: 'Bearer ' + token
+//       }
+//     }
+//   )
+//   const data = await response.json()
+//   return data
+// }
+// ///ends here
+
 // Get category data to access categories playlists info
 const getCategory = async (categoryId) => {
   const token = await getToken()

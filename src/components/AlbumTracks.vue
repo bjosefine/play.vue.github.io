@@ -26,15 +26,18 @@
     <hr class="headerLine" />
 
     <!-- List of Tracks -->
-    <div v-for="track in albumTracks" :key="track.id">
+    <div
+      v-for="(track, index) in tracks"
+      :key="index"
+      :class="{ selected: index === selectedTrackIndex }"
+      @click="playTrack(index)"
+    >
       <div class="playlist">
         <ol class="trackList">
           <li
-            v-for="(artist, index) in track.artists"
-            :key="index"
-            :class="{ selected: index === selectedTrackIndex }"
+            v-for="artist in track.artists"
+            :key="artist.id"
             class="trackItem"
-            @click="playTrack(index)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -65,9 +68,11 @@
       </div>
     </div>
     <div v-if="selectedTrackIndex !== null">
+      <!-- Key: Själva idt 
+      Track: det är -->
       <PlayerController
-        :key="albumTracks[selectedTrackIndex].id"
-        :track="albumTracks[selectedTrackIndex]"
+        :key="tracks[selectedTrackIndex].track"
+        :track="tracks[selectedTrackIndex].track"
         :audio="audio"
         :autoplay="autoplay"
         @play-next="playNext()"
@@ -117,6 +122,7 @@
         console.log(this.selectedTrackIndex, 'SELECTED TRACK INDEX')
         console.log(this.albumTracks, 'ALBUMTRACKS')
         console.log(this.albumTracks[0].preview_url, 'PREVIEW URL')
+        console.log(index, 'INDEX')
       },
 
       playNext() {
@@ -140,6 +146,14 @@
       this.albumTracks = await spotify.getAlbumTracks(albumId)
       this.albumImages = await spotify.getSpecificAlbum(albumId)
       this.tracks = this.albumTracks
+      console.log(this.albumTracks, 'URLLLLLL')
+      // const fetchAlbumTracks = await spotify.getAlbumTracks(albumId)
+      // const fetchAlbumImg = await spotify.getSpecificAlbum(albumId)
+      // this.albumTracks = fetchAlbumTracks
+      // this.albumImages = fetchAlbumImg
+      // console.log(this.albumTracks, 'GAH ALBUMTRACKS')
+      // console.log(this.albumImages, 'GAH ALBUMImages')
+      // console.log(fetchAlbumTracks, 'GAH FETCHALBUM')
     }
   }
 </script>

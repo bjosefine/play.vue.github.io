@@ -1,6 +1,6 @@
-<template>
+<template v-if="genrePlaylist">
   <div class="home">
-    <h1>Genre Collection</h1>
+    <h1>{{ $route.params.genre }}</h1>
     <!-- classnames on multiple pages GenreCategories, PlayListitems-->
     <div class="playlistContainer" v-if="genrePlaylist">
       <div class="genreCategoriesList">
@@ -36,6 +36,8 @@
     async created() {
       this.categoryId = this.$route.params.categoryId
       this.genrePlaylist = await spotify.getCategoryPlaylist(this.categoryId)
+      // this.genreName = await spotify.getGenreName()
+      // console.log(this.genreName, 'hej')
     }
   }
 </script>
