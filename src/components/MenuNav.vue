@@ -88,9 +88,7 @@
     color: rgb(45, 41, 41);
   }
   .highlight {
-    border-radius: 10px;
-    background: rgba(206, 17, 206, 0.245);
-    box-shadow: 0 0 10px 10px rgba(206, 17, 206, 0.4);
+    border-bottom: 2px solid rgb(161, 99, 163);
   }
 
   /*Media query from tablet down to mobile mode so the side navbar ends up at the bottom*/
