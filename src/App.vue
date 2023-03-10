@@ -3,11 +3,11 @@
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
+      <SpotifyPlayer />
 
       <router-view />
 
       <div v-if="isAuthenticated" class="user-info">
-        <span class="user-name">{{ getUser.display_name }}</span>
         <button v-if="!loading" @click="Logout">Logout</button>
       </div>
 
@@ -22,11 +22,13 @@
   import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
+  import SpotifyPlayer from './components/SpotifyPlayer.vue'
 
   export default {
     components: {
       MenuNav,
-      HeaderNav
+      HeaderNav,
+      SpotifyPlayer
     },
     name: 'App',
     computed: {
@@ -49,7 +51,6 @@
         await this.$store.dispatch('logoutUser') // Dispatch the 'logoutUser' action to log out the user
         localStorage.removeItem('access_token') // Remove access token from local storage
         localStorage.removeItem('user_id') // Remove user ID from local storage
-        localStorage.removeItem('display_name') // Remove display name from local storage
         this.$router.push('/') // Redirect user to HomeView
       }
     },

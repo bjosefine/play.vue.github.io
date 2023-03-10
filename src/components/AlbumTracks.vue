@@ -30,10 +30,11 @@
       <div class="playlist">
         <ol class="trackList">
           <li
+            v-for="(artist, index) in track.artists"
+            :key="index"
+            :class="{ selected: index === selectedTrackIndex }"
             class="trackItem"
-            v-for="artist in track.artists"
-            :key="artist.id"
-            @click="playTrack(track.id)"
+            @click="playTrack(index)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -65,8 +66,8 @@
     </div>
     <div v-if="selectedTrackIndex !== null">
       <PlayerController
-        :key="artistTracks[selectedTrackIndex].id"
-        :track="artistTracks[selectedTrackIndex]"
+        :key="albumTracks[selectedTrackIndex].id"
+        :track="albumTracks[selectedTrackIndex]"
         :audio="audio"
         :autoplay="autoplay"
         @play-next="playNext()"
@@ -88,6 +89,7 @@
       return {
         albumTracks: null,
         albumImages: null,
+        tracks: null,
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
@@ -95,23 +97,49 @@
       }
     },
 
-    async created() {
-      const albumId = this.$route.params.id
-      this.albumTracks = await spotify.getAlbumTracks(albumId)
-      this.albumImages = await spotify.getSpecificAlbum(albumId)
-    },
+    // const trackIndex = this.albumTracks.findIndex(
+    //   (track) => track.id === trackId
+    // )
+    // this.audio.src = this.albumTracks[trackIndex].preview_url
+    // this.audio.load()
+    // this.audio.play()
+    // this.audio.src = this.albumTracks[0].preview_url
+
     // Get the songs Mp3 file with a click
     methods: {
-      async playTrack(trackId) {
-        const track = await spotify.getTracks(trackId)
-        console.log(track, 'Låtens Mp3')
+      playTrack(index) {
+        if (index === this.selectedTrackIndex) {
+          return
+        }
+
+        this.selectedTrackIndex = index
+        this.isPlaying = true
+        console.log(this.selectedTrackIndex, 'SELECTED TRACK INDEX')
+        console.log(this.albumTracks, 'ALBUMTRACKS')
+        console.log(this.albumTracks[0].preview_url, 'PREVIEW URL')
       },
-      // Calculate minutes and seconds
+
+      playNext() {
+        this.selectedTrackIndex = this.selectedTrackIndex + 1
+        console.log(this.selectedTrackIndex + 1, 'test next')
+      },
+
+      playPrev() {
+        this.selectedTrackIndex = this.selectedTrackIndex - 1
+        console.log(this.selectedTrackIndex - 1, 'test prev')
+      },
+
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
       }
+    },
+    async created() {
+      const albumId = this.$route.params.id
+      this.albumTracks = await spotify.getAlbumTracks(albumId)
+      this.albumImages = await spotify.getSpecificAlbum(albumId)
+      this.tracks = this.albumTracks
     }
   }
 </script>
