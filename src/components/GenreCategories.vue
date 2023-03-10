@@ -12,7 +12,7 @@
           <router-link
             :to="{
               name: 'CategoryPlaylist',
-              params: { categoryId: toplists.id }
+              params: { categoryId: toplists.id, genre: toplists.name }
             }"
             class="playlistLink"
           >
@@ -35,7 +35,8 @@
     name: 'GenreCategories',
     data() {
       return {
-        genreCategories: null
+        genreCategories: null,
+        genreName: null
       }
     },
     async created() {

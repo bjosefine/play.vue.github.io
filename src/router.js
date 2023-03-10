@@ -17,7 +17,7 @@ const routes = [
   { path: '/artist/:id', name: 'ArtistView', component: ArtistView },
   { path: '/search', name: 'SearchView', component: SearchView },
   {
-    path: '/categories/:categoryId/playlist',
+    path: '/categories/:categoryId/playlist/:genre',
     name: 'CategoryPlaylist',
     component: GenreCollection
   },
