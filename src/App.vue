@@ -1,5 +1,5 @@
 <template>
-  <div class="appContainer">
+  <div class="appContainer" :style="newTheme">
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
