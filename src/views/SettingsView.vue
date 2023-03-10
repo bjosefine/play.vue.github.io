@@ -33,7 +33,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .darkTheme {
     background-color: blue;
   }
