@@ -3,6 +3,7 @@
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
+      <SpotifyPlayer />
 
       <router-view />
 
@@ -21,11 +22,13 @@
   import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
+  import SpotifyPlayer from './components/SpotifyPlayer.vue'
 
   export default {
     components: {
       MenuNav,
-      HeaderNav
+      HeaderNav,
+      SpotifyPlayer
     },
     name: 'App',
     computed: {
