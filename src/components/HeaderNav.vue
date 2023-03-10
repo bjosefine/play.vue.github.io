@@ -3,6 +3,14 @@
     <div class="goback" @click="goBack" v-if="!hideGoBack && scrolled">
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
+
+    <!-- Settings Icon -->
+    <div class="settings">
+      <router-link to="/settings">
+        <span class="bi bi-gear" />
+      </router-link>
+    </div>
+
     <div class="headprofile" />
     <div class="wheel" />
   </div>
@@ -38,7 +46,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .mainnav {
     position: fixed;
     width: 100%;
@@ -76,5 +84,23 @@
   .goback:hover {
     transform: scale(1.2);
     transition: 0.3s;
+  }
+
+  .settings {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 95%;
+    padding-right: 30px;
+    height: 50px;
+  }
+
+  span {
+    font-size: 20px;
+    color: rgba(124, 13, 117, 0.53);
+  }
+
+  span:hover {
+    color: rgb(45, 41, 41);
   }
 </style>
