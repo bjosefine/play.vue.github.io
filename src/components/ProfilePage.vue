@@ -8,8 +8,10 @@
           alt="Profile picture"
         />
       </div>
-      <h1 class="profileUserName">Name: {{ user.display_name }}</h1>
-      <h1>User playlists</h1>
+
+      <h1 class="profileUserName">{{ user.display_name }}</h1>
+
+      <h1 class="userPlaylistHeading">User playlists</h1>
     </div>
     <div class="userPlaylistContainer" v-if="playlists">
       <div class="userPalylistCollection">
@@ -18,10 +20,15 @@
           :key="playlist.id"
           class="playlistCollection"
         >
-          <div class="paylistImageAndName">
-            <img :src="playlist.images[0].url" alt="playlist.name" />
-            <p class="nameOfPlaylist">{{ playlist.name }}</p>
-          </div>
+          <router-link
+            :to="{ name: 'playlist', params: { id: playlist.id } }"
+            class="playlistLink"
+          >
+            <div class="paylistImageAndName">
+              <img :src="playlist.images[0].url" alt="playlist.name" />
+              <p class="nameOfPlaylist">{{ playlist.name }}</p>
+            </div>
+          </router-link>
         </div>
       </div>
       <!-- <div class="loading" v-else>Loading...</div> -->
@@ -77,6 +84,14 @@
     justify-content: center;
   }
 
+  .profileHeading {
+    font-size: 16px;
+  }
+
+  .userPlaylistHeading {
+    font-size: 20px;
+  }
+
   .nameOfPlaylist {
     white-space: nowrap;
     overflow: hidden;
@@ -92,7 +107,6 @@
     border-radius: 50%;
     overflow: hidden;
     margin-top: 5rem;
-    margin-left: 5rem;
   }
 
   .profilePicture {
