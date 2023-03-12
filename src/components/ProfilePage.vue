@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div flexContainer>
+    <div class="profileFlexContainer">
       <div class="pictureContainer">
         <img
           class="profilePicture"
@@ -10,10 +10,9 @@
       </div>
 
       <h1 class="profileUserName">{{ user.display_name }}</h1>
-
-      <h1 class="userPlaylistHeading">User playlists</h1>
     </div>
     <div class="userPlaylistContainer" v-if="playlists">
+      <h1 class="userPlaylistHeading">My playlists</h1>
       <div class="userPalylistCollection">
         <div
           v-for="playlist in playlists"
@@ -78,18 +77,26 @@
 
 <style>
   .home {
+    padding: 2rem;
+  }
+
+  .profileFlexContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 50%;
+    justify-content: left;
+    margin-bottom: 4rem;
+    margin-right: 50%;
+    margin-left: 15rem;
+    align-items: baseline;
   }
 
   .profileHeading {
-    font-size: 16px;
+    font-size: 36px;
   }
 
   .userPlaylistHeading {
-    font-size: 20px;
+    font-size: 36px;
+    margin-bottom: 0;
   }
 
   .nameOfPlaylist {
@@ -98,21 +105,15 @@
     text-overflow: ellipsis;
     margin: 0;
     color: black;
-  }
-
-  .pictureContainer {
-    background-color: rgba(208, 145, 187, 0.2);
-    width: 145px;
-    height: 145px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: 5rem;
+    width: 210px;
   }
 
   .profilePicture {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 4rem;
   }
 
   .userPlaylistContainer {
