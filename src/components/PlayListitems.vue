@@ -19,7 +19,7 @@
             :to="{ name: 'playlist', params: { id: playlist.id } }"
             class="playlistLink"
           >
-            <div class="playlistImage">
+            <div class="playlistPictures">
               <img :src="playlist.images[0].url" :alt="playlist.name" />
             </div>
           </router-link>
@@ -127,14 +127,14 @@
     text-decoration: none;
   }
 
-  .playlistImage {
+  .playlistPictures {
     width: 100%;
     max-width: 230px;
     height: 200px;
     margin: 0 auto;
   }
 
-  .playlistImage img {
+  .playlistPictures img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -163,5 +163,15 @@
   .loading {
     font-size: 24px;
     margin: 40px 0;
+  }
+  @media (max-width: 767px) {
+    .playlistPictures {
+      width: 150px;
+      height: 150px;
+      background-color: green;
+      border-radius: 10px;
+      box-shadow: 5px 13px 13px -3px rgba(0, 0, 0, 0.25);
+      border-radius: 13px;
+    }
   }
 </style>

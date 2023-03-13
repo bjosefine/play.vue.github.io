@@ -136,4 +136,11 @@
     margin: 10px 0;
     text-align: center;
   }
+  @media (max-width: 767px) {
+    /*making the pictures size down*/
+    .newReleasesItem {
+      width: 150px;
+      height: 150px;
+    }
+  }
 </style>

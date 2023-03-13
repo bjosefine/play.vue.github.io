@@ -91,12 +91,11 @@
     display: flex;
     justify-content: right;
     align-items: end;
-    margin-right: 5%;
   }
   .logInOut {
     display: flex;
     justify-content: end;
-    height: 60px;
+    height: 40px;
     margin: 5px;
     align-items: center;
   }
@@ -162,4 +161,14 @@
   span {
     font-size: 20px;
   } */
+  @media (max-width: 767px) {
+    .logInOut {
+      display: flex;
+      justify-content: end;
+      height: 30px;
+      margin: 4px;
+      align-items: center;
+      font-size: 20px;
+    }
+  }
 </style>

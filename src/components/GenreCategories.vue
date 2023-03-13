@@ -16,7 +16,7 @@
             }"
             class="playlistLink"
           >
-            <div class="playlistImage">
+            <div class="genrePictures">
               <img :src="toplists.icons[0].url" alt="Genre cover" />
               {{ toplists.name }}
             </div>
@@ -103,14 +103,14 @@
     color: rgb(38, 40, 40);
   }
 
-  .playlistImage {
+  .genrePictures {
     width: 100%;
     max-width: 230px;
-    height: 200px;
+    height: auto;
     margin: 0 auto;
   }
 
-  .playlistImage img {
+  .genrePictures img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -138,5 +138,13 @@
   .loading {
     font-size: 24px;
     margin: 40px 0;
+  }
+  @media (max-width: 767px) {
+    .genrePictures {
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      border-radius: 13px;
+    }
   }
 </style>
