@@ -55,7 +55,6 @@
     width: 100%;
   }
   h1 {
-    color: #000;
     font-size: 36px;
     margin: 40px 0;
     text-align: center;
@@ -134,7 +133,6 @@
   }
 
   h1 {
-    color: aliceblue;
     font-size: 18px;
     margin: 10px 0;
     text-align: center;

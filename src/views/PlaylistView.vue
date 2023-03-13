@@ -190,7 +190,6 @@
     padding: 0px;
     margin-bottom: 0px;
     font-size: medium;
-    color: rgb(69, 67, 67);
   }
 
   /* track heading */

@@ -67,7 +67,6 @@
   h1 {
     font-size: 36px;
     margin: 40px 0;
-    color: black;
     text-align: center;
   }
 
