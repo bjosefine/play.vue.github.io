@@ -6,20 +6,13 @@
       <SpotifyPlayer />
 
       <router-view />
-
-      <div v-if="isAuthenticated" class="user-info">
-        <button v-if="!loading" @click="Logout">Logout</button>
-      </div>
-
-      <!-- Show login button when not authenticated -->
-      <button v-else @click="login">Login with Spotify</button>
     </main>
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
-  import Spotify from './api/spotify.js'
+  // import { mapGetters, mapActions } from 'vuex'
+  // import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
   import SpotifyPlayer from './components/SpotifyPlayer.vue'
@@ -30,39 +23,39 @@
       HeaderNav,
       SpotifyPlayer
     },
-    name: 'App',
-    computed: {
-      ...mapGetters(['isAuthenticated', 'getUser', 'loading']), // Use Vuex mapGetters to access Vuex store state
-      hideGoBack() {
-        // Computed property that returns true if the current route is HomeView
-        return this.$route.name === 'HomeView'
-      }
-    },
-    methods: {
-      ...mapActions(['logoutUser', 'loginUser']),
-      async login() {
-        // Method that redirects the user to the Spotify authorization URL
-        const authorizationUrl = Spotify.getAuthorizationUrl()
-        window.location.href = authorizationUrl
-      },
-      async Logout() {
-        // Method that logs the user out
-        this.$store.commit('setLoading', true) // Commit the 'setLoading' mutation to true
-        await this.$store.dispatch('logoutUser') // Dispatch the 'logoutUser' action to log out the user
-        localStorage.removeItem('access_token') // Remove access token from local storage
-        localStorage.removeItem('user_id') // Remove user ID from local storage
-        this.$router.push('/') // Redirect user to HomeView
-      }
-    },
-    created() {
-      const accessToken = localStorage.getItem('access_token') // Get the access token from local storage
-      if (accessToken) {
-        // If an access token is found
-        this.$store.commit('setAccessToken', accessToken) // Commit the access token to Vuex store state
-        this.$store.dispatch('getUserInfo', accessToken) // Dispatch the getUserInfo action to retrieve user information
-        this.$store.commit('setAuthenticated', true) // Commit the 'setAuthenticated' mutation to true to indicate that the user is logged in
-      }
-    }
+    name: 'App'
+    // computed: {
+    //   ...mapGetters(['isAuthenticated', 'getUser', 'loading']), // Use Vuex mapGetters to access Vuex store state
+    //   hideGoBack() {
+    //     // Computed property that returns true if the current route is HomeView
+    //     return this.$route.name === 'HomeView'
+    //   }
+    // },
+    // methods: {
+    //   ...mapActions(['logoutUser', 'loginUser']),
+    //   async login() {
+    //     // Method that redirects the user to the Spotify authorization URL
+    //     const authorizationUrl = Spotify.getAuthorizationUrl()
+    //     window.location.href = authorizationUrl
+    //   },
+    //   async Logout() {
+    //     // Method that logs the user out
+    //     this.$store.commit('setLoading', true) // Commit the 'setLoading' mutation to true
+    //     await this.$store.dispatch('logoutUser') // Dispatch the 'logoutUser' action to log out the user
+    //     localStorage.removeItem('access_token') // Remove access token from local storage
+    //     localStorage.removeItem('user_id') // Remove user ID from local storage
+    //     this.$router.push('/') // Redirect user to HomeView
+    //   }
+    // },
+    // created() {
+    //   const accessToken = localStorage.getItem('access_token') // Get the access token from local storage
+    //   if (accessToken) {
+    //     // If an access token is found
+    //     this.$store.commit('setAccessToken', accessToken) // Commit the access token to Vuex store state
+    //     this.$store.dispatch('getUserInfo', accessToken) // Dispatch the getUserInfo action to retrieve user information
+    //     this.$store.commit('setAuthenticated', true) // Commit the 'setAuthenticated' mutation to true to indicate that the user is logged in
+    //   }
+    // }
   }
 </script>
 
