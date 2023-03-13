@@ -93,17 +93,17 @@
 
   /*Media query from tablet down to mobile mode so the side navbar ends up at the bottom*/
   @media (max-width: 767px) {
-    .highlight {
+    /* .highlight {
       background: rgba(206, 17, 206, 0.44);
       box-shadow: 0 0 10px 10px rgba(206, 17, 206, 0.4);
-    }
+    } */
 
     .MenuNav {
       z-index: 1000;
       display: flex;
       align-items: center;
-      background: rgba(206, 17, 206, 0.062);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      /* background: rgba(206, 17, 206, 0.062); */
+      /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
       backdrop-filter: blur(18.2px);
       -webkit-backdrop-filter: blur(18.2px);
       padding: 10px;
@@ -112,7 +112,7 @@
       position: fixed;
       bottom: 0;
       top: auto;
-      filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.321));
+      /* filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.321)); */
     }
     ul {
       list-style-type: none;

@@ -78,12 +78,33 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  /* DARK THEME */
-  .darkTheme,
-  .darkTheme a {
-    background-color: rgb(45, 45, 45);
+  /* Gradient generator: https://cssgradient.io/ */
+
+  /* DARK THEME START */
+  .darkTheme {
+    background: rgb(92, 92, 92);
+    background: linear-gradient(
+      301deg,
+      rgba(92, 92, 92, 1) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
     color: white;
   }
+
+  .darkTheme a {
+    color: white;
+  }
+
+  .darkTheme .MenuNav {
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .darkTheme button {
+    background-color: aquamarine;
+  }
+
+  /* DARK THEME END */
 
   /* LIGHT THEME */
   .lightTheme {
@@ -154,10 +175,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(30px);
-    background: rgba(206, 17, 206, 0.062);
-    box-shadow: 0 4px 30px rgba(213, 14, 170, 0.132);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-bottom: 1px solid #535353;
@@ -167,6 +185,5 @@
     position: fixed;
     top: 0;
     left: 0;
-    filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.114));
   }
 </style>
