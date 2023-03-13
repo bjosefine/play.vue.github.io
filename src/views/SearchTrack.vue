@@ -4,7 +4,7 @@
     <div class="artistHeader">
       <!-- Artist Image -->
       <div class="artistImage">
-        <img :src="uniquetracks.artists[0].url" alt="Artist Image" />
+        <img :src="uniquetracks.album.images[0].url" alt="Artist Image" />
       </div>
       <!-- Artist profile details -->
       <div class="artistDetails">
@@ -31,9 +31,10 @@
       <div class="trackImage">
         <img :src="uniquetracks.album.images[0].url" alt="" />
       </div>
-
       <div class="trackartist">
-        {{ uniquetracks.artists[0].name }}
+        <router-link :to="`/artist/${uniquetracks.artists[0].id}`">
+          {{ uniquetracks.artists[0].name }}
+        </router-link>
       </div>
       <!-- title -->
       <div class="trackTitle">
@@ -46,7 +47,6 @@
       </div>
     </div>
   </ol>
-  <div v-if="tracks == null">Loading...</div>
 </template>
 
 <script>
