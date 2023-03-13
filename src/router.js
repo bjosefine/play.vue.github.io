@@ -9,10 +9,12 @@ import GenreCollection from './components/GenreCollection.vue'
 import CallBack from './components/CallBack.vue'
 import ProfileView from './views/ProfileView.vue'
 import SettingsView from './views/SettingsView.vue'
+import SearchTrack from './views/SearchTrack.vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/playlist/:id', name: 'playlist', component: Playlist },
+  { path: '/track/:id', name: 'track', component: SearchTrack },
   { path: '/album/:id', name: 'album', component: AlbumView },
   { path: '/song/:id', name: 'PlayerView', component: PlayerView },
   { path: '/artist/:id', name: 'ArtistView', component: ArtistView },
