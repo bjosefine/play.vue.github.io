@@ -1,9 +1,17 @@
 <template>
-  <div class="appContainer" :style="newTheme">
+  <div class="appContainer" :class="newTheme">
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
       <SpotifyPlayer />
+
+      <div class="smallContainer">
+        <button class="darkBtn" @click="newTheme = 'darkTheme'" />
+
+        <button class="lightBtn" @click="newTheme = 'lightTheme'" />
+
+        <button class="bubblegumBtn" @click="newTheme = 'bubblegumTheme'" />
+      </div>
 
       <router-view />
 
@@ -25,6 +33,12 @@
   import SpotifyPlayer from './components/SpotifyPlayer.vue'
 
   export default {
+    data() {
+      return {
+        newTheme: 'lightTheme'
+      }
+    },
+
     components: {
       MenuNav,
       HeaderNav,
@@ -67,7 +81,7 @@
 </script>
 
 <style>
-  body {
+  /* body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(
       50% 50% at 50% 50%,
@@ -75,9 +89,54 @@
       rgba(189, 173, 173, 0) 100%
     );
     background-blend-mode: darken;
+  } */
+  .darkTheme {
+    background-color: rgb(45, 45, 45);
+    color: white;
   }
+
+  .lightTheme {
+    background-color: rgb(216, 216, 216);
+    color: #2b2b2b;
+  }
+
+  .bubblegumTheme {
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(198, 63, 184, 0.8) 25.52%,
+      rgba(189, 173, 173, 0) 100%
+    );
+  }
+
+  .darkBtn {
+    background-color: rgb(0, 0, 0);
+    width: 17px;
+    height: 17px;
+    border: none;
+    border-bottom: 1px solid #535353;
+  }
+
+  .lightBtn {
+    background-color: rgb(255, 255, 255);
+    width: 17px;
+    height: 17px;
+    border: none;
+    border-bottom: 1px solid #535353;
+  }
+
+  .bubblegumBtn {
+    background-color: rgb(198, 63, 184, 0.8);
+    width: 17px;
+    height: 17px;
+    border: none;
+    border-bottom: 1px solid #535353;
+  }
+
+  .smallContainer {
+    width: 100%;
+  }
+
   #app {
-    color: #000;
     font-size: large;
     text-align: center;
   }
@@ -88,7 +147,6 @@
 
   .mainContent {
     flex-grow: 1;
-    margin-left: 4.8%;
     box-sizing: border-box;
   }
   .MenuNav {

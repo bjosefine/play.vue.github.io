@@ -1,12 +1,23 @@
 *{
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(198, 63, 184, 0.8) 25.52%,
-      rgba(189, 173, 173, 0) 100%
-    );
-    background-blend-mode: darken;
+  // body {
+  //   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  //   background: radial-gradient(
+  //     50% 50% at 50% 50%,
+  //     rgba(198, 63, 184, 0.8) 25.52%,
+  //     rgba(189, 173, 173, 0) 100%
+  //   );
+  //   background-blend-mode: darken;
+  // }
+  .darkTheme {
+    background-color: blue;
+  }
+
+  .lightTheme {
+    background-color: rgb(167, 220, 168);
+  }
+
+  .bubblegumTheme {
+    background-color: rgb(255, 0, 217);
   }
 }
 @import 'bootstrap/scss/bootstrap'
