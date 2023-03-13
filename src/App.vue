@@ -35,7 +35,7 @@
   export default {
     data() {
       return {
-        newTheme: 'lightTheme'
+        newTheme: 'bubblegumTheme'
       }
     },
 
@@ -81,33 +81,41 @@
 </script>
 
 <style>
-  /* body {
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(198, 63, 184, 0.8) 25.52%,
-      rgba(189, 173, 173, 0) 100%
-    );
-    background-blend-mode: darken;
-  } */
-  .darkTheme {
+  }
+
+  /* DARK THEME */
+  .darkTheme,
+  .darkTheme a {
     background-color: rgb(45, 45, 45);
     color: white;
   }
 
+  /* LIGHT THEME */
   .lightTheme {
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(255, 255, 255);
     color: #2b2b2b;
   }
 
+  .lightTheme a {
+    color: #2b2b2b;
+  }
+  /* BUBBLEGUM THEME */
   .bubblegumTheme {
     background: radial-gradient(
       50% 50% at 50% 50%,
       rgba(198, 63, 184, 0.8) 25.52%,
       rgba(189, 173, 173, 0) 100%
     );
+    color: rgba(106, 33, 99, 0.8);
   }
 
+  .bubblegumTheme a {
+    color: rgba(106, 33, 99, 0.8);
+  }
+
+  /* THEME BUTTONS */
   .darkBtn {
     background-color: rgb(0, 0, 0);
     width: 17px;

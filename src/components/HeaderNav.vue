@@ -5,11 +5,11 @@
     </div>
 
     <!-- Settings Icon -->
-    <div class="settings">
+    <!-- <div class="settings">
       <router-link to="/settings">
         <span class="bi bi-gear" />
       </router-link>
-    </div>
+    </div> -->
 
     <div class="headprofile" />
     <div class="wheel" />
@@ -63,7 +63,7 @@
     -webkit-backdrop-filter: blur(7.9px);
     color: rgb(41, 38, 38);
     transition: background-color 0.3s;
-    background: rgba(206, 17, 206, 0.062);
+    /* background: rgba(206, 17, 206, 0.062); */
   }
 
   .goback {
@@ -79,6 +79,7 @@
     position: fixed;
     cursor: pointer;
     margin-left: 1%;
+    margin-top: 5px;
   }
 
   .goback:hover {
@@ -86,7 +87,7 @@
     transition: 0.3s;
   }
 
-  .settings {
+  /* .settings {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -97,10 +98,5 @@
 
   span {
     font-size: 20px;
-    color: rgba(124, 13, 117, 0.53);
-  }
-
-  span:hover {
-    color: rgb(45, 41, 41);
-  }
+  } */
 </style>

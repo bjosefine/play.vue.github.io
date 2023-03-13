@@ -62,7 +62,7 @@
   }
   .carousel .sliderButtonLeft,
   .carousel .sliderButtonRight {
-    color: hotpink;
+    /* color: hotpink; */
     font-weight: bolder;
     height: 100%;
     width: 50px;
@@ -148,13 +148,13 @@
   }
 
   h2 {
-    color: aliceblue;
+    /* color: aliceblue; */
     font-size: 18px;
     margin: 10px 0;
   }
 
   p {
-    color: #aaa4a4;
+    /* color: #aaa4a4; */
     font-size: 14px;
     margin: 10px 0;
     height: 50px;

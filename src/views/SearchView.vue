@@ -266,7 +266,6 @@
     position: absolute;
     right: 20px;
     font-size: 24px;
-    color: #373535;
     animation: spin 1s linear infinite;
   }
 
@@ -291,7 +290,6 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #373535;
     font-weight: 800;
   }
 
@@ -361,7 +359,6 @@
 
   .resultArtists {
     font-size: 14px;
-    color: #373535;
     max-width: 250px;
     text-overflow: ellipsis;
     overflow: hidden;

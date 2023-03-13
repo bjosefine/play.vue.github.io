@@ -142,7 +142,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);
-    color: rgb(41, 38, 38);
+    /* color: rgb(41, 38, 38); */
   }
 
   /* end of player container */
@@ -158,17 +158,17 @@
   .playlistName {
     margin-top: 4rem;
     font-size: 40px;
-    color: rgb(58, 57, 57);
+    /* color: rgb(58, 57, 57); */
   }
 
   a {
     text-decoration: none;
-    color: black;
+    /* color: black; */
   }
 
   .trackList {
     list-style: none;
-    color: black;
+    /* color: black; */
     margin: 0;
     padding: 0;
   }
@@ -283,9 +283,9 @@
   /* from tablets smallest measurement to desktop smallest measurement */
   @media (min-width: 750px) and (max-width: 800px) {
     /* player-container Used on many pages important, don't adjust*/
-    .playerContainer {
+    /* .playerContainer {
       color: rgb(41, 38, 38);
-    }
+    } */
 
     /* end of player container */
 
@@ -318,7 +318,7 @@
     .playlistName {
       margin-top: 4rem;
       font-size: 20px;
-      color: rgb(58, 57, 57);
+      /* color: rgb(58, 57, 57); */
     }
 
     /* heading line grid layout */

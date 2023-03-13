@@ -177,7 +177,7 @@
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
     border: 1px solid rgba(138, 51, 138, 0.624);
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
     font-weight: 800;
   }
 
@@ -224,13 +224,13 @@
   }
   .artistName {
     margin-bottom: 0.5rem;
-    color: rgb(58, 57, 57);
+    /* color: rgb(58, 57, 57); */
   }
 
   .artistFollowers {
     font-size: 1rem;
     margin-bottom: 0.5rem;
-    color: black;
+    /* color: black; */
   }
 
   .artistGenres {
@@ -250,7 +250,7 @@
     margin-bottom: 3rem;
     width: 100%;
     display: flex;
-    color: rgb(21, 20, 20);
+    /* color: rgb(21, 20, 20); */
   }
 
   /* .songList {
@@ -298,9 +298,9 @@
   }
 
   /* ALBUMS */
-  .playlistname {
+  /* .playlistname {
     color: rgb(58, 57, 57);
-  }
+  } */
 
   .albumContainer {
     width: 100%;
@@ -357,7 +357,7 @@
 
   .albumReleaseDate {
     font-size: 0.8rem;
-    color: #5e5c5c;
+    /* color: #5e5c5c; */
     padding: 0;
     margin: 0;
   }
@@ -376,7 +376,7 @@
       backdrop-filter: blur(7.9px);
       -webkit-backdrop-filter: blur(7.9px);
       border: 1px solid rgba(138, 51, 138, 0.624);
-      color: rgb(0, 0, 0);
+      /* color: rgb(0, 0, 0); */
       font-weight: 800;
     }
     /* Artist Header */
@@ -421,7 +421,7 @@
     }
     .artistName {
       margin-bottom: 0.5rem;
-      color: rgb(58, 57, 57);
+      /* color: rgb(58, 57, 57); */
     }
 
     .artistFollowers {
@@ -446,7 +446,7 @@
       margin-bottom: 3rem;
       width: 100%;
       display: flex;
-      color: rgb(21, 20, 20);
+      /* color: rgb(21, 20, 20); */
     }
 
     /* .songList {
@@ -494,9 +494,9 @@
     }
 
     /* ALBUMS */
-    .playlistname {
+    /* .playlistname {
       color: rgb(58, 57, 57);
-    }
+    } */
 
     .albumContainer {
       width: 100%;
@@ -553,7 +553,7 @@
 
     .albumReleaseDate {
       font-size: 0.8rem;
-      color: #5e5c5c;
+      /* color: #5e5c5c; */
       padding: 0;
       margin: 0;
     }
@@ -581,7 +581,7 @@
       backdrop-filter: blur(7.9px);
       -webkit-backdrop-filter: blur(7.9px);
       border: 1px solid rgba(138, 51, 138, 0.624);
-      color: rgb(0, 0, 0);
+      /* color: rgb(0, 0, 0); */
       font-weight: 800;
     }
     /* Artist Header */
@@ -623,9 +623,9 @@
     .artistName h1 {
       font-size: 4rem;
     }
-    .artistName {
+    /* .artistName {
       color: rgb(58, 57, 57);
-    }
+    } */
 
     .artistFollowers {
       font-size: 1rem;
@@ -650,7 +650,7 @@
       margin-bottom: 3rem;
       width: 100%;
       display: flex;
-      color: rgb(21, 20, 20);
+      /* color: rgb(21, 20, 20); */
     }
 
     .songList {
@@ -700,9 +700,9 @@
     }
 
     /* ALBUMS */
-    .playlistname {
+    /* .playlistname {
       color: rgb(58, 57, 57);
-    }
+    } */
 
     .albumContainer {
       width: 100%;
@@ -759,7 +759,7 @@
 
     .albumReleaseDate {
       font-size: 0.8rem;
-      color: #5e5c5c;
+      /* color: #5e5c5c; */
       padding: 0;
       margin: 0;
     }

@@ -104,7 +104,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
-    color: black;
+    /* color: black; */
     width: 210px;
   }
 

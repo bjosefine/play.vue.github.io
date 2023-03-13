@@ -69,7 +69,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    color: rgba(124, 13, 117, 0.53);
+    /* color: rgba(124, 13, 117, 0.53); */
     cursor: pointer;
     transition: color 0.2s ease-in-out;
   }
@@ -80,9 +80,9 @@
     font-size: 20px;
     margin-right: 5px;
   }
-  a {
+  /* a {
     color: rgba(124, 13, 117, 0.53);
-  }
+  } */
 
   a:hover {
     color: rgb(45, 41, 41);
@@ -127,20 +127,20 @@
     li {
       display: flex;
       align-items: center;
-      color: rgba(124, 13, 117, 0.53);
+      /* color: rgba(124, 13, 117, 0.53); */
       cursor: pointer;
-      transition: color 0.2s ease-in-out;
+      /* transition: color 0.2s ease-in-out; */
       justify-content: space-evenly;
     }
     li:hover {
       color: rgb(45, 41, 41);
     }
-    i {
+    /* i {
       color: rgb(16, 0, 0);
     }
     a {
       color: rgba(124, 13, 117, 0.53);
-    }
+    } */
 
     a:hover {
       color: rgb(45, 41, 41);

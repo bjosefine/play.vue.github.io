@@ -99,9 +99,6 @@
     transform: scale(1.05);
   }
 
-  .playlistLink {
-    color: rgb(69, 67, 67);
-  }
   .playlistLink:hover {
     text-decoration: none;
     color: rgb(38, 40, 40);

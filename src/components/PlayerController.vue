@@ -289,7 +289,7 @@
     width: 30px;
     height: 30px;
     padding-top: 12px;
-    color: #e0dada;
+    /* color: #e0dada; */
   }
   .playerPrev:hover,
   .playerNext:hover {
@@ -356,9 +356,9 @@
       transform: translateX(calc(-100% + 130px));
     }
   }
-  .playerArtist {
+  /* .playerArtist {
     color: #685b5b;
-  }
+  } */
 
   .playerPlayPause:hover,
   .playerStop:hover {
@@ -378,7 +378,7 @@
   .sliderContainer input[type='range'] {
     width: 550px;
     margin: 0 10px;
-    color: gray;
+    /* color: gray; */
   }
 
   .playerTime {
@@ -400,7 +400,7 @@
   .audioOnOff {
     width: 20px;
     margin-right: 0.5pc;
-    color: #e0dada;
+    /* color: #e0dada; */
   }
   .audioOnOff:hover {
     color: #111;
