@@ -4,13 +4,6 @@
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
 
-    <!-- Settings Icon -->
-    <!-- <div class="settings">
-      <router-link to="/settings">
-        <span class="bi bi-gear" />
-      </router-link>
-    </div> -->
-
     <div class="headprofile" />
     <div class="wheel" />
     <div class="nav-content">
