@@ -1,13 +1,6 @@
 <template>
   <div class="home">
     <h1>Featured Playlists</h1>
-    <div class="carousel">
-      <div class="carouselContainer">
-        <!-- random data  -->
-      </div>
-      <a class="sliderButtonLeft">L</a>
-      <a class="sliderButtonRight">R</a>
-    </div>
     <div class="playlistContainer" v-if="featuredPlaylists">
       <div class="playlistList">
         <div
@@ -54,32 +47,6 @@
     );
     background-blend-mode: darken;
   } */
-
-  .carousel {
-    height: 300px;
-    width: 85%;
-    position: relative;
-  }
-  .carousel .sliderButtonLeft,
-  .carousel .sliderButtonRight {
-    /* color: hotpink; */
-    font-weight: bolder;
-    height: 100%;
-    width: 50px;
-    line-height: 250px;
-    font-size: 30px;
-    text-align: center;
-    background-color: blue;
-  }
-
-  .carousel .sliderButtonLeft {
-    position: absolute;
-    left: 55px;
-  }
-  .carousel .sliderButtonRight {
-    position: absolute;
-    right: 55px;
-  }
 
   .home .home {
     display: flex;

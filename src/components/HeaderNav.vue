@@ -7,11 +7,13 @@
     <div class="headprofile" />
     <div class="wheel" />
     <div class="nav-content">
-      <div v-if="isAuthenticated" class="logInOut">
-        <button class="logInOut" v-if="!loading" @click="Logout">
-          Log out
-        </button>
-      </div>
+      <button
+        class="logInOut"
+        v-if="isAuthenticated && !loading"
+        @click="Logout"
+      >
+        Log out
+      </button>
       <button class="logInOut" v-else @click="login">Log In</button>
       <!-- <div class="settings">
         <router-link to="/settings">
