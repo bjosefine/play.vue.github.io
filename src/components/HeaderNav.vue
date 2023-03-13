@@ -12,7 +12,7 @@
           Log out
         </button>
       </div>
-      <button class="logInOut" v-else @click="login">Login in</button>
+      <button class="logInOut" v-else @click="login">Log In</button>
       <!-- <div class="settings">
         <router-link to="/settings">
           <span class="bi bi-gear" />
@@ -98,15 +98,16 @@
     height: 40px;
     margin: 5px;
     align-items: center;
-  }
-  button {
-    color: purple;
+    /* color: purple; */
     margin: 5px;
-    background: rgba(206, 17, 206, 0.062);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* background: rgba(206, 17, 206, 0.062); */
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);
   }
+  /* button {
+
+  } */
   .mainnav {
     position: fixed;
     width: 100%;

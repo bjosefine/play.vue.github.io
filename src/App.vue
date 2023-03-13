@@ -28,7 +28,7 @@
   export default {
     data() {
       return {
-        newTheme: 'bubblegumTheme'
+        newTheme: 'darkTheme'
       }
     },
 
@@ -100,13 +100,20 @@
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
   }
 
-  .darkTheme button {
-    background-color: aquamarine;
+  .darkTheme .logInOut {
+    background-color: rgb(0, 0, 0, 0.1);
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
   }
 
   /* DARK THEME END */
 
-  /* LIGHT THEME */
+  /* LIGHT THEME START */
   .lightTheme {
     background-color: rgb(255, 255, 255);
     color: #2b2b2b;
@@ -115,7 +122,9 @@
   .lightTheme a {
     color: #2b2b2b;
   }
-  /* BUBBLEGUM THEME */
+
+  /* LIGHT THEME END */
+  /* BUBBLEGUM THEME START */
   .bubblegumTheme {
     background: radial-gradient(
       50% 50% at 50% 50%,
@@ -128,6 +137,8 @@
   .bubblegumTheme a {
     color: rgba(106, 33, 99, 0.8);
   }
+
+  /* BUBBLEGUM THEME END */
 
   /* THEME BUTTONS */
   .darkBtn {
