@@ -186,6 +186,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    padding-left: 120px;
   }
 
   .artistHeader {
@@ -381,6 +382,7 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem;
+      padding-left: 100px;
     }
 
     .artistHeader {
@@ -585,6 +587,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-left: 0px;
     }
 
     .artistHeader {
