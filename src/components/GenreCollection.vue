@@ -67,7 +67,6 @@
   h1 {
     font-size: 36px;
     margin: 40px 0;
-    color: black;
     text-align: center;
   }
 
@@ -100,9 +99,6 @@
     transform: scale(1.05);
   }
 
-  .playlistLink {
-    color: rgb(69, 67, 67);
-  }
   .playlistLink:hover {
     text-decoration: none;
     color: rgb(38, 40, 40);
