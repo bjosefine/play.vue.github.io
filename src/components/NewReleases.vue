@@ -38,6 +38,8 @@
     },
     async created() {
       this.newReleases = await spotify.getNewReleases()
+
+      console.log(this.newReleases[0].uri, 'uri new releases')
     }
   }
 </script>

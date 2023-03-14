@@ -155,6 +155,8 @@
       this.artistTracks = await spotify.getToptracks(artistId)
       this.tracks = this.artistTracks
       console.log(this.artistTracks, 'url')
+      console.log(this.artistAlbums[0].uri, 'uri artistAlbums')
+      console.log(this.artistTracks[0].uri, 'uri artistTrack')
     }
   }
 </script>
