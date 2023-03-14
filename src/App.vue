@@ -10,9 +10,9 @@
         <div class="dropDownMenu" :class="{ toggleDropdown: settings }">
           <button class="darkBtn" @click="newTheme = 'darkTheme'" />
 
-          <button class="lightBtn" @click="newTheme = 'lightTheme'" />
-
           <button class="bubblegumBtn" @click="newTheme = 'bubblegumTheme'" />
+
+          <button class="lightBtn" @click="newTheme = 'lightTheme'" />
 
           <button class="sunsetBtn" @click="newTheme = 'sunsetTheme'" />
         </div>
@@ -35,7 +35,7 @@
   export default {
     data() {
       return {
-        newTheme: 'sunsetTheme',
+        newTheme: 'lightTheme',
         settings: false
       }
     },
@@ -90,7 +90,7 @@
     z-index: 1000;
     position: fixed;
     right: 100px;
-    margin-top: 7px;
+    margin-top: 5px;
   }
   .dropDownMenu {
     height: 0;
@@ -98,6 +98,15 @@
   }
   .dropDownMenu.toggleDropdown {
     height: 50px;
+  }
+
+  .dropdown-toggle {
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    height: 42px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -114,6 +123,12 @@
       rgba(0, 0, 0, 1) 100%
     );
     color: white;
+  }
+
+  .darkTheme .dropdown-toggle {
+    background-color: rgb(0, 0, 0, 0.1);
+    color: white;
+    border-color: white;
   }
 
   .darkTheme a {
@@ -149,27 +164,80 @@
 
   /* LIGHT THEME START */
   .lightTheme {
-    background-color: rgb(255, 255, 255);
-    color: #2b2b2b;
+    background: rgb(161, 153, 133);
+    background: linear-gradient(
+      288deg,
+      rgba(161, 153, 133, 1) 0%,
+      rgba(255, 251, 241, 1) 63%
+    );
+    color: #55756a;
+  }
+
+  .lightTheme .logInOut {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-width: 1px;
+    border-color: #55756a;
+    border-style: solid;
+    color: #55756a;
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .lightTheme .dropdown-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #55756a;
+    border-color: #55756a;
   }
 
   .lightTheme a {
-    color: #2b2b2b;
+    color: #55756a;
+  }
+
+  .lightTheme .searchBar input[type='text'] {
+    color: #55756a;
   }
 
   /* LIGHT THEME END */
   /* BUBBLEGUM THEME START */
   .bubblegumTheme {
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(198, 63, 184, 0.8) 25.52%,
-      rgba(189, 173, 173, 0) 100%
+    background: rgb(140, 144, 218);
+    background: linear-gradient(
+      122deg,
+      rgba(140, 144, 218, 1) 0%,
+      rgba(255, 46, 224, 1) 100%
     );
-    color: rgba(106, 33, 99, 0.8);
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .bubblegumTheme a {
-    color: rgba(106, 33, 99, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .bubblegumTheme .logInOut {
+    background-color: rgb(0, 0, 0, 0.1);
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .bubblegumTheme .MenuNav {
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .bubblegumTheme .dropdown-toggle {
+    background-color: rgb(0, 0, 0, 0.1);
+    color: white;
+    border-color: white;
+  }
+
+  .bubblegumTheme .searchBar input[type='text'] {
+    color: white;
   }
 
   /* BUBBLEGUM THEME END */
@@ -183,6 +251,16 @@
       rgba(255, 0, 142, 1) 0%,
       rgba(255, 175, 0, 1) 100%
     );
+    color: white;
+  }
+
+  .sunsetTheme .dropdown-toggle {
+    background-color: rgb(0, 0, 0, 0.1);
+    color: white;
+    border-color: white;
+  }
+
+  .sunsetTheme .searchBar input[type='text'] {
     color: white;
   }
 
@@ -218,14 +296,18 @@
     height: 17px;
     border: none;
     border-bottom: 1px solid #535353;
+    border-radius: 10px;
+    margin-right: 5px;
   }
 
   .lightBtn {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 251, 241, 1);
     width: 17px;
     height: 17px;
     border: none;
     border-bottom: 1px solid #535353;
+    border-radius: 10px;
+    margin-right: 5px;
   }
 
   .bubblegumBtn {
@@ -234,19 +316,23 @@
     height: 17px;
     border: none;
     border-bottom: 1px solid #535353;
+    border-radius: 10px;
+    margin-right: 5px;
   }
 
   .sunsetBtn {
-    background-color: orange;
+    background-color: rgb(255, 0, 142);
     width: 17px;
     height: 17px;
     border: none;
     border-bottom: 1px solid #535353;
+    border-radius: 10px;
   }
 
   .smallContainer {
     width: 100%;
     margin-top: 50px;
+    background-color: red;
   }
 
   #app {
