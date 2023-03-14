@@ -55,7 +55,6 @@
     width: 100%;
   }
   h1 {
-    color: #000;
     font-size: 36px;
     margin: 40px 0;
     text-align: center;
@@ -112,7 +111,6 @@
     -webkit-backdrop-filter: blur(5px);
     border-bottom: 1px solid #535353;
     filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.114));
-    color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 10px;
@@ -134,9 +132,15 @@
   }
 
   h1 {
-    color: aliceblue;
     font-size: 18px;
     margin: 10px 0;
     text-align: center;
+  }
+  @media (max-width: 767px) {
+    /*making the pictures size down*/
+    .newReleasesItem {
+      width: 150px;
+      height: 150px;
+    }
   }
 </style>

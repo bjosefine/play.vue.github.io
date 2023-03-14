@@ -1,13 +1,6 @@
 <template>
   <div class="home">
     <h1>Featured Playlists</h1>
-    <div class="carousel">
-      <div class="carouselContainer">
-        <!-- random data  -->
-      </div>
-      <a class="sliderButtonLeft">L</a>
-      <a class="sliderButtonRight">R</a>
-    </div>
     <div class="playlistContainer" v-if="featuredPlaylists">
       <div class="playlistList">
         <div
@@ -19,7 +12,7 @@
             :to="{ name: 'playlist', params: { id: playlist.id } }"
             class="playlistLink"
           >
-            <div class="playlistImage">
+            <div class="playlistPictures">
               <img :src="playlist.images[0].url" :alt="playlist.name" />
             </div>
           </router-link>
@@ -46,40 +39,14 @@
 </script>
 
 <style>
-  body {
+  /* body {
     background: radial-gradient(
       50% 50% at 50% 50%,
       rgba(46, 35, 45, 0.8) 25.52%,
       rgba(189, 173, 173, 0) 100%
     );
     background-blend-mode: darken;
-  }
-
-  .carousel {
-    height: 300px;
-    width: 85%;
-    position: relative;
-  }
-  .carousel .sliderButtonLeft,
-  .carousel .sliderButtonRight {
-    color: hotpink;
-    font-weight: bolder;
-    height: 100%;
-    width: 50px;
-    line-height: 250px;
-    font-size: 30px;
-    text-align: center;
-    background-color: blue;
-  }
-
-  .carousel .sliderButtonLeft {
-    position: absolute;
-    left: 55px;
-  }
-  .carousel .sliderButtonRight {
-    position: absolute;
-    right: 55px;
-  }
+  } */
 
   .home .home {
     display: flex;
@@ -91,7 +58,6 @@
   h1 {
     font-size: 36px;
     margin: 40px 0;
-    color: black;
     text-align: center;
   }
 
@@ -128,14 +94,14 @@
     text-decoration: none;
   }
 
-  .playlistImage {
+  .playlistPictures {
     width: 100%;
     max-width: 230px;
     height: 200px;
     margin: 0 auto;
   }
 
-  .playlistImage img {
+  .playlistPictures img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -149,13 +115,13 @@
   }
 
   h2 {
-    color: aliceblue;
+    /* color: aliceblue; */
     font-size: 18px;
     margin: 10px 0;
   }
 
   p {
-    color: #aaa4a4;
+    /* color: #aaa4a4; */
     font-size: 14px;
     margin: 10px 0;
     height: 50px;
@@ -164,5 +130,15 @@
   .loading {
     font-size: 24px;
     margin: 40px 0;
+  }
+  @media (max-width: 767px) {
+    .playlistPictures {
+      width: 150px;
+      height: 150px;
+      background-color: green;
+      border-radius: 10px;
+      box-shadow: 5px 13px 13px -3px rgba(0, 0, 0, 0.25);
+      border-radius: 13px;
+    }
   }
 </style>

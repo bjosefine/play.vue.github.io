@@ -28,7 +28,7 @@
         :key="track.track.id"
         :class="{ selected: index === selectedTrackIndex }"
         class="trackItem"
-        @click="playTrack(index)"
+        @click="playTrack(index), playSpotifyTrack(index)"
       >
         <div class="trackDetails">
           <!-- image -->
@@ -57,6 +57,7 @@
     <!-- player-container used for many pages, important -->
     <div v-if="selectedTrackIndex !== null">
       <PlayerController
+        v-if="!isAuthenticated"
         :key="tracks[selectedTrackIndex].track.id"
         :track="tracks[selectedTrackIndex].track"
         :audio="audio"
@@ -73,10 +74,14 @@
   // import { onMounted } from 'vue'
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
+  import { mapGetters } from 'vuex'
+  import { playThisSong } from '../api/spotify.js'
 
   export default {
     name: 'PlayList',
-
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     components: {
       PlayerController
     },
@@ -97,9 +102,17 @@
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       this.tracks = this.tracks.filter((track) => track.track.preview_url)
+      console.log(this.tracks, 'hhi')
     },
 
     methods: {
+      async playSpotifyTrack(index) {
+        const accessToken = this.$store.state.accessToken
+        const track = this.tracks[index].track.uri
+        const playThis = await playThisSong(accessToken, track)
+        console.log(track, 'is this right?')
+        return playThis
+      },
       // play track from list
       playTrack(index) {
         if (index === this.selectedTrackIndex) {
@@ -142,7 +155,8 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);
-    color: rgb(41, 38, 38);
+    /* color: rgb(41, 38, 38); */
+    z-index: 500;
   }
 
   /* end of player container */
@@ -158,17 +172,17 @@
   .playlistName {
     margin-top: 4rem;
     font-size: 40px;
-    color: rgb(58, 57, 57);
+    /* color: rgb(58, 57, 57); */
   }
 
   a {
     text-decoration: none;
-    color: black;
+    /* color: black; */
   }
 
   .trackList {
     list-style: none;
-    color: black;
+    /* color: black; */
     margin: 0;
     padding: 0;
   }
@@ -190,7 +204,6 @@
     padding: 0px;
     margin-bottom: 0px;
     font-size: medium;
-    color: rgb(69, 67, 67);
   }
 
   /* track heading */
@@ -284,9 +297,9 @@
   /* from tablets smallest measurement to desktop smallest measurement */
   @media (min-width: 750px) and (max-width: 800px) {
     /* player-container Used on many pages important, don't adjust*/
-    .playerContainer {
+    /* .playerContainer {
       color: rgb(41, 38, 38);
-    }
+    } */
 
     /* end of player container */
 
@@ -319,7 +332,7 @@
     .playlistName {
       margin-top: 4rem;
       font-size: 20px;
-      color: rgb(58, 57, 57);
+      /* color: rgb(58, 57, 57); */
     }
 
     /* heading line grid layout */
