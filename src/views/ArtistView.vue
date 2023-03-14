@@ -186,6 +186,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    padding-left: 120px;
   }
 
   .artistHeader {
@@ -219,7 +220,7 @@
     font-size: 4rem;
   }
   .artistName h1 {
-    font-size: 4rem;
+    font-size: 1rem;
   }
   .artistName {
     margin-bottom: 0.5rem;
@@ -244,7 +245,7 @@
   }
 
   .sectionTitle {
-    font-size: 2.5rem;
+    font-size: 30px;
     margin-top: 3rem;
     margin-bottom: 3rem;
     width: 100%;
@@ -381,6 +382,7 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem;
+      padding-left: 100px;
     }
 
     .artistHeader {
@@ -583,6 +585,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-left: 0px;
     }
 
     .artistHeader {
