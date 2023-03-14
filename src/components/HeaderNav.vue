@@ -4,18 +4,22 @@
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
 
+    <div class="headprofile" />
+    <div class="wheel" />
     <div class="nav-content">
-      <div v-if="isAuthenticated" class="logInOut">
-        <button class="logInOut" v-if="!loading" @click="Logout">
-          Log out
-        </button>
-      </div>
-      <button class="logInOut" v-else @click="login">Login in</button>
-      <div class="settings">
+      <button
+        class="logInOut"
+        v-if="isAuthenticated && !loading"
+        @click="Logout"
+      >
+        Log out
+      </button>
+      <button class="logInOut" v-else @click="login">Log In</button>
+      <!-- <div class="settings">
         <router-link to="/settings">
           <span class="bi bi-gear" />
         </router-link>
-      </div>
+      </div> -->
       <!-- Show login button when not authenticated -->
     </div>
   </div>
@@ -89,23 +93,23 @@
     display: flex;
     justify-content: right;
     align-items: end;
-    margin-right: 5%;
   }
   .logInOut {
     display: flex;
     justify-content: end;
-    height: 60px;
+    height: 40px;
     margin: 5px;
     align-items: center;
-  }
-  button {
-    color: purple;
+    /* color: purple; */
     margin: 5px;
-    background: rgba(206, 17, 206, 0.062);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* background: rgba(206, 17, 206, 0.062); */
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);
   }
+  /* button {
+
+  } */
   .mainnav {
     position: fixed;
     width: 100%;
@@ -122,7 +126,7 @@
     -webkit-backdrop-filter: blur(7.9px);
     color: rgb(111, 13, 13);
     transition: background-color 0.3s;
-    background: rgba(206, 17, 206, 0.062);
+    /* background: rgba(206, 17, 206, 0.062); */
   }
 
   .goback {
@@ -138,6 +142,7 @@
     position: fixed;
     cursor: pointer;
     margin-left: 1%;
+    margin-top: 5px;
   }
 
   .goback:hover {
@@ -145,16 +150,28 @@
     transition: 0.3s;
   }
 
+  /* .settings {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 95%;
+    padding-right: 30px;
+
   .settings {
     height: 50px;
   }
 
   span {
     font-size: 20px;
-    color: rgba(124, 13, 117, 0.53);
-  }
-
-  span:hover {
-    color: rgb(45, 41, 41);
+  } */
+  @media (max-width: 767px) {
+    .logInOut {
+      display: flex;
+      justify-content: end;
+      height: 30px;
+      margin: 4px;
+      align-items: center;
+      font-size: 20px;
+    }
   }
 </style>

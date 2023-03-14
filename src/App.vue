@@ -28,7 +28,7 @@
   export default {
     data() {
       return {
-        newTheme: 'lightTheme'
+        newTheme: 'darkTheme'
       }
     },
 
@@ -74,33 +74,73 @@
 </script>
 
 <style>
-  /* body {
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(198, 63, 184, 0.8) 25.52%,
-      rgba(189, 173, 173, 0) 100%
-    );
-    background-blend-mode: darken;
-  } */
+  }
+
+  /* Gradient generator: https://cssgradient.io/ */
+
+  /* DARK THEME START */
   .darkTheme {
-    background-color: rgb(45, 45, 45);
+    background: rgb(92, 92, 92);
+    background: linear-gradient(
+      301deg,
+      rgba(92, 92, 92, 1) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
     color: white;
   }
 
+  .darkTheme a {
+    color: white;
+  }
+
+  .darkTheme .MenuNav {
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .darkTheme .logInOut {
+    background-color: rgb(0, 0, 0, 0.1);
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  /* DARK THEME END */
+
+  /* LIGHT THEME START */
   .lightTheme {
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(255, 255, 255);
     color: #2b2b2b;
   }
 
+  .lightTheme a {
+    color: #2b2b2b;
+  }
+
+  /* LIGHT THEME END */
+  /* BUBBLEGUM THEME START */
   .bubblegumTheme {
     background: radial-gradient(
       50% 50% at 50% 50%,
       rgba(198, 63, 184, 0.8) 25.52%,
       rgba(189, 173, 173, 0) 100%
     );
+    color: rgba(106, 33, 99, 0.8);
   }
 
+  .bubblegumTheme a {
+    color: rgba(106, 33, 99, 0.8);
+  }
+
+  /* BUBBLEGUM THEME END */
+
+  /* THEME BUTTONS */
   .darkBtn {
     background-color: rgb(0, 0, 0);
     width: 17px;
@@ -146,10 +186,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(30px);
-    background: rgba(206, 17, 206, 0.062);
-    box-shadow: 0 4px 30px rgba(213, 14, 170, 0.132);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-bottom: 1px solid #535353;
@@ -159,6 +196,5 @@
     position: fixed;
     top: 0;
     left: 0;
-    filter: drop-shadow(4px 4px 4px rgba(199, 16, 184, 0.114));
   }
 </style>
