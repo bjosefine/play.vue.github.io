@@ -1,21 +1,17 @@
 <template>
+  <!-- DELAR UPP I H1 H2 H3 -->
+
   <div class="home">
     <!-- flexbox for header -->
     <div class="profileFlexContainer">
       <!-- container for profile picture -->
-      <div class="pictureContainer">
-        <img
-          class="profilePicture"
-          :src="profileImgUrl"
-          alt="Profile picture"
-        />
-      </div>
+      <img class="profilePicture" :src="profileImgUrl" alt="Profile picture" />
       <!-- end of picture container -->
       <!-- user name -->
       <h1 class="profileUserName">{{ user.display_name }}</h1>
     </div>
     <div class="userPlaylistContainer" v-if="playlists">
-      <h1 class="userPlaylistHeading">My playlists</h1>
+      <h2 class="userPlaylistHeading">My playlists</h2>
       <!-- user playlists -->
       <div class="userPalylistCollection">
         <div
@@ -31,7 +27,7 @@
             <!-- container for playlist image and playlist name -->
             <div class="paylistImageAndName">
               <img :src="playlist.images[0].url" alt="playlist.name" />
-              <p class="nameOfPlaylist">{{ playlist.name }}</p>
+              <h3 class="nameOfPlaylist">{{ playlist.name }}</h3>
             </div>
           </router-link>
         </div>
@@ -42,7 +38,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
   import { mapGetters } from 'vuex'
   import { getUserPlaylist } from '../api/spotify'
 
@@ -104,6 +100,7 @@
   .userPlaylistHeading {
     font-size: 36px;
     margin-bottom: 0;
+    color: black;
   }
 
   .nameOfPlaylist {
@@ -113,6 +110,7 @@
     margin: 0;
     color: black;
     width: 210px;
+    font-size: 14px;
   }
 
   .profilePicture {
@@ -120,7 +118,6 @@
     height: 210px;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 4rem;
   }
 
   .userPlaylistContainer {
@@ -187,10 +184,9 @@
     }
 
     .profilePicture {
-      width: 210px;
-      height: 210px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      overflow: hidden;
       margin: 0;
     }
 
@@ -199,21 +195,22 @@
       margin-bottom: 0;
       margin-top: 0;
     }
-
+    /* adjusts playlist images */
     .playlistCollection {
-      max-width: 200px;
-      height: 200px;
+      max-width: 150px;
+      height: 150px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
-    .paylistImageAndName {
+    /* also adjust playlist images */
+    .paylistImageAndName img {
       /* width: 100%; */
-      max-width: 150px;
-      height: 150px;
+      max-width: 100%;
+      height: auto;
       margin: 0 auto;
     }
-
+    /* adjust playlist name */
     .nameOfPlaylist {
       white-space: nowrap;
       overflow: hidden;
@@ -259,7 +256,7 @@
       border-radius: 50%;
       margin: 0;
     }
-
+    /* adjusts playlist images */
     .playlistCollection {
       max-width: 150px;
       height: 150px;
@@ -267,13 +264,13 @@
       flex-direction: row;
       justify-content: space-between;
     }
-
-    .paylistImageAndName {
+    /* also adjust playlist images */
+    .paylistImageAndName img {
       max-width: 100%;
       height: auto;
       margin: 0 auto;
     }
-
+    /* adjust playlist name */
     .nameOfPlaylist {
       white-space: nowrap;
       overflow: hidden;
