@@ -96,6 +96,7 @@
     position: fixed;
     right: 100px;
     margin-top: 5px;
+    height: 40px;
   }
   .dropDownMenu {
     height: 0;
@@ -390,5 +391,17 @@
     position: fixed;
     top: 0;
     left: 0;
+  }
+  @media (max-width: 767px) {
+    .dropDownTheme {
+      right: 110px;
+      height: 30px;
+      width: 40px;
+      margin: 4px;
+      font-size: 16px;
+    }
+    .dropDownMenu.toggleDropdown {
+      width: 90px;
+    }
   }
 </style>
