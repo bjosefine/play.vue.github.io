@@ -78,7 +78,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .home {
     padding: 2rem;
   }
