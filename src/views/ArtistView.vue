@@ -47,7 +47,7 @@
 
                 <!-- Track length -->
                 <div class="trackLength">
-                  {{ formatDurationPlayer(track.duration_ms) }}
+                  {{ formatDuration(track.duration_ms) }}
                 </div>
               </div>
             </li>
@@ -87,7 +87,6 @@
   <!-- Player controller -->
   <div v-if="selectedTrackIndex !== null">
     <PlayerController
-      v-if="!isAuthenticated"
       :key="artistTracks[selectedTrackIndex].id"
       :track="artistTracks[selectedTrackIndex]"
       :audio="audio"
@@ -101,12 +100,8 @@
 <script>
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
-  import { mapGetters } from 'vuex'
 
   export default {
-    computed: {
-      ...mapGetters(['isAuthenticated'])
-    },
     components: {
       PlayerController
     },
@@ -181,8 +176,6 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
-    border: 1px solid rgba(138, 51, 138, 0.624);
-    /* color: rgb(0, 0, 0); */
   }
 
   /* Artist Header */
@@ -379,8 +372,6 @@
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(7.9px);
       -webkit-backdrop-filter: blur(7.9px);
-      border: 1px solid rgba(138, 51, 138, 0.624);
-      /* color: rgb(0, 0, 0); */
     }
     /* Artist Header */
     .artistPage {
@@ -585,6 +576,7 @@
       -webkit-backdrop-filter: blur(7.9px);
       border: 1px solid rgba(138, 51, 138, 0.624);
       /* color: rgb(0, 0, 0); */
+      font-weight: 800;
     }
     /* Artist Header */
     .artistPage {
