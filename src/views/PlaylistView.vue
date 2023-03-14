@@ -93,8 +93,7 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio(),
-        trackUri: []
+        audio: new Audio()
       }
     },
 
@@ -103,7 +102,6 @@
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       this.tracks = this.tracks.filter((track) => track.track.preview_url)
-      this.trackUri = this.track.track.uri
       console.log(this.tracks, 'hhi')
     },
 

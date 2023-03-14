@@ -3,7 +3,6 @@
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
-      <SpotifyPlayer v-if="isAuthenticated" />
 
       <div class="smallContainer">
         <button class="darkBtn" @click="newTheme = 'darkTheme'" />
@@ -16,12 +15,14 @@
       </div>
 
       <router-view />
+      <SpotifyPlayer v-if="isAuthenticated" />
     </main>
   </div>
 </template>
 
 <script>
   // import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   // import Spotify from './api/spotify.js'
   import MenuNav from './components/MenuNav.vue'
   import HeaderNav from './components/HeaderNav.vue'
@@ -39,30 +40,30 @@
       HeaderNav,
       SpotifyPlayer
     },
-    name: 'App'
-    // computed: {
-    //   ...mapGetters(['isAuthenticated', 'getUser', 'loading']), // Use Vuex mapGetters to access Vuex store state
-    //   hideGoBack() {
-    //     // Computed property that returns true if the current route is HomeView
-    //     return this.$route.name === 'HomeView'
-    //   }
-    // },
-    // methods: {
-    //   ...mapActions(['logoutUser', 'loginUser']),
-    //   async login() {
-    //     // Method that redirects the user to the Spotify authorization URL
-    //     const authorizationUrl = Spotify.getAuthorizationUrl()
-    //     window.location.href = authorizationUrl
-    //   },
-    //   async Logout() {
-    //     // Method that logs the user out
-    //     this.$store.commit('setLoading', true) // Commit the 'setLoading' mutation to true
-    //     await this.$store.dispatch('logoutUser') // Dispatch the 'logoutUser' action to log out the user
-    //     localStorage.removeItem('access_token') // Remove access token from local storage
-    //     localStorage.removeItem('user_id') // Remove user ID from local storage
-    //     this.$router.push('/') // Redirect user to HomeView
-    //   }
-    // },
+    name: 'App',
+    computed: {
+      ...mapGetters(['isAuthenticated', 'getUser', 'loading']) // Use Vuex mapGetters to access Vuex store state
+      // hideGoBack() {
+      //     // Computed property that returns true if the current route is HomeView
+      //     return this.$route.name === 'HomeView'
+      //   }
+      // },
+      // methods: {
+      //   ...mapActions(['logoutUser', 'loginUser']),
+      //   async login() {
+      //     // Method that redirects the user to the Spotify authorization URL
+      //     const authorizationUrl = Spotify.getAuthorizationUrl()
+      //     window.location.href = authorizationUrl
+      //   },
+      //   async Logout() {
+      //     // Method that logs the user out
+      //     this.$store.commit('setLoading', true) // Commit the 'setLoading' mutation to true
+      //     await this.$store.dispatch('logoutUser') // Dispatch the 'logoutUser' action to log out the user
+      //     localStorage.removeItem('access_token') // Remove access token from local storage
+      //     localStorage.removeItem('user_id') // Remove user ID from local storage
+      //     this.$router.push('/') // Redirect user to HomeView
+      //   }
+    }
     // created() {
     //   const accessToken = localStorage.getItem('access_token') // Get the access token from local storage
     //   if (accessToken) {
