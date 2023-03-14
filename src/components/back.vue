@@ -1,4 +1,3 @@
-<!-- Component that shows tracks/playlist on a specific album -->
 <template>
   <div v-if="albumTracks">
     <!-- Big Album Picture -->
@@ -26,18 +25,13 @@
     <hr class="headerLine" />
 
     <!-- List of Tracks -->
-    <div
-      v-for="(track, index) in tracks"
-      :key="index"
-      :class="{ selected: index === selectedTrackIndex }"
-      @click="playTrack(index)"
-    >
+    <div v-for="(track, index) in albumTracks" :key="track.id">
       <div class="playlist">
         <ol class="trackList">
           <li
-            v-for="artist in track.artists"
-            :key="artist.id"
             class="trackItem"
+            :class="{ selected: index === selectedTrackIndex }"
+            @click="playTrack(index)"
           >
             <div class="trackDetails">
               <!-- Small Track Image -->
@@ -55,7 +49,7 @@
               <!-- Track Artist -->
               <div class="trackArtist">
                 <router-link :to="`/artist/${track.artists[0].id}`">
-                  {{ artist.name }}
+                  {{ track.artists[0].name }}
                 </router-link>
               </div>
 
@@ -67,10 +61,11 @@
         </ol>
       </div>
     </div>
-    <div v-if="selectedTrackIndex !== null">
+    <div>
       <PlayerController
-        :key="albumTracks[selectedTrackIndex].id"
-        :track="albumTracks[selectedTrackIndex]"
+        v-if="selectedTrack"
+        :key="selectedTrack.id"
+        :track="selectedTrack"
         :audio="audio"
         :autoplay="autoplay"
         @play-next="playNext()"
@@ -79,10 +74,9 @@
     </div>
   </div>
 </template>
-
 <script>
   import spotify from '../api/spotify.js'
-  import PlayerController from '../components/PlayerController.vue'
+  import PlayerController from './PlayerController.vue'
 
   export default {
     components: {
@@ -92,36 +86,53 @@
       return {
         albumTracks: null,
         albumImages: null,
-        tracks: null,
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
         audio: new Audio()
       }
     },
-
+    computed: {
+      selectedTrack() {
+        if (this.selectedTrackIndex !== null) {
+          return this.albumTracks[this.selectedTrackIndex]
+        } else {
+          return null
+        }
+      }
+    },
     methods: {
-      playTrack(index) {
+      async playTrack(index) {
         if (index === this.selectedTrackIndex) {
           return
         }
 
         this.selectedTrackIndex = index
         this.isPlaying = true
-        console.log('Clicked track:', index)
-        this.audio.src = this.selectedTrack.preview_url
-        this.audio.play()
 
-        console.log(index, 'plllll')
+        const track = this.selectedTrack
+        const previewUrl = track.preview_url
+
+        if (previewUrl) {
+          this.audio.src = previewUrl
+          await this.audio.play()
+        }
       },
+
       playNext() {
-        this.selectedTrackIndex = this.selectedTrackIndex + 1
-        console.log(this.selectedTrackIndex + 1, 'test next')
+        if (this.selectedTrackIndex === this.albumTracks.length - 1) {
+          this.selectedTrackIndex = 0
+        } else {
+          this.selectedTrackIndex += 1
+        }
       },
 
       playPrev() {
-        this.selectedTrackIndex = this.selectedTrackIndex - 1
-        console.log(this.selectedTrackIndex - 1, 'test prev')
+        if (this.selectedTrackIndex === 0) {
+          this.selectedTrackIndex = this.albumTracks.length - 1
+        } else {
+          this.selectedTrackIndex -= 1
+        }
       },
 
       formatDuration(durationMs) {
@@ -132,45 +143,13 @@
     },
     async created() {
       const albumId = this.$route.params.id
-      console.log(this.audio)
-      console.log('Track:', this.track)
-      console.log('Key:', this.key)
-
       this.albumTracks = await spotify.getAlbumTracks(albumId)
       this.albumImages = await spotify.getSpecificAlbum(albumId)
-      this.tracks = this.albumTracks
-
-      console.log(this.albumTracks, 'URLLLLLL')
-      // const fetchAlbumTracks = await spotify.getAlbumTracks(albumId)
-      // const fetchAlbumImg = await spotify.getSpecificAlbum(albumId)
-      // this.albumTracks = fetchAlbumTracks
-      // this.albumImages = fetchAlbumImg
-      // console.log(this.albumTracks, 'GAH ALBUMTRACKS')
-      // console.log(this.albumImages, 'GAH ALBUMImages')
-      // console.log(fetchAlbumTracks, 'GAH FETCHALBUM')
-    },
-    computed: {
-      selectedTrack() {
-        if (this.selectedTrackIndex !== null) {
-          return this.tracks[this.selectedTrackIndex]
-        }
-        return null
-      }
     }
   }
 </script>
 
-<style>
-  .playerContainer {
-    background: rgba(138, 51, 138, 0.02);
-    border-radius: 3px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.9px);
-    -webkit-backdrop-filter: blur(7.9px);
-    border: 1px solid rgba(138, 51, 138, 0.624);
-    color: rgb(0, 0, 0);
-    font-weight: 800;
-  }
+<style scoped>
   .albumImage {
     margin-top: 2%;
     width: 25%;
@@ -189,6 +168,7 @@
   .playlist {
     margin: 0;
   }
+
   .trackList {
     margin: 0;
     padding: 0;

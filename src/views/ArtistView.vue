@@ -145,11 +145,6 @@
       playPrev() {
         this.selectedTrackIndex = this.selectedTrackIndex - 1
         console.log(this.selectedTrackIndex - 1, 'test prev')
-      },
-      formatDuration(durationMs) {
-        const minutes = Math.floor(durationMs / 1000 / 60)
-        const seconds = Math.floor((durationMs / 1000) % 60)
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
       }
     },
 
