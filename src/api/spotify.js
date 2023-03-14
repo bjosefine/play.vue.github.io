@@ -53,12 +53,36 @@ export const getUserInfo = async (accessToken) => {
   const data = await response.json()
   return data
 }
+// function to retrieve the device id
 export const getDeviceId = async (accessToken) => {
   const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
     headers: { Authorization: 'Bearer ' + accessToken }
   })
+
   const data = await response.json()
   console.log(data, 'DEVICE')
+  return data.devices
+}
+// function to retrive the player
+export const getSpotifyPlayer = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me/player', {
+    method: 'GET',
+    headers: { Authorization: 'Bearer ' + accessToken }
+  })
+  const data = await response.json()
+  console.log(data, 'PLAYER')
+  return data
+}
+export const playThisSong = async (accessToken, trackUri) => {
+  const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+    method: 'PUT',
+    headers: { Authorization: 'Bearer ' + accessToken },
+    body: JSON.stringify({
+      uris: [trackUri]
+    })
+  })
+  const data = await response.json()
+  console.log(data, 'plaaythis')
   return data
 }
 
@@ -403,5 +427,8 @@ export default {
   getTokenAuthorization,
   getUserInfo,
   revokeAccessToken,
-  getUserPlaylist
+  getUserPlaylist,
+  getDeviceId,
+  getSpotifyPlayer,
+  playThisSong
 }

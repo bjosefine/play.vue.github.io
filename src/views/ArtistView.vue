@@ -47,7 +47,7 @@
 
                 <!-- Track length -->
                 <div class="trackLength">
-                  {{ formatDuration(track.duration_ms) }}
+                  {{ formatDurationPlayer(track.duration_ms) }}
                 </div>
               </div>
             </li>
@@ -87,6 +87,7 @@
   <!-- Player controller -->
   <div v-if="selectedTrackIndex !== null">
     <PlayerController
+      v-if="!isAuthenticated"
       :key="artistTracks[selectedTrackIndex].id"
       :track="artistTracks[selectedTrackIndex]"
       :audio="audio"
@@ -100,8 +101,12 @@
 <script>
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     components: {
       PlayerController
     },
@@ -146,7 +151,7 @@
         this.selectedTrackIndex = this.selectedTrackIndex - 1
         console.log(this.selectedTrackIndex - 1, 'test prev')
       },
-      formatDuration(durationMs) {
+      formatDurationPlayer(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`

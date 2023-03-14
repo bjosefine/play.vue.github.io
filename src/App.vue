@@ -1,18 +1,17 @@
 <template>
+  <div v-if="isAuthenticated" class="user-info">
+    <button v-if="!loading" @click="Logout">Logout</button>
+  </div>
+
+  <!-- Show login button when not authenticated -->
+  <button v-else @click="login">Login with Spotify</button>
   <div class="appContainer">
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
-      <SpotifyPlayer />
+      <SpotifyPlayer v-if="isAuthenticated" />
 
       <router-view />
-
-      <div v-if="isAuthenticated" class="user-info">
-        <button v-if="!loading" @click="Logout">Logout</button>
-      </div>
-
-      <!-- Show login button when not authenticated -->
-      <button v-else @click="login">Login with Spotify</button>
     </main>
   </div>
 </template>

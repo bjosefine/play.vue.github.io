@@ -28,7 +28,7 @@
         :key="track.track.id"
         :class="{ selected: index === selectedTrackIndex }"
         class="trackItem"
-        @click="playTrack(index)"
+        @click="playTrack(index), playSpotifyTrack(index)"
       >
         <div class="trackDetails">
           <!-- image -->
@@ -57,6 +57,7 @@
     <!-- player-container used for many pages, important -->
     <div v-if="selectedTrackIndex !== null">
       <PlayerController
+        v-if="!isAuthenticated"
         :key="tracks[selectedTrackIndex].track.id"
         :track="tracks[selectedTrackIndex].track"
         :audio="audio"
@@ -73,10 +74,14 @@
   // import { onMounted } from 'vue'
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
+  import { mapGetters } from 'vuex'
+  import { playThisSong } from '../api/spotify.js'
 
   export default {
     name: 'PlayList',
-
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     components: {
       PlayerController
     },
@@ -88,7 +93,8 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio()
+        audio: new Audio(),
+        trackUri: []
       }
     },
 
@@ -97,9 +103,18 @@
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       this.tracks = this.tracks.filter((track) => track.track.preview_url)
+      this.trackUri = this.track.track.uri
+      console.log(this.tracks, 'hhi')
     },
 
     methods: {
+      async playSpotifyTrack(index) {
+        const accessToken = this.$store.state.accessToken
+        const track = this.tracks[index].track.uri
+        const playThis = await playThisSong(accessToken, track)
+        console.log(track, 'is this right?')
+        return playThis
+      },
       // play track from list
       playTrack(index) {
         if (index === this.selectedTrackIndex) {
@@ -143,6 +158,7 @@
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);
     color: rgb(41, 38, 38);
+    z-index: 500;
   }
 
   /* end of player container */
