@@ -36,7 +36,7 @@
             <img :src="track.track.album.images[2].url" alt="" />
           </div>
           <!-- title -->
-          <div class="trackTitle">
+          <div class="trackTitle" id="trackTitle">
             <div class="animateTrackName">{{ track.track.name }}</div>
           </div>
 
@@ -206,10 +206,10 @@
     font-size: medium;
   }
 
-  /* track heading */
+  /* track title heading */
   .titleHeading {
     font-size: 17px;
-    margin-left: 8rem;
+    margin-left: 9.5rem;
     margin-bottom: 0;
     grid-area: titleHeader;
   }
@@ -230,12 +230,13 @@
     justify-self: end;
     margin-bottom: 0;
   }
-
+  /* line between headings and playlist */
   .headerLine {
     grid-area: headerLine;
     margin-right: 5rem;
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 4.5rem;
   }
 
   .trackDetails {
@@ -248,11 +249,13 @@
     grid-template-areas: 'trackImage trackTitle trackTitle trackTitle trackTitle trackArtist trackArtist trackLength';
     margin-right: auto;
   }
-
+  /* moves */
   .trackItem {
     padding: 0.3rem;
     align-items: center;
     transition: background-color 0.3s;
+    margin-left: 3rem;
+    padding-top: 1rem;
   }
 
   .trackItem:hover {
@@ -268,6 +271,7 @@
   .trackImage {
     grid-area: trackImage;
     justify-self: center;
+    margin-right: 2rem;
     /* object-fit: cover; */
   }
 
@@ -281,7 +285,10 @@
     grid-area: trackTitle;
     text-align: left;
   }
-
+  /* overrites align center in (#app App.vue) */
+  #trackTitle {
+    text-align: left;
+  }
   /* artist */
   .trackArtist {
     grid-area: trackArtist;
@@ -293,7 +300,11 @@
     grid-area: trackLength;
     justify-self: end;
   }
-
+  /* @media (max-width: 980px) {
+    .titleHeading {
+      margin-left: 8.5rem;
+    }
+  } */
   /* from tablets smallest measurement to desktop smallest measurement */
   @media (min-width: 750px) and (max-width: 800px) {
     /* player-container Used on many pages important, don't adjust*/
@@ -376,6 +387,9 @@
         'trackImage trackTitle trackTitle'
         'trackImage trackArtist trackLength';
       margin-right: auto;
+    }
+    .trackItem {
+      margin-left: 0;
     }
 
     /* bild */
