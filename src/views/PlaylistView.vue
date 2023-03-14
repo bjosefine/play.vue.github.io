@@ -179,7 +179,7 @@
 
   .playlistName {
     margin-top: 4rem;
-    font-size: 40px;
+    font-size: 30px;
     /* color: rgb(58, 57, 57); */
   }
 

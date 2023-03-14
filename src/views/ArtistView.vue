@@ -220,7 +220,7 @@
     font-size: 4rem;
   }
   .artistName h1 {
-    font-size: 4rem;
+    font-size: 1rem;
   }
   .artistName {
     margin-bottom: 0.5rem;
@@ -245,7 +245,7 @@
   }
 
   .sectionTitle {
-    font-size: 2.5rem;
+    font-size: 30px;
     margin-top: 3rem;
     margin-bottom: 3rem;
     width: 100%;
