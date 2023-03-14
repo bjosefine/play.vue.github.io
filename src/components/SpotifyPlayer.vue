@@ -97,26 +97,27 @@
       const deviceId = await getDeviceId(accessToken)
       this.device = deviceId[0].id
       // send the access token to the fetch in spotify.js to activate the fetch
-      const spotifyPlayer = await getSpotifyPlayer(accessToken)
+
       // set interval to retrive the fetch data every second to always be up to date with the data. for example the time of the song, update song title and img when song changes
 
-      // setInterval(() => {
-      //   this.spotifyPlayer
-      //   console.log(spotifyPlayer, 'ss')
-      // }, 1000)
+      setInterval(async () => {
+        // get the access token from vuex
+        const accessToken = this.$store.state.accessToken
+        const spotifyPlayer = await getSpotifyPlayer(accessToken)
 
-      console.log(spotifyPlayer)
+        console.log(spotifyPlayer)
 
-      // retrive all the data from the player
-      this.player = spotifyPlayer
-      this.playerSong = spotifyPlayer.item.name
-      this.playerArtist = spotifyPlayer.item.artists[0].name
-      this.playerImage = spotifyPlayer.item.album.images[0].url
-      this.playerShuffle = spotifyPlayer.shuffle_state
-      this.playerVolume = spotifyPlayer.device.volume_percent
-      this.playerIsPlaying = spotifyPlayer.is_playing
-      this.playerCurrentTime = spotifyPlayer.progress_ms
-      this.playerTotalTime = spotifyPlayer.item.duration_ms
+        // retrive all the data from the player
+        this.player = spotifyPlayer
+        this.playerSong = spotifyPlayer.item.name
+        this.playerArtist = spotifyPlayer.item.artists[0].name
+        this.playerImage = spotifyPlayer.item.album.images[0].url
+        this.playerShuffle = spotifyPlayer.shuffle_state
+        this.playerVolume = spotifyPlayer.device.volume_percent
+        this.playerIsPlaying = spotifyPlayer.is_playing
+        this.playerCurrentTime = spotifyPlayer.progress_ms
+        this.playerTotalTime = spotifyPlayer.item.duration_ms
+      }, 1000)
     },
     methods: {
       // make play and pause button change
