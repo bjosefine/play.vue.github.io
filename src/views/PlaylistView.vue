@@ -255,7 +255,7 @@
     align-items: center;
     transition: background-color 0.3s;
     margin-left: 3rem;
-    padding-top: 1rem;
+    padding-top: 2rem;
   }
 
   .trackItem:hover {
@@ -292,6 +292,7 @@
   /* artist */
   .trackArtist {
     grid-area: trackArtist;
+    text-align: left;
   }
 
   /* duration time */
