@@ -27,7 +27,7 @@
       </router-link>
 
       <!-- Icon for featured playlists, currently not linked -->
-      <i class="bi bi-music-note-list" />
+      <!-- <i class="bi bi-music-note-list" /> -->
     </ul>
   </div>
 </template>

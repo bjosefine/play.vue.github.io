@@ -102,14 +102,13 @@
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       this.tracks = this.tracks.filter((track) => track.track.preview_url)
-      console.log(this.tracks, 'hhi')
     },
 
     methods: {
       async playSpotifyTrack(index) {
         const accessToken = this.$store.state.accessToken
         const track = this.tracks[index].track.uri
-        const playThis = await playThisSong(accessToken, track)
+        const playThis = await playThisSong(accessToken, track, index)
         console.log(track, 'is this right?')
         return playThis
       },
