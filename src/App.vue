@@ -3,15 +3,19 @@
     <MenuNav />
     <main class="mainContent">
       <HeaderNav :hide-go-back="hideGoBack" />
+      <div class="dropDownTheme">
+        <button class="dropdown-toggle" @click="toggleDropdown">
+          <i class="bi bi-gear" />
+        </button>
+        <div class="dropDownMenu" :class="{ toggleDropdown: settings }">
+          <button class="darkBtn" @click="newTheme = 'darkTheme'" />
 
-      <div class="smallContainer">
-        <button class="darkBtn" @click="newTheme = 'darkTheme'" />
+          <button class="lightBtn" @click="newTheme = 'lightTheme'" />
 
-        <button class="lightBtn" @click="newTheme = 'lightTheme'" />
+          <button class="bubblegumBtn" @click="newTheme = 'bubblegumTheme'" />
 
-        <button class="bubblegumBtn" @click="newTheme = 'bubblegumTheme'" />
-
-        <button class="sunsetBtn" @click="newTheme = 'sunsetTheme'" />
+          <button class="sunsetBtn" @click="newTheme = 'sunsetTheme'" />
+        </div>
       </div>
 
       <router-view />
@@ -31,10 +35,15 @@
   export default {
     data() {
       return {
-        newTheme: 'sunsetTheme'
+        newTheme: 'sunsetTheme',
+        settings: false
       }
     },
-
+    methods: {
+      toggleDropdown() {
+        this.settings = !this.settings
+      }
+    },
     components: {
       MenuNav,
       HeaderNav,
@@ -77,6 +86,19 @@
 </script>
 
 <style>
+  .dropDownTheme {
+    z-index: 1000;
+    position: fixed;
+    right: 100px;
+    margin-top: 7px;
+  }
+  .dropDownMenu {
+    height: 0;
+    overflow: hidden;
+  }
+  .dropDownMenu.toggleDropdown {
+    height: 50px;
+  }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
