@@ -183,7 +183,6 @@
     -webkit-backdrop-filter: blur(7.9px);
     border: 1px solid rgba(138, 51, 138, 0.624);
     /* color: rgb(0, 0, 0); */
-    font-weight: 800;
   }
 
   /* Artist Header */
@@ -382,7 +381,6 @@
       -webkit-backdrop-filter: blur(7.9px);
       border: 1px solid rgba(138, 51, 138, 0.624);
       /* color: rgb(0, 0, 0); */
-      font-weight: 800;
     }
     /* Artist Header */
     .artistPage {
@@ -587,7 +585,6 @@
       -webkit-backdrop-filter: blur(7.9px);
       border: 1px solid rgba(138, 51, 138, 0.624);
       /* color: rgb(0, 0, 0); */
-      font-weight: 800;
     }
     /* Artist Header */
     .artistPage {

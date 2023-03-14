@@ -169,7 +169,6 @@
     -webkit-backdrop-filter: blur(7.9px);
     border: 1px solid rgba(138, 51, 138, 0.624);
     color: rgb(0, 0, 0);
-    font-weight: 800;
   }
   .albumImage {
     margin-top: 2%;
