@@ -11,6 +11,8 @@
         <button class="lightBtn" @click="newTheme = 'lightTheme'" />
 
         <button class="bubblegumBtn" @click="newTheme = 'bubblegumTheme'" />
+
+        <button class="sunsetBtn" @click="newTheme = 'sunsetTheme'" />
       </div>
 
       <router-view />
@@ -28,7 +30,7 @@
   export default {
     data() {
       return {
-        newTheme: 'darkTheme'
+        newTheme: 'sunsetTheme'
       }
     },
 
@@ -93,6 +95,11 @@
 
   .darkTheme a {
     color: white;
+    transition: 0.2s ease-in-out;
+  }
+
+  .darkTheme a:hover {
+    color: rgb(175, 175, 175);
   }
 
   .darkTheme .MenuNav {
@@ -109,6 +116,10 @@
     font-weight: lighter;
     padding: 20px;
     border-radius: 10px;
+  }
+
+  .darkTheme .searchBar input[type='text'] {
+    color: white;
   }
 
   /* DARK THEME END */
@@ -140,6 +151,43 @@
 
   /* BUBBLEGUM THEME END */
 
+  /* SUNSET THEME START */
+
+  .sunsetTheme {
+    background: rgb(255, 0, 142);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 0, 142, 1) 0%,
+      rgba(255, 175, 0, 1) 100%
+    );
+    color: white;
+  }
+
+  .sunsetTheme a {
+    color: white;
+    transition: 0.2s ease-in-out;
+  }
+
+  .sunsetTheme a:hover {
+    color: rgb(255, 228, 118);
+  }
+
+  .sunsetTheme .MenuNav {
+    background: rgba(255, 229, 84, 0.3);
+    box-shadow: 0 4px 30px rgba(255, 229, 84, 0.646);
+  }
+
+  .sunsetTheme .logInOut {
+    background-color: rgb(0, 0, 0, 0.1);
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
   /* THEME BUTTONS */
   .darkBtn {
     background-color: rgb(0, 0, 0);
@@ -159,6 +207,14 @@
 
   .bubblegumBtn {
     background-color: rgb(198, 63, 184, 0.8);
+    width: 17px;
+    height: 17px;
+    border: none;
+    border-bottom: 1px solid #535353;
+  }
+
+  .sunsetBtn {
+    background-color: orange;
     width: 17px;
     height: 17px;
     border: none;

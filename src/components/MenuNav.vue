@@ -84,9 +84,9 @@
     color: rgba(124, 13, 117, 0.53);
   } */
 
-  a:hover {
+  /* a:hover {
     color: rgb(45, 41, 41);
-  }
+  } */
   .highlight {
     border-bottom: 2px solid;
     width: 20px;

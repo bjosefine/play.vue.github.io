@@ -245,7 +245,7 @@
     width: 80%;
     padding: 10px;
     border-radius: 30px;
-    background: rgba(255, 255, 255, 0);
+    /* background: rgba(255, 255, 255, 1); */
     backdrop-filter: blur(0px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.329);
   }

@@ -56,7 +56,7 @@
     async created() {
       const songId = this.$route.params.id
       this.uniquetracks = await spotify.getTracks(songId)
-      console.log(this.uniquetracks, 'hej')
+      console.log(this.uniquetracks.album, 'hej')
     },
     data() {
       return {
