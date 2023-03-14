@@ -235,14 +235,14 @@
   @media screen and (min-width: 481px) and (max-width: 767px) {
     .playerContainer {
       position: relative;
-      margin-bottom: 7vh;
+      margin-bottom: 6.5vh;
       bottom: 0;
     }
   }
   @media screen and (min-width: 375px) and (max-width: 480px) {
     .playerContainer {
       position: relative;
-      margin-bottom: 7vh;
+      margin-bottom: 6.5vh;
       bottom: 0;
     }
   }
@@ -384,6 +384,8 @@
   .playerTime {
     display: flex;
     align-items: center;
+    margin-top: -4px;
+    margin-bottom: 4px;
   }
   .playerButtons {
     display: flex;
@@ -429,6 +431,9 @@
     .playerImageSrc {
       width: 55px;
       height: 55px;
+    }
+    .playerTime {
+      margin-bottom: 9px;
     }
   }
   /* smaller tablets  */
@@ -517,6 +522,7 @@
       position: fixed;
       margin: 0;
       bottom: 0;
+      margin-bottom: 4px;
     }
     .playerImageSrc {
       width: 40px;

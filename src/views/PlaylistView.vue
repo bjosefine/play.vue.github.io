@@ -36,7 +36,7 @@
             <img :src="track.track.album.images[2].url" alt="" />
           </div>
           <!-- title -->
-          <div class="trackTitle" id="trackTitle">
+          <div class="trackTitle">
             <div class="animateTrackName">{{ track.track.name }}</div>
           </div>
 
@@ -93,7 +93,8 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio()
+        audio: new Audio(),
+        uri: []
       }
     },
 
@@ -102,14 +103,22 @@
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       this.tracks = this.tracks.filter((track) => track.track.preview_url)
+      console.log(this.tracks, 'hhi')
+      //get several uris in the PUT fetch
     },
 
     methods: {
       async playSpotifyTrack(index) {
         const accessToken = this.$store.state.accessToken
-        const track = this.tracks[index].track.uri
-        const playThis = await playThisSong(accessToken, track, index)
-        console.log(track, 'is this right?')
+        const playlistId = this.$route.params.id
+
+        const uri = await spotify.getPlaylistTracks(playlistId)
+        //map out so its only the uri in the array
+        this.uri = uri.map((track) => track.track.uri)
+        console.log(this.uri, 'theuri arrau')
+        // const track = this.tracks[index].track.uri
+        const playThis = await playThisSong(accessToken, uri, index)
+        console.log(index, 'is this right?')
         return playThis
       },
       // play track from list
@@ -205,10 +214,10 @@
     font-size: medium;
   }
 
-  /* track title heading */
+  /* track heading */
   .titleHeading {
     font-size: 17px;
-    margin-left: 9.5rem;
+    margin-left: 8rem;
     margin-bottom: 0;
     grid-area: titleHeader;
   }
@@ -229,13 +238,12 @@
     justify-self: end;
     margin-bottom: 0;
   }
-  /* line between headings and playlist */
+
   .headerLine {
     grid-area: headerLine;
     margin-right: 5rem;
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 4.5rem;
   }
 
   .trackDetails {
@@ -248,13 +256,11 @@
     grid-template-areas: 'trackImage trackTitle trackTitle trackTitle trackTitle trackArtist trackArtist trackLength';
     margin-right: auto;
   }
-  /* moves */
+
   .trackItem {
     padding: 0.3rem;
     align-items: center;
     transition: background-color 0.3s;
-    margin-left: 3rem;
-    padding-top: 2rem;
   }
 
   .trackItem:hover {
@@ -270,7 +276,6 @@
   .trackImage {
     grid-area: trackImage;
     justify-self: center;
-    margin-right: 2rem;
     /* object-fit: cover; */
   }
 
@@ -284,14 +289,10 @@
     grid-area: trackTitle;
     text-align: left;
   }
-  /* overrites align center in (#app App.vue) */
-  #trackTitle {
-    text-align: left;
-  }
+
   /* artist */
   .trackArtist {
     grid-area: trackArtist;
-    text-align: left;
   }
 
   /* duration time */
@@ -300,11 +301,7 @@
     grid-area: trackLength;
     justify-self: end;
   }
-  /* @media (max-width: 980px) {
-    .titleHeading {
-      margin-left: 8.5rem;
-    }
-  } */
+
   /* from tablets smallest measurement to desktop smallest measurement */
   @media (min-width: 750px) and (max-width: 800px) {
     /* player-container Used on many pages important, don't adjust*/
@@ -387,9 +384,6 @@
         'trackImage trackTitle trackTitle'
         'trackImage trackArtist trackLength';
       margin-right: auto;
-    }
-    .trackItem {
-      margin-left: 0;
     }
 
     /* bild */

@@ -73,20 +73,22 @@ export const getSpotifyPlayer = async (accessToken) => {
   console.log(data, 'PLAYER')
   return data
 }
-export const playThisSong = async (accessToken, trackUri) => {
+export const playThisSong = async (accessToken, uri, index) => {
   const response = await fetch('https://api.spotify.com/v1/me/player/play', {
     method: 'PUT',
     headers: { Authorization: 'Bearer ' + accessToken },
     body: JSON.stringify({
-      uris: [trackUri]
+      uris: [uri],
+      offset: index
     })
   })
+  console.log(response, 'ressksk')
   const data = await response.json()
   console.log(data, 'plaaythis')
   return data
 }
 
-// A function that sends a request to Spotify API to revoke the access token
+// A function that sends a  request to Spotify API to revoke the access token
 export const revokeAccessToken = async (accessToken) => {
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
