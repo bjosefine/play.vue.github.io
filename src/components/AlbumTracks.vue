@@ -197,7 +197,15 @@
     width: 50%;
   }
 
+  .trackImage img {
+    width: 50%;
+  }
+
   .trackItem:hover {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .trackItem {
+    height: 100px;
   }
 </style>
