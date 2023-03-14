@@ -35,7 +35,7 @@
   export default {
     data() {
       return {
-        newTheme: 'lightTheme',
+        newTheme: 'bubblegumTheme',
         settings: false
       }
     },
@@ -86,6 +86,11 @@
 </script>
 
 <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Dropdown toggle button */
   .dropDownTheme {
     z-index: 1000;
     position: fixed;
@@ -108,19 +113,16 @@
     padding-left: 10px;
     padding-right: 10px;
   }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
 
-  /* Gradient generator: https://cssgradient.io/ */
+  /* Tool for the themes background gradients: Gradient generator: https://cssgradient.io/ */
 
-  /* DARK THEME START */
+  /* ----------- DARK THEME ----------- */
   .darkTheme {
-    background: rgb(92, 92, 92);
+    background: rgb(0, 0, 0);
     background: linear-gradient(
-      301deg,
-      rgba(92, 92, 92, 1) 0%,
-      rgba(0, 0, 0, 1) 100%
+      110deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(92, 92, 92, 1) 100%
     );
     color: white;
   }
@@ -129,6 +131,17 @@
     background-color: rgb(0, 0, 0, 0.1);
     color: white;
     border-color: white;
+  }
+
+  .darkTheme .logInOut {
+    background-color: rgb(0, 0, 0, 0.1);
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    color: white;
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
   }
 
   .darkTheme a {
@@ -145,73 +158,29 @@
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
   }
 
-  .darkTheme .logInOut {
-    background-color: rgb(0, 0, 0, 0.1);
-    border-width: 1px;
-    border-color: white;
-    border-style: solid;
-    color: white;
-    font-weight: lighter;
-    padding: 20px;
-    border-radius: 10px;
-  }
-
   .darkTheme .searchBar input[type='text'] {
     color: white;
   }
 
-  /* DARK THEME END */
-
-  /* LIGHT THEME START */
-  .lightTheme {
-    background: rgb(161, 153, 133);
-    background: linear-gradient(
-      288deg,
-      rgba(161, 153, 133, 1) 0%,
-      rgba(255, 251, 241, 1) 63%
-    );
-    color: #55756a;
+  .darkTheme .goback {
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
-  .lightTheme .logInOut {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-width: 1px;
-    border-color: #55756a;
-    border-style: solid;
-    color: #55756a;
-    font-weight: lighter;
-    padding: 20px;
-    border-radius: 10px;
-  }
-
-  .lightTheme .dropdown-toggle {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #55756a;
-    border-color: #55756a;
-  }
-
-  .lightTheme a {
-    color: #55756a;
-  }
-
-  .lightTheme .searchBar input[type='text'] {
-    color: #55756a;
-  }
-
-  /* LIGHT THEME END */
-  /* BUBBLEGUM THEME START */
+  /* ----------- BUBBLEGUM THEME ----------- */
   .bubblegumTheme {
-    background: rgb(140, 144, 218);
+    background: rgb(126, 218, 254);
     background: linear-gradient(
-      122deg,
-      rgba(140, 144, 218, 1) 0%,
-      rgba(255, 46, 224, 1) 100%
+      110deg,
+      rgba(255, 74, 210, 1) 0%,
+      rgb(126, 218, 254) 100%
     );
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255);
   }
 
-  .bubblegumTheme a {
-    color: rgba(255, 255, 255, 0.8);
+  .bubblegumTheme .dropdown-toggle {
+    background-color: rgb(0, 0, 0, 0.1);
+    color: white;
+    border-color: white;
   }
 
   .bubblegumTheme .logInOut {
@@ -225,24 +194,79 @@
     border-radius: 10px;
   }
 
+  .bubblegumTheme a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: 0.2s ease-in-out;
+  }
+
+  .bubblegumTheme a:hover {
+    color: rgb(126, 218, 254);
+  }
+
   .bubblegumTheme .MenuNav {
     background: rgba(255, 255, 255, 0.01);
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
-  }
-
-  .bubblegumTheme .dropdown-toggle {
-    background-color: rgb(0, 0, 0, 0.1);
-    color: white;
-    border-color: white;
   }
 
   .bubblegumTheme .searchBar input[type='text'] {
     color: white;
   }
 
-  /* BUBBLEGUM THEME END */
+  .bubblegumTheme .goback {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
 
-  /* SUNSET THEME START */
+  /* ----------- LIGHT THEME ----------- */
+  .lightTheme {
+    background: rgb(161, 153, 133);
+    background: linear-gradient(
+      288deg,
+      rgb(126, 120, 104) 0%,
+      rgba(255, 251, 241, 1) 63%
+    );
+    color: #55756a;
+  }
+
+  .lightTheme .dropdown-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #55756a;
+    border-color: #55756a;
+  }
+
+  .lightTheme .logInOut {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-width: 1px;
+    border-color: #55756a;
+    border-style: solid;
+    color: #55756a;
+    font-weight: lighter;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .lightTheme a {
+    color: #55756a;
+    transition: 0.2s ease-in-out;
+  }
+
+  .lightTheme a:hover {
+    color: #0cbb75;
+  }
+
+  .lightTheme .MenuNav {
+    background: rgba(0, 0, 0, 0.01);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .lightTheme .searchBar input[type='text'] {
+    color: #55756a;
+  }
+
+  .lightTheme .goback {
+    background-color: #55756a79;
+  }
+
+  /* ----------- SUNSET THEME ----------- */
 
   .sunsetTheme {
     background: rgb(255, 0, 142);
@@ -260,24 +284,6 @@
     border-color: white;
   }
 
-  .sunsetTheme .searchBar input[type='text'] {
-    color: white;
-  }
-
-  .sunsetTheme a {
-    color: white;
-    transition: 0.2s ease-in-out;
-  }
-
-  .sunsetTheme a:hover {
-    color: rgb(255, 228, 118);
-  }
-
-  .sunsetTheme .MenuNav {
-    background: rgba(255, 229, 84, 0.3);
-    box-shadow: 0 4px 30px rgba(255, 229, 84, 0.646);
-  }
-
   .sunsetTheme .logInOut {
     background-color: rgb(0, 0, 0, 0.1);
     border-width: 1px;
@@ -289,9 +295,31 @@
     border-radius: 10px;
   }
 
-  /* THEME BUTTONS */
+  .sunsetTheme a {
+    color: white;
+    transition: 0.2s ease-in-out;
+  }
+
+  .sunsetTheme a:hover {
+    color: rgb(255, 193, 58);
+  }
+
+  .sunsetTheme .MenuNav {
+    background: rgba(250, 250, 250, 0.01);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.3);
+  }
+
+  .sunsetTheme .searchBar input[type='text'] {
+    color: white;
+  }
+
+  .sunsetTheme .goback {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* -----------THEME BUTTONS----------- */
   .darkBtn {
-    background-color: rgb(0, 0, 0);
+    background: linear-gradient(to right, #000000, #7b7b7b);
     width: 17px;
     height: 17px;
     border: none;
@@ -301,7 +329,7 @@
   }
 
   .lightBtn {
-    background-color: rgb(255, 251, 241, 1);
+    background: linear-gradient(to right, #a19985, #fffbf1);
     width: 17px;
     height: 17px;
     border: none;
@@ -311,7 +339,7 @@
   }
 
   .bubblegumBtn {
-    background-color: rgb(198, 63, 184, 0.8);
+    background: linear-gradient(to right, #ff4ad2, #7edafe);
     width: 17px;
     height: 17px;
     border: none;
@@ -321,7 +349,7 @@
   }
 
   .sunsetBtn {
-    background-color: rgb(255, 0, 142);
+    background: linear-gradient(to right, #ff008e, #ffaf00);
     width: 17px;
     height: 17px;
     border: none;
