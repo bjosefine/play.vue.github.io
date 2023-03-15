@@ -70,16 +70,14 @@ export const getSpotifyPlayer = async (accessToken) => {
     headers: { Authorization: 'Bearer ' + accessToken }
   })
   const data = await response.json()
-  console.log(data, 'PLAYER')
   return data
 }
-export const playThisSong = async (accessToken, uri, index) => {
+export const playThisSong = async (accessToken, uri) => {
   const response = await fetch('https://api.spotify.com/v1/me/player/play', {
     method: 'PUT',
     headers: { Authorization: 'Bearer ' + accessToken },
     body: JSON.stringify({
-      uris: [uri],
-      offset: index
+      context_uri: uri
     })
   })
   console.log(response, 'ressksk')

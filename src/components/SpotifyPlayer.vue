@@ -105,8 +105,6 @@
         const accessToken = this.$store.state.accessToken
         const spotifyPlayer = await getSpotifyPlayer(accessToken)
 
-        console.log(spotifyPlayer)
-
         // retrive all the data from the player
         this.player = spotifyPlayer
         this.playerSong = spotifyPlayer.item.name
