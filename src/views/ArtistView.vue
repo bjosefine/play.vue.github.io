@@ -187,7 +187,6 @@
     margin-right: auto;
   }
   .playerContainer {
-    background: rgba(138, 51, 138, 0.02);
     border-radius: 3px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
@@ -384,7 +383,6 @@
 
   @media screen and (min-width: 481px) and (max-width: 767px) {
     .playerContainer {
-      background: rgba(138, 51, 138, 0.02);
       border-radius: 3px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(7.9px);
@@ -587,7 +585,6 @@
       margin-right: 5%;
     }
     .playerContainer {
-      background: rgba(138, 51, 138, 0.02);
       border-radius: 3px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(7.9px);

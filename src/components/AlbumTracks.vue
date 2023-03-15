@@ -156,7 +156,6 @@
 
 <style>
   .playerContainer {
-    background: rgba(138, 51, 138, 0.02);
     border-radius: 3px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.9px);
