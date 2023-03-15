@@ -286,10 +286,10 @@
     z-index: 4;
   }
 
-  .playerPlayPause:hover,
+  /* .playerPlayPause:hover,
   .playerStop:hover {
     background-color: #111;
-  }
+  } */
   .playerPrev,
   .playerNext {
     width: 30px;
@@ -297,10 +297,10 @@
     padding-top: 12px;
     /* color: #e0dada; */
   }
-  .playerPrev:hover,
+  /* .playerPrev:hover,
   .playerNext:hover {
     color: #111;
-  }
+  } */
   .playerImage {
     display: flex;
     width: 70%;
@@ -366,10 +366,10 @@
     color: #685b5b;
   } */
 
-  .playerPlayPause:hover,
+  /* .playerPlayPause:hover,
   .playerStop:hover {
     background-color: #111;
-  }
+  } */
   .sliderContainer {
     display: flex;
     align-items: center;
@@ -410,9 +410,9 @@
     margin-right: 0.5pc;
     /* color: #e0dada; */
   }
-  .audioOnOff:hover {
+  /* .audioOnOff:hover {
     color: #111;
-  }
+  } */
   /* smaller desktops screens */
   @media screen and (max-width: 1040px) {
     .audioControls {

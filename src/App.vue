@@ -167,6 +167,11 @@
     background-color: rgba(255, 255, 255, 0.3);
   }
 
+  .darkTheme .playerPlayPause:hover,
+  .playerStop:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
   /* ----------- BUBBLEGUM THEME ----------- */
   .bubblegumTheme {
     background: rgb(126, 218, 254);
@@ -215,6 +220,11 @@
 
   .bubblegumTheme .goback {
     background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .bubblegumTheme .playerPlayPause:hover,
+  .playerStop:hover {
+    background-color: rgba(126, 218, 254);
   }
 
   /* ----------- LIGHT THEME ----------- */
@@ -267,6 +277,11 @@
     background-color: #55756a79;
   }
 
+  .lightTheme .playerPlayPause:hover,
+  .playerStop:hover {
+    background-color: #55756a79;
+  }
+
   /* ----------- SUNSET THEME ----------- */
 
   .sunsetTheme {
@@ -316,6 +331,11 @@
 
   .sunsetTheme .goback {
     background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .sunsetTheme .playerPlayPause:hover,
+  .playerStop:hover {
+    background-color: rgb(255, 193, 58);
   }
 
   /* -----------THEME BUTTONS----------- */
