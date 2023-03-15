@@ -26,7 +26,12 @@
   <hr class="headerLine" />
   <!-- end of line -->
   <ol class="trackList">
-    <div class="trackDetails">
+    <div
+      class="trackDetails"
+      :key="index"
+      :class="{ selected: index === selectedTrackIndex }"
+      @click="playTrack(index)"
+    >
       <!-- image -->
       <div class="trackImage">
         <img :src="uniquetracks.album.images[0].url" alt="" />
@@ -47,33 +52,86 @@
       </div>
     </div>
   </ol>
+  <!-- Player controller -->
+  <div v-if="selectedTrackIndex !== null">
+    <PlayerController
+      :key="uniquetracks.id"
+      :track="uniquetracks"
+      :audio="audio"
+      :autoplay="autoplay"
+      @play-next="playNext()"
+      @play-prev="playPrev()"
+    />
+    <!-- <PlayerController
+      :key="uniquetracks[selectedTrackIndex]"
+      :track="uniquetracks[selectedTrackIndex]"
+      :audio="audio"
+      :autoplay="autoplay"
+      @play-next="playNext()"
+      @play-prev="playPrev()"
+    /> -->
+  </div>
 </template>
 
 <script>
   import spotify from '../api/spotify'
+  import PlayerController from '../components/PlayerController.vue'
 
   export default {
+    components: {
+      PlayerController
+    },
+
     async created() {
       const songId = this.$route.params.id
       this.uniquetracks = await spotify.getTracks(songId)
-      console.log(this.uniquetracks.album, 'hej')
+      this.tracks = this.uniquetracks.preview_url
+
+      console.log(this.tracks, 'hej')
     },
     data() {
       return {
-        uniquetracks: null
+        uniquetracks: null,
+        tracks: null,
+        selectedTrackIndex: null,
+        autoplay: true,
+        isPlaying: false,
+        audio: new Audio()
       }
     },
+
     methods: {
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+      },
+      // play track from list
+      playTrack(index) {
+        if (index === this.selectedTrackIndex) {
+          return
+        }
+
+        const track = this.uniquetracks
+        console.log('Playing track:', track.name)
+        console.log('Track URL:', track.preview_url)
+        this.selectedTrackIndex = index
+        this.isPlaying = true
+        
       }
     }
   }
 </script>
 
 <style scoped>
+  /* player-container Used on many pages important, don't adjust*/
+  .playerContainer {
+    background: rgba(206, 17, 206, 0.062);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.2px);
+    -webkit-backdrop-filter: blur(18.2px);
+    /* color: rgb(41, 38, 38); */
+  }
   /* Artist Header */
   .artistPage {
     display: flex;
