@@ -324,7 +324,7 @@
     display: flex;
     justify-content: center;
   }
-  s .artistInfo {
+  .artistInfo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

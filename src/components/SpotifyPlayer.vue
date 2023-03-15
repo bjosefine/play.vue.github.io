@@ -1,5 +1,10 @@
 <template>
   <div class="playerContainer">
+    <div
+      class="swipeContainer"
+      v-touch:swipe.left="playerNext"
+      v-touch:swipe.right="playerPrev"
+    />
     <div class="playerInfo">
       <div class="playerImage">
         <img
@@ -10,7 +15,21 @@
 
         <div class="artistInfo">
           <div class="playerTitle">
-            {{ playerSong }}
+            <div
+              v-if="this.playerSong.length > 20 && this.playerSong.length < 35"
+              class="animatePlayerTrackNameDesktop"
+            >
+              {{ playerSong }}
+            </div>
+            <div
+              v-else-if="this.playerSong.length >= 35"
+              class="animatePlayerTrackNameMobile"
+            >
+              {{ playerSong }}
+            </div>
+            <div v-else>
+              {{ playerSong }}
+            </div>
           </div>
           <div class="playerArtist">
             {{ playerArtist }}
