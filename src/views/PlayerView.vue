@@ -42,7 +42,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(206, 17, 206, 0.062);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);

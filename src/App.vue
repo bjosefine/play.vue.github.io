@@ -172,6 +172,10 @@
     background-color: rgba(255, 255, 255, 0.3);
   }
 
+  .darkTheme .playerContainer {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
   /* ----------- BUBBLEGUM THEME ----------- */
   .bubblegumTheme {
     background: rgb(126, 218, 254);
@@ -225,6 +229,10 @@
   .bubblegumTheme .playerPlayPause:hover,
   .playerStop:hover {
     background-color: rgba(126, 218, 254);
+  }
+
+  .bubblegumTheme .playerContainer {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   /* ----------- LIGHT THEME ----------- */
