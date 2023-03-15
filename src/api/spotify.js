@@ -70,7 +70,6 @@ export const getSpotifyPlayer = async (accessToken) => {
     headers: { Authorization: 'Bearer ' + accessToken }
   })
   const data = await response.json()
-  console.log(data, 'PLAYER')
   return data
 }
 export const playThisSong = async (accessToken, uri, index) => {
@@ -78,8 +77,10 @@ export const playThisSong = async (accessToken, uri, index) => {
     method: 'PUT',
     headers: { Authorization: 'Bearer ' + accessToken },
     body: JSON.stringify({
-      uris: [uri],
-      offset: index
+      context_uri: uri,
+      offset: {
+        position: index
+      }
     })
   })
   console.log(response, 'ressksk')

@@ -93,8 +93,7 @@
         selectedTrackIndex: null,
         autoplay: true,
         isPlaying: false,
-        audio: new Audio(),
-        uri: []
+        audio: new Audio()
       }
     },
 
@@ -104,21 +103,21 @@
       this.tracks = await spotify.getPlaylistTracks(playlistId)
       this.tracks = this.tracks.filter((track) => track.track.preview_url)
       console.log(this.tracks, 'hhi')
-      //get several uris in the PUT fetch
+      console.log(this.playlist.uri, 'åösösö')
     },
 
     methods: {
       async playSpotifyTrack(index) {
         const accessToken = this.$store.state.accessToken
         const playlistId = this.$route.params.id
+        const playlist = await spotify.getPlaylist(playlistId)
+        const uri = playlist.uri
+        console.log(uri, 'hdhdhdhvff')
+        console.log(index)
 
-        const uri = await spotify.getPlaylistTracks(playlistId)
-        //map out so its only the uri in the array
-        this.uri = uri.map((track) => track.track.uri)
-        console.log(this.uri, 'theuri arrau')
         // const track = this.tracks[index].track.uri
         const playThis = await playThisSong(accessToken, uri, index)
-        console.log(index, 'is this right?')
+        // console.log(track, 'is this right?')
         return playThis
       },
       // play track from list
@@ -178,7 +177,7 @@
 
   .playlistName {
     margin-top: 4rem;
-    font-size: 30px;
+    font-size: 40px;
     /* color: rgb(58, 57, 57); */
   }
 

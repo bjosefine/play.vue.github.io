@@ -43,7 +43,7 @@
       </div>
       <!-- title -->
       <div class="trackTitle">
-        <div class="animateTrackName">{{ uniquetracks.name }}</div>
+        {{ uniquetracks.name }}
       </div>
 
       <!-- duration -->
@@ -140,11 +140,10 @@
 
   .artistHeader {
     display: flex;
-    width: 50%;
     justify-content: left;
     margin-bottom: 2rem;
-    padding: 0;
     margin-right: 50%;
+    align-items: baseline;
   }
 
   .artistImage {
@@ -152,7 +151,8 @@
     height: 300px;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: auto;
+    margin-right: 3rem;
+    margin-left: 5rem;
   }
 
   .artistImage img {
@@ -196,7 +196,7 @@
     grid-auto-rows: minmax(35px, auto);
     grid-template-areas:
       '. titleHeading titleHeading titleHeading artistHeading artistHeading . timeHead'
-      '. headerLine headerLine headerLine headerLine headerLine headerLine headerLine ';
+      '. headerLine headerLine headerLine headerLine headerLine headerLine ';
     margin-right: auto;
   }
 
@@ -209,7 +209,7 @@
   /* track heading */
   .titleHeading {
     font-size: 17px;
-    margin-left: 8rem;
+    margin-left: 9rem;
     margin-bottom: 0;
     grid-area: titleHeader;
   }
@@ -233,9 +233,10 @@
 
   .headerLine {
     grid-area: headerLine;
-    margin-right: 5rem;
+    /* margin-right: 5rem;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0; */
+    margin: 0 5rem;
   }
 
   .trackDetails {
@@ -300,11 +301,115 @@
     margin-right: 1rem;
     overflow: hidden;
     border-radius: 4px;
+    margin-left: 4rem;
   }
 
   .trackImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media (min-width: 768px) and (max-width: 980px) {
+    .headerLine {
+      margin-right: 4rem;
+      margin-top: 0;
+      margin-bottom: 4rem;
+    }
+
+    .titleHeading {
+      margin-left: 11rem;
+    }
+    .trackImage {
+      margin-left: 5rem;
+    }
+
+    .headerline {
+      margin-left: 5rem;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    .artistHeader {
+      margin-left: 5rem;
+    }
+
+    .trackHeadings {
+      display: none;
+    }
+    .artistImage {
+      width: 200px;
+      height: 200px;
+    }
+
+    .trackDetails {
+      display: grid;
+      justify-items: start;
+      align-items: left;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(35px, auto);
+      grid-template-areas:
+        'trackImage trackTitle trackTitle'
+        'trackImage trackArtist trackLength';
+      margin-right: 2rem;
+      margin-left: 0;
+    }
+
+    .trackTitle {
+      font-size: 16px;
+      width: 180px;
+      margin-left: 0;
+    }
+
+    .headerLine {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .artistImage {
+      width: 150px;
+      height: 150px;
+    }
+    .trackDetails {
+      display: grid;
+      justify-items: start;
+      align-items: left;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(35px, auto);
+      grid-template-areas:
+        'trackImage trackTitle trackTitle'
+        'trackImage trackArtist trackLength';
+      margin-right: 4rem;
+      margin-left: 0;
+    }
+
+    .trackTitle {
+      font-size: 16px;
+      font-weight: bold;
+      width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+
+    .headerLine {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .trackImage {
+      margin-left: 0;
+    }
+
+    .trackHeadings {
+      display: none;
+    }
   }
 </style>
