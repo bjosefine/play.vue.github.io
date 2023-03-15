@@ -31,7 +31,7 @@
               :key="index"
               :class="{ selected: index === selectedTrackIndex }"
               class="trackItem"
-              @click="playTrack(index)"
+              @click="playTrack(index), playSpotifyTop(index)"
             >
               <div class="trackInfo">
                 <!-- Track Image -->
@@ -87,6 +87,7 @@
   <!-- Player controller -->
   <div v-if="selectedTrackIndex !== null">
     <PlayerController
+      v-if="!isAuthenticated"
       :key="artistTracks[selectedTrackIndex].id"
       :track="artistTracks[selectedTrackIndex]"
       :audio="audio"
@@ -100,8 +101,13 @@
 <script>
   import spotify from '../api/spotify.js'
   import PlayerController from '../components/PlayerController.vue'
+  import { mapGetters } from 'vuex'
+  import { playThisSpecifikSong } from '../api/spotify.js'
 
   export default {
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     components: {
       PlayerController
     },
@@ -120,6 +126,14 @@
     },
 
     methods: {
+      async playSpotifyTop(index) {
+        const accessToken = this.$store.state.accessToken
+        const artistId = this.$route.params.id
+        const topTracks = await spotify.getToptracks(artistId)
+        const uri = topTracks.map((track) => track.uri)
+        const playThis = await playThisSpecifikSong(accessToken, uri, index)
+        return playThis
+      },
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)

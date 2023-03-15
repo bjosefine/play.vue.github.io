@@ -88,6 +88,20 @@ export const playThisSong = async (accessToken, uri, index) => {
   console.log(data, 'plaaythis')
   return data
 }
+export const playThisSpecifikSong = async (accessToken, uri, index) => {
+  const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+    method: 'PUT',
+    headers: { Authorization: 'Bearer ' + accessToken },
+    body: JSON.stringify({
+      uris: uri,
+      offset: {
+        position: index
+      }
+    })
+  })
+  const data = await response.json()
+  return data
+}
 
 // A function that sends a  request to Spotify API to revoke the access token
 export const revokeAccessToken = async (accessToken) => {
@@ -318,6 +332,7 @@ const getToptracks = async (artistId) => {
   console.log(data.tracks, 'top')
   return data.tracks
 }
+
 // get albums
 const getAlbum = async () => {
   const token = await getToken()
@@ -433,5 +448,6 @@ export default {
   getUserPlaylist,
   getDeviceId,
   getSpotifyPlayer,
-  playThisSong
+  playThisSong,
+  playThisSpecifikSong
 }
