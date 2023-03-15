@@ -155,6 +155,8 @@
       this.artistTracks = await spotify.getToptracks(artistId)
       this.tracks = this.artistTracks
       console.log(this.artistTracks, 'url')
+      console.log(this.artistAlbums[0].uri, 'uri artistAlbums')
+      console.log(this.artistTracks[0].uri, 'uri artistTrack')
     }
   }
 </script>
@@ -184,6 +186,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    padding-left: 120px;
   }
 
   .artistHeader {
@@ -217,7 +220,7 @@
     font-size: 4rem;
   }
   .artistName h1 {
-    font-size: 4rem;
+    font-size: 1rem;
   }
   .artistName {
     margin-bottom: 0.5rem;
@@ -242,7 +245,7 @@
   }
 
   .sectionTitle {
-    font-size: 2.5rem;
+    font-size: 30px;
     margin-top: 3rem;
     margin-bottom: 3rem;
     width: 100%;
@@ -379,6 +382,7 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem;
+      padding-left: 100px;
     }
 
     .artistHeader {
@@ -574,15 +578,14 @@
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(7.9px);
       -webkit-backdrop-filter: blur(7.9px);
-      border: 1px solid rgba(138, 51, 138, 0.624);
       /* color: rgb(0, 0, 0); */
-      font-weight: 800;
     }
     /* Artist Header */
     .artistPage {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-left: 0px;
     }
 
     .artistHeader {

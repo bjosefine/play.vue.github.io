@@ -3,9 +3,6 @@
     <div class="goback" @click="goBack" v-if="!hideGoBack && scrolled">
       <i class="bi bi-arrow-left-circle-fill" />
     </div>
-
-    <div class="headprofile" />
-    <div class="wheel" />
     <div class="nav-content">
       <button
         class="logInOut"
@@ -98,7 +95,10 @@
     display: flex;
     justify-content: end;
     height: 40px;
+    width: 101px;
     margin: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
     align-items: center;
     /* color: purple; */
     margin: 5px;
@@ -106,6 +106,10 @@
     /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
     backdrop-filter: blur(18.2px);
     -webkit-backdrop-filter: blur(18.2px);
+  }
+  .logInOut:hover {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(206, 17, 206, 0.062);
   }
   /* button {
 
@@ -133,7 +137,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(240, 41, 226, 0.199);
+    /* background-color: rgba(240, 41, 226, 0.199); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,9 +173,9 @@
       display: flex;
       justify-content: end;
       height: 30px;
+      width: 95px;
       margin: 4px;
-      align-items: center;
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 </style>

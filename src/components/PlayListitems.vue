@@ -56,7 +56,7 @@
   }
 
   h1 {
-    font-size: 36px;
+    /* font-size: 30px; */
     margin: 40px 0;
     text-align: center;
   }
