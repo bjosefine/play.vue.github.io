@@ -116,7 +116,7 @@
         console.log(index)
 
         // const track = this.tracks[index].track.uri
-        const playThis = await playThisSong(accessToken, uri)
+        const playThis = await playThisSong(accessToken, uri, index)
         // console.log(track, 'is this right?')
         return playThis
       },
