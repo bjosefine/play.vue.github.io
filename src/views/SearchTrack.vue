@@ -30,7 +30,7 @@
       class="trackDetails"
       :key="index"
       :class="{ selected: index === selectedTrackIndex }"
-      @click="playTrack(index)"
+      @click="playTrack(index), playSpotifyTrack()"
     >
       <!-- image -->
       <div class="trackImage">
@@ -55,6 +55,7 @@
   <!-- Player controller -->
   <div v-if="selectedTrackIndex !== null">
     <PlayerController
+      v-if="!isAuthenticated"
       :key="uniquetracks.id"
       :track="uniquetracks"
       :audio="audio"
@@ -76,8 +77,13 @@
 <script>
   import spotify from '../api/spotify'
   import PlayerController from '../components/PlayerController.vue'
+  import { mapGetters } from 'vuex'
+  import { playOneSong } from '../api/spotify.js'
 
   export default {
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     components: {
       PlayerController
     },
@@ -101,6 +107,18 @@
     },
 
     methods: {
+      async playSpotifyTrack() {
+        const accessToken = this.$store.state.accessToken
+        const songId = this.$route.params.id
+        const track = await spotify.getTracks(songId)
+        const uri = track.uri
+        console.log(uri, 'hdhdhdhvff')
+
+        // const track = this.tracks[index].track.uri
+        const playThis = await playOneSong(accessToken, uri)
+        // console.log(track, 'is this right?')
+        return playThis
+      },
       formatDuration(durationMs) {
         const minutes = Math.floor(durationMs / 1000 / 60)
         const seconds = Math.floor((durationMs / 1000) % 60)
@@ -185,6 +203,7 @@
     color: black;
     margin: 0;
     padding: 0;
+    padding-bottom: 100px;
   }
 
   /* headings grid layout */
