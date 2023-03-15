@@ -76,7 +76,7 @@
     justify-content: center;
     margin-top: 10px;
     cursor: pointer;
-    color: #fff;
+    /* color: #fff; */
   }
 
   .playerPlayPause:hover,
