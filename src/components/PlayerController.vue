@@ -115,6 +115,9 @@
         audioVol: true
       }
     },
+    created() {
+      console.log('Created PlayerController with track:', this.track)
+    },
     // make the currently playing song stop when starting another song
     beforeUnmount() {
       this.stopAudio()
@@ -221,10 +224,13 @@
       console.log(this.track.name.length, 'tL')
     },
     watch: {
-      track(newTrack) {
-        this.isPlaying = false
-        this.audio.src = newTrack.preview_url
-        this.playPreview()
+      track() {
+        if (this.autoplay) {
+          this.play()
+        }
+      },
+      selectedTrackIndex() {
+        this.play()
       }
     }
   }

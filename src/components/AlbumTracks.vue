@@ -26,53 +26,51 @@
     <hr class="headerLine" />
 
     <!-- List of Tracks -->
-    <div
-      v-for="(track, index) in tracks"
-      :key="index"
-      :class="{ selected: index === selectedTrackIndex }"
-      @click="playTrack(index)"
-    >
-      <div class="playlist">
-        <ol class="trackList">
-          <li
-            v-for="artist in track.artists"
-            :key="artist.id"
-            class="trackItem"
-          >
-            <div class="trackDetails">
-              <!-- Small Track Image -->
-              <div class="trackImage">
-                <img
-                  v-if="albumImages"
-                  :src="albumImages.images[0].url"
-                  alt="Small album cover"
-                />
-              </div>
-              <!-- Track Title -->
-              <div class="trackTitle">
-                <div class="animateTrackName">{{ track.name }}</div>
-              </div>
-              <!-- Track Artist -->
-              <div class="trackArtist">
-                <router-link :to="`/artist/${track.artists[0].id}`">
-                  {{ artist.name }}
-                </router-link>
-              </div>
-
-              <div class="trackLength">
-                {{ formatDuration(track.duration_ms) }}
-              </div>
+    <!-- List of Tracks -->
+    <ol class="trackList" v-if="tracks">
+      <li
+        v-for="(track, index) in tracks"
+        :key="index"
+        @click="playTrack(index)"
+        :class="{ selected: index === selectedTrackIndex }"
+        class="trackItem"
+      >
+        <div class="trackDetails">
+          <!-- Small Track Image -->
+          <div class="trackImage">
+            <img
+              v-if="albumImages"
+              :src="albumImages.images[0].url"
+              alt="Small album cover"
+            />
+          </div>
+          <!-- Track Title -->
+          <div class="trackTitle">
+            <div class="animateTrackName">{{ track.name }}</div>
+          </div>
+          <!-- Track Artist -->
+          <div class="trackArtist">
+            <div v-for="artist in track.artists" :key="artist.id">
+              <router-link :to="`/artist/${artist.id}`">
+                {{ artist.name }}
+              </router-link>
             </div>
-          </li>
-        </ol>
-      </div>
-    </div>
+          </div>
+
+          <div class="trackLength">
+            {{ formatDuration(track.duration_ms) }}
+          </div>
+        </div>
+      </li>
+    </ol>
+
     <div v-if="selectedTrackIndex !== null">
       <PlayerController
-        :key="albumTracks[selectedTrackIndex].id"
-        :track="albumTracks[selectedTrackIndex]"
+        :key="tracks[selectedTrackIndex].id"
+        :track="tracks[selectedTrackIndex]"
         :audio="audio"
         :autoplay="autoplay"
+        :selected-track-index="selectedTrackIndex"
         @play-next="playNext()"
         @play-prev="playPrev()"
       />
@@ -95,7 +93,6 @@
         tracks: null,
         selectedTrackIndex: null,
         autoplay: true,
-        isPlaying: false,
         audio: new Audio()
       }
     },
@@ -105,12 +102,11 @@
         if (index === this.selectedTrackIndex) {
           return
         }
+        console.log('Track received in PlayerController:', this.track)
 
         this.selectedTrackIndex = index
         this.isPlaying = true
         console.log('Clicked track:', index)
-        this.audio.src = this.selectedTrack.preview_url
-        this.audio.play()
 
         console.log(index, 'plllll')
       },
@@ -149,12 +145,10 @@
       // console.log(this.albumImages, 'GAH ALBUMImages')
       // console.log(fetchAlbumTracks, 'GAH FETCHALBUM')
     },
-    computed: {
-      selectedTrack() {
-        if (this.selectedTrackIndex !== null) {
-          return this.tracks[this.selectedTrackIndex]
-        }
-        return null
+    watch: {
+      selectedTrackIndex(newVal, oldVal) {
+        console.log('selectedTrackIndex changed from', oldVal, 'to', newVal)
+        console.log('Current track:', this.tracks[newVal])
       }
     }
   }
