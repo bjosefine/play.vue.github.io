@@ -117,8 +117,7 @@
         console.log('Track URL:', track.preview_url)
         this.selectedTrackIndex = index
         this.isPlaying = true
-        this.audio.src = track.preview_url
-        this.audio.play()
+        
       }
     }
   }
