@@ -101,7 +101,7 @@
       const playlistId = this.$route.params.id
       this.playlist = await spotify.getPlaylist(playlistId)
       this.tracks = await spotify.getPlaylistTracks(playlistId)
-      this.tracks = this.tracks.filter((track) => track.track.preview_url)
+      // this.tracks = this.tracks.filter((track) => track.track.preview_url)
       console.log(this.tracks, 'hhi')
       console.log(this.playlist.uri, 'åösösö')
     },

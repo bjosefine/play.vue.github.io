@@ -211,7 +211,7 @@ const getPlaylistTracks = async (playlistId) => {
   )
 
   const data = await response.json()
-  const tracks = data.items.filter((item) => item.track.preview_url)
+  const tracks = data.items
 
   console.log(playlistId)
   console.log(data)

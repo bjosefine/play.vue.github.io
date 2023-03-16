@@ -476,6 +476,7 @@
     }
     .playerContainer {
       justify-content: initial;
+      height: 95px;
     }
     .playerButtons {
       position: fixed;
@@ -528,7 +529,7 @@
       position: fixed;
       margin: 0;
       bottom: 0;
-      margin-bottom: 4px;
+      margin-bottom: 0;
     }
     .playerImageSrc {
       width: 40px;
